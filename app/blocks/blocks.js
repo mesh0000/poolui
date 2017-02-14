@@ -48,6 +48,9 @@ app.controller('BlocksCtrl', function($scope, $route, dataService, timerService)
 		_.each($scope.blocks.global, function(block, index){
 			if($scope.poolStats.global != undefined && $scope.network != undefined) {
 				$scope.blocks.global[index].maturity = $scope.config.maturity_depth - ($scope.network.height - block.height);
+
+				var luck = block.shares/block.diff*100;
+				$scope.blocks.global[index].luck = (luck <= 100) ? (100-luck) : -luck ;
 			}
 		});
 	}
