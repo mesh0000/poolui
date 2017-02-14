@@ -38,7 +38,7 @@
 						<td md-cell><p class="md-body-2">{{block.diff | number}}</p></td>
 						<td md-cell><p ng-bind-html="block.hash | hashToLink: 'block'"></p></td>
 						<td md-cell><p class="md-body-2">{{block.shares | number}}</p></td>
-						<td md-cell><p class="md-body-2">{{block.diff/block.shares | number}}</p></td>
+						<td md-cell><p class="md-body-2">{{(block.shares/block.diff)*100 | number}} %</p></td>
 						<td md-cell>
 							<md-progress-linear  md-mode="query" ng-if="!block.maturity"></md-progress-linear>
 							<p ng-if="block.maturity<0">
