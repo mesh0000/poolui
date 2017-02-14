@@ -28,14 +28,14 @@ $ gulp build # writes to ./build
 ### Todo
 
 * Fix sort arrow styling
-** Miner admin
-** Admin pages
-** Network stats page.
-** Ship it deployment
-** Prettyify payments history dialog
-*** Pagination for Payments / Blocks pages.
-*** Websockets
-*** Miner graph colour picker
+* Miner admin
+* Admin pages
+* Network stats page.
+* Ship it deployment
+* Prettyify payments history dialog
+* Pagination for Payments / Blocks pages.
+* Websockets
+* Miner graph colour picker
 
 ### Support
 * I'm usually on #monero-pools so drop me a line if you need help with something or have a feature request.
