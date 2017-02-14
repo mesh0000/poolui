@@ -22,7 +22,8 @@ $ npm start # starts gulp + livereload, serves from ./build
 
 ## Deploy
 ```sh
-$ gulp build # writes to ./build
+$ npm install && bower install
+$ npm build build # writes to ./build
 ```
 
 ### Todo
