@@ -1,0 +1,72 @@
+<div layout-gt-lg="row" layout="column" class="statsbar" flex>
+	<div layout="column" layout-gt-sm="row" flex>
+		<div layout="column" flex>
+			<md-card class="metric">
+				<md-card-title>
+					<md-card-title-media>
+						<div class="md-media-sm card-media" layout="row" layout-align="center center">
+							<md-icon class="material-icons">multiline_chart</md-icon>
+						</div>
+					</md-card-title-media>
+					<md-card-title-text>
+						<span class="md-headline">{{poolStats.global.totalHashes | number}}</span>
+						<span class="md-subhead">Hashes Accepted</span>
+					</md-card-title-text>
+				</md-card-title>
+			</md-card>
+		</div>
+		<div layout="column" flex>
+			<md-card class="metric">
+				<md-card-title>
+					<md-card-title-media>
+						<div class="md-media-sm card-media" layout="row" layout-align="center center">
+							<md-icon class="material-icons">widgets</md-icon>
+						</div>
+					</md-card-title-media>
+					<md-card-title-text>
+						<div class="md-headline">{{poolStats.global.totalBlocksFound}}</div>
+						<div class="md-subhead">
+							<span>Blocks Found (<span am-time-ago="poolStats.global.lastBlockFoundTime*1000"></span>)
+							<md-tooltip md-direction="bottom">
+						    	{{poolStats.global.lastBlockFoundTime*1000 | date:'hh:mm:ss dd/mm/yy'}}
+						     </md-tooltip>
+						</div>
+					</md-card-title-text>
+				</md-card-title>
+			</md-card>
+		</div>
+	</div>
+	<div layout="column" layout-gt-sm="row" flex>
+		<div layout="column" flex>
+			<md-card class="metric">
+				<md-card-title>
+					<md-card-title-media>
+						<div class="md-media-sm card-media" layout="row" layout-align="center center">
+							<md-icon class="material-icons">memory</md-icon>
+						</div>
+					</md-card-title-media>
+					<md-card-title-text>
+						<span class="md-headline">{{poolStats.global.miners}}</span>
+						<span class="md-subhead">Miners Connected</span>
+					</md-card-title-text>
+				</md-card-title>
+			</md-card>
+		</div>
+		<div layout="column" flex>
+			<md-card class="metric">
+				<md-card-title>
+					<md-card-title-media>
+						<div class="md-media-sm card-media" layout="row" layout-align="center center">
+							<md-icon class="material-icons">attach_money</md-icon>
+						</div>
+					</md-card-title-media>
+					<md-card-title-text>
+						<span class="md-headline">{{poolStats.global.totalMinersPaid}}</span>
+						<span class="md-subhead">Miners Paid <a href="#/payments">({{poolStats.global.totalPayments}} Payments)</a></span>
+					</md-card-title-text>
+
+				</md-card-title>
+			</md-card>
+		</div>
+	</div>
+</div>

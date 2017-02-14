@@ -1,0 +1,175 @@
+/*** Global Styles ***/
+
+html, body {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size:14px;
+  height:100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+a {
+  transition: color .4s;
+  color: #3287b3;
+}
+
+a:link { text-decoration: none; },
+a:visited { color: #3b98c8; }
+a:hover   { color: #3b98c8; }
+a:active  {
+  transition: color .3s;
+  color: #007BE6;
+}
+
+/*** Material Styles ***/
+md-card {
+  overflow: hidden;
+}
+
+
+#main {
+  background: #f3f5f7;
+}
+
+.maintoolbar {
+  background-color: #fff;
+}
+
+
+.statsbar md-card-title-text{
+  text-align: right;
+}
+
+.statsbar md-card md-card-title {
+  padding: 12px ;
+}
+
+.md-menu-toolbar {
+  background: #00796B;
+}
+
+
+
+.sidenav {
+  background-color: #2b333e;
+}
+
+.sidenav ul{
+  list-style: none;
+}
+
+.sidenav md-list-item {
+  padding: 0px;
+}
+
+.sidenav a {
+  width: 100%;
+  text-align: left;
+  color: #fff;
+  margin: 0px;
+}
+
+.sidebar {
+  display: flex;
+  flex-wrap: nowrap;
+  box-sizing: border-box; 
+}
+
+.sidebar a {
+  color: rgb(66,66,66);
+  text-decoration: none;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0;
+  opacity: 0.87; }
+
+.sidebar md-icon {
+  vertical-align: middle;
+  padding-left: 40px;
+}
+
+#content  {
+  padding: 40px;
+}
+
+.logo {
+  background: #333d4b !important;
+  color: #fff !important;
+}
+
+.logo i {
+  color: #00b0ff;
+  font-weight: 700;
+}
+
+/* HELPERS */
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.truncate{
+  width:30%;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis
+}
+
+.hide-error-msg .md-errors-spacer{
+  display: none
+}
+
+.menu-item {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  display: inline-block;
+  overflow: hidden;
+  margin: 0px;
+  vertical-align: middle;
+  zoom:0.6;
+  transform: translateZ(0);
+  -webkit-transform: scale(0.60);
+  -moz-transform:scale(0.60);
+  font-size: 72px !important;
+  color: #aeb7c2;
+}
+
+.chartcontainer {
+  width: 100% !important;
+  max-width: 1000px;
+  height: 400px;
+}
+
+.valid {
+  color: green !important;
+}
+
+.invalid {
+  color: red !important;
+}
+
+.avatar {
+  position: relative;
+  width: 128px;
+  height: 128px;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  display: inline-block;
+  overflow: hidden;
+  margin: 0px;
+  vertical-align: middle;
+  zoom:0.70;
+  transform: translateZ(0);
+  -webkit-transform: scale(0.70);
+  -moz-transform:scale(0.70);
+}
+
+.metric md-icon {
+  font-size: 32px;
+}

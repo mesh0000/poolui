@@ -1,0 +1,23 @@
+{
+  "name": "xmrpoolui",
+  "description": "UI for XMR Pool.net",
+  "repository": "",
+  "license": "?",
+  "devDependencies": {
+    "bower": "^1.7.7",
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-manifest": "^0.1.1"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+    "update-deps": "npm update",
+    "postupdate-deps": "bower update",
+    "prestart": "npm install",
+    "start": "gulp"
+  },
+  "dependencies": {
+    "n3-charts": "^2.0.28",
+    "randomcolor": "^0.4.4"
+  }
+}
