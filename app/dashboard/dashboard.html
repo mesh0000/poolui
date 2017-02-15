@@ -174,7 +174,6 @@
 					</md-grid-tile>
 				</md-grid-list>
 			<md-card-content>
-				{{Object.keys(minerStats[addr].dataset)}}
 				<md-card-content layout="column" layout-gt-md="row">
 					<div class="chartcontainer" ng-if="minerStats[addr].dataset !== {} && minerStats[addr].options.series.length>0">
 						<linechart data="minerStats[addr].dataset" options="minerStats[addr].options"></linechart>
@@ -191,10 +190,10 @@
 							  </tr>
 							</thead>
 							<tbody md-body>
-							  <tr md-row ng-repeat="(index, id) in minerStats[addr].ids">
+							  <tr md-row ng-repeat="(index, id) in addrStats[addr].ids">
 								<td md-cell><p class="md-body-2">{{id}}</p></td>
 								<td md-cell><p class="md-body-2">{{minerStats[addr].dataset[id][0].hs | toHashRate}}</p></td>
-								<td md-cell><p class="md-body-2">{{minerStats[addr].dataset[id][0].hs | toHashRate}}</p></td>
+								<td md-cell><p class="md-body-2">{{addrStats[addr].workerStats[id].totalHash | number}}</p></td>
 								<td md-cell>
 									<span class="md-body-2" am-time-ago="minerStats[addr].dataset[id][0].ts"></span>
 									<md-tooltip>

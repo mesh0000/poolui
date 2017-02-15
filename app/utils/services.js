@@ -99,6 +99,10 @@ angular.module('utils.services', [])
         addrStats[key].ids = minerIDs;
       });
 
+      dataService.getData("/miner/"+key+"/stats/allWorkers", function(workerStats){
+        addrStats[key].workerStats = workerStats;
+      });
+
     });
 
   }
@@ -139,10 +143,7 @@ angular.module('utils.services', [])
           }
         }
       };
-       
-      // get all ids from adds
-      minerStats[addr].ids = data.ids;
-
+      
       dataService.getData("/miner/"+addr+"/chart/hashrate/allWorkers", function(allWorkersData){
           // Convert all dates to object
 
