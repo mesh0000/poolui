@@ -173,13 +173,6 @@ angular.module('utils.services', [])
           
       });
 
-
-    //   _.each(minerStats[addr].ids, function (val, mid) {
-    //     // request
-        
-
-    // });
-
     callback(minerStats);
       
     });      
