@@ -12,35 +12,35 @@
 				  <table md-table md-progress="promise">
 					<thead md-head>
 					  <tr md-row>
-					  	<th md-column md-numeric><h2 class="md-subhead">Valid</h2></th>
-						<th md-column md-numeric><h2 class="md-subhead">Time Found</h2></th>
-						<th md-column md-numeric><h2 class="md-subhead">Height</h2></th>
-						<th md-column md-numeric><h2 class="md-subhead">Difficulty</h2></th>
-						<th md-column md-numeric><h2 class="md-subhead">Hash</h2></th>
-						<th md-column md-numeric><h2 class="md-subhead">Shares</h2></th>
-						<th md-column md-numeric><h2 class="md-subhead">Luck</h2></th>
-						<th md-column md-numeric><h2 class="md-subhead">Maturity</h2></th>
-						<th md-column md-numeric><h2 class="md-subhead">Pool</h2></th>
+					  	<th md-column><h2 class="md-subhead">Valid</h2></th>
+						<th md-column><h2 class="md-subhead">Time Found</h2></th>
+						<th md-column><h2 class="md-subhead">Height</h2></th>
+						<th md-column><h2 class="md-subhead">Difficulty</h2></th>
+						<th md-column><h2 class="md-subhead">Hash</h2></th>
+						<th md-column><h2 class="md-subhead">Shares</h2></th>
+						<th md-column><h2 class="md-subhead">Luck</h2></th>
+						<th md-column><h2 class="md-subhead">Maturity</h2></th>
+						<th md-column><h2 class="md-subhead">Pool</h2></th>
 					  </tr>
 					</thead>
 					<tbody md-body>
 					  <tr md-row ng-repeat="block in blocks.global">
 					  	<td md-cell>
 					 		<md-icon ng-class="{valid: block.valid, invalid: !block.valid}">
-					 			{{(block.valid) ? 'done' : 'clear' }}
+					 			{{::block.icon}}
 					 		</md-icon>
 					 	</td>
 						<td md-cell>
 							<h3 class="md-body-2" am-time-ago="block.ts"></h3>
 							<md-tooltip>
-								{{block.ts | date:"hh:mm:ss dd/MM/yy"}}
+								{{::block.ts | date:"hh:mm:ss dd/MM/yy"}}
 							</md-tooltip>
 						</td>
-						<td md-cell><p class="md-body-2">{{block.height | number}}</p></td>
-						<td md-cell><p class="md-body-2">{{block.diff | number}}</p></td>
-						<td md-cell><p ng-bind-html="block.hash | hashToLink: 'block'"></p></td>
-						<td md-cell><p class="md-body-2">{{block.shares | number}}</p></td>
-						<td md-cell><p class="md-body-2">{{block.luck | number:2}} %</p></td>
+						<td md-cell><p class="md-body-2">{{::block.height | number}}</p></td>
+						<td md-cell><p class="md-body-2">{{::block.diff | number}}</p></td>
+						<td md-cell><p ng-bind-html="::block.hash | hashToLink: 'block'"></p></td>
+						<td md-cell><p class="md-body-2">{{::block.shares | number}}</p></td>
+						<td md-cell><p class="md-body-2">{{::block.luck | number:2}} %</p></td>
 						<td md-cell>
 							<md-progress-linear  md-mode="query" ng-if="!block.maturity"></md-progress-linear>
 							<p ng-if="block.maturity<0">
@@ -49,16 +49,16 @@
 									{{-block.maturity}} blocks ago
 								</md-tooltip>
 							</p>
-							<p ng-if="block.maturity>=0&&block.maturity<=60">
+							<p ng-if="block.maturity>0&&block.maturity<=60">
 								{{block.maturity}} to go
 							</p>
 						</td>
-						<td md-cell><p class="md-body-2">{{block.pool_type}}</p></td>
+						<td md-cell><p class="md-body-2">{{::block.pool_type}}</p></td>
 					  </tr>
 					</tbody>
 				  </table>
 				</md-table-container>
-				<!-- <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{desserts.count}}" md-on-paginate="getDesserts" md-page-select></md-table-pagination> -->
+				<!-- <md-table-pagination md-limit="10" md-limit-options="[5, 10, 15]" md-page="query.page" md-on-paginate="getDesserts" md-page-select md-total="blocks.global.length"></md-table-pagination> -->
 			</md-card-content>
 		</md-card>
 	</div>

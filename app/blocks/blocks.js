@@ -7,50 +7,19 @@ app.controller('BlocksCtrl', function($scope, $route, dataService, timerService)
 	var loadData = function () {
     	$scope.promise = dataService.getData("/pool/blocks", function(data){
 	        $scope.blocks.global = data;
-
-	        dataService.getData("/pool/blocks/pps", function(data){
-				$scope.blocks.pps = data;
-			});
-
-			dataService.getData("/pool/blocks/pplns", function(data){
-				$scope.blocks.pplns = data;
-			});
-
 			updateMaturity();
 	    });
-
-	    _.each($scope.poolList, function(pool_type) {
-		    dataService.getData("/pool/stats/"+pool_type, function(data){
-				$scope.poolStats[pool_type] = data;
-			});
-
-			dataService.getData("/pool/blocks/"+pool_type, function(data){
-            	if (data.length > 0){
-                    $scope.lastBlock[pool_type] = data[0];
-				} else {
-                    $scope.lastBlock[pool_type] = {
-                    	ts: 0,
-						hash: "",
-						diff: 0,
-						shares: 0,
-						height: 0,
-						valid: false,
-						unlocked: false,
-						pool_type: pool_type,
-						value: 0
-					}
-                }
-            });
-		});
 	};
     
 	var updateMaturity = function () {
+		var luck;
 		_.each($scope.blocks.global, function(block, index){
 			if($scope.poolStats.global != undefined && $scope.network != undefined) {
 				$scope.blocks.global[index].maturity = $scope.config.maturity_depth - ($scope.network.height - block.height);
 
-				var luck = block.shares/block.diff*100;
+				luck = block.shares/block.diff*100;
 				$scope.blocks.global[index].luck = (luck <= 100) ? (100-luck) : -luck ;
+				$scope.blocks.global[index].icon = (block.valid) ? 'done' : 'clear';
 			}
 		});
 	}

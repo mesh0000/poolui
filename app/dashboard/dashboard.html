@@ -186,12 +186,14 @@
 							  <tr md-row>
 								<th md-column md-numeric><h2 class="md-subhead">Worker</h2></th>
 								<th md-column md-numeric><h2 class="md-subhead">#'s</h2></th>
+								<th md-column md-numeric><h2 class="md-subhead">Total #'s</h2></th>
 								<th md-column md-numeric><h2 class="md-subhead">Last Hash</h2></th>
 							  </tr>
 							</thead>
 							<tbody md-body>
 							  <tr md-row ng-repeat="(index, id) in minerStats[addr].ids">
 								<td md-cell><p class="md-body-2">{{id}}</p></td>
+								<td md-cell><p class="md-body-2">{{minerStats[addr].dataset[id][0].hs | toHashRate}}</p></td>
 								<td md-cell><p class="md-body-2">{{minerStats[addr].dataset[id][0].hs | toHashRate}}</p></td>
 								<td md-cell>
 									<span class="md-body-2" am-time-ago="minerStats[addr].dataset[id][0].ts"></span>
