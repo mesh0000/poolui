@@ -5,12 +5,16 @@ app.controller('PaymentsCtrl', function($scope, dataService) {
 	$scope.selected = [];
 
 	$scope.options = {
-		page: 0,
+		page: 1,
 		limit: 15
 	}
 
 	$scope.loadPayments = function () {
-		dataService.getData("/pool/payments?"+$.param($scope.options), function(data){
+		var params = angular.copy($scope.options);
+		params.page -= 1;
+		var urlParams = $.param(params)
+		
+		dataService.getData("/pool/payments?"+urlParams, function(data){
 			$scope.payments.global = data;
 		});
 	}

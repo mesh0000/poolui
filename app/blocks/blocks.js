@@ -5,12 +5,15 @@ app.controller('BlocksCtrl', function($scope, $route, dataService, timerService)
 	$scope.selected = [];
 
 	$scope.options = {
-		page: 0,
+		page: 1,
 		limit: 15
 	}
 
 	$scope.loadBlocks = function () {
-    	$scope.promise = dataService.getData("/pool/blocks?"+$.param($scope.options), function(data){
+		var params = angular.copy($scope.options);
+		params.page -= 1;
+		var urlParams = $.param(params)
+    	$scope.promise = dataService.getData("/pool/blocks?"+urlParams, function(data){
 	        $scope.blocks.global = data;
 			updateMaturity();
 	    });
