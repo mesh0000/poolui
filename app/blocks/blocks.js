@@ -4,8 +4,13 @@ app.controller('BlocksCtrl', function($scope, $route, dataService, timerService)
 	$scope.blocks = {};
 	$scope.selected = [];
 
-	var loadData = function () {
-    	$scope.promise = dataService.getData("/pool/blocks", function(data){
+	$scope.options = {
+		page: 1,
+		limit: 15
+	}
+
+	$scope.loadBlocks = function () {
+    	$scope.promise = dataService.getData("/pool/blocks?"+$.param($scope.options), function(data){
 	        $scope.blocks.global = data;
 			updateMaturity();
 	    });
@@ -27,8 +32,8 @@ app.controller('BlocksCtrl', function($scope, $route, dataService, timerService)
 	$scope.$watchGroup(["blocks.global", "poolStats.global"], updateMaturity);
 
 	// Register call with timer 
-	timerService.register(loadData, $route.current.controller);
-	loadData();
+	timerService.register($scope.loadBlocks, $route.current.controller);
+	$scope.loadBlocks();
 	
 	$scope.$on("$routeChangeStart", function () {
 		timerService.remove($route.current.controller);

@@ -36,7 +36,7 @@ $ ./build.sh
 * Network stats page.
 * Ship it deployment
 * Prettyify payments history dialog
-* Pagination for Payments / Blocks pages.
+* Pagination for Payment history.
 * Websockets
 * Miner graph colour picker
 
