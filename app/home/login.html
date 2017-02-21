@@ -1,0 +1,39 @@
+<md-dialog aria-label="Miner Login">
+  <form ng-cloak>
+	<md-toolbar>
+	  <div class="md-toolbar-tools">
+		<h2>Miner Login</h2>
+		<span flex></span>
+		<md-button class="md-icon-button" ng-click="cancel()">
+		  <md-icon aria-label="Close dialog">clear</md-icon>
+		</md-button>
+	  </div>
+	</md-toolbar>
+
+	<md-dialog-content>
+	  <div class="md-dialog-content">
+		<md-input-container class="md-icon-float md-block">
+		  <!-- Use floating label instead of placeholder -->
+		  <label>Name</label>
+		  <md-icon>person</md-icon>
+		  <input ng-model="user.username" type="text">
+		</md-input-container>
+
+		<md-input-container class="md-icon-float md-block">
+		  <md-icon>lock</md-icon>
+		  <input ng-model="user.password" type="password" placeholder="Password">
+		</md-input-container>
+	  </div>
+	</md-dialog-content>
+
+	<md-dialog-actions layout="row">
+	  <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" md-autofocus>
+		Forgot password ?
+	  </md-button>
+	  <span flex></span>
+	  <md-button class="md-primary" ng-click="login()">
+		Login
+	  </md-button>
+	</md-dialog-actions>
+  </form>
+</md-dialog>

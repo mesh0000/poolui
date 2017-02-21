@@ -82,7 +82,7 @@
       </md-sidenav>
 
       <md-content flex id="main">
-        <md-toolbar class="md-whiteframe-2dp">
+        <md-toolbar class="navbar md-whiteframe-2dp">
           <div class="md-toolbar-tools maintoolbar" layout="row">
             <md-button class="md-icon-button" type="button" ng-click="toggleSidenav()">
               <md-icon md-font-set="material-icons">menu</md-icon>
@@ -93,9 +93,9 @@
                 <h3 flex><a href="#/dashboard">You : <b>{{yourTotalHashRate | toHashRate}}</b></a></h3>
               <!-- </div> -->
               <div flex></div>
-              <div>
-                <md-button class="md-fab md-mini md-accent" aria-label="Miner Login" ng-click="minerLogin()">
-                    <md-icon md-font-set="material-icons">login</md-icon>
+              <div >
+                <md-button class="md-fab md-mini md-accent" aria-label="Miner Login" ng-click="minerLogin($event)">
+                    <md-icon class="login">build</md-icon>
                 </md-button>
               </div>
           </div>
@@ -103,9 +103,6 @@
         <div id="content" ng-view flex></div>
       </md-content>
     </div>
-    
-    </div>
-  </div>
   <!-- Scripts -->
   <script src="vendor/jquery/dist/jquery.js"></script>
   <script src="vendor/moment/moment.js"></script>
@@ -127,6 +124,7 @@
   <script src="utils/services.js"></script>
   <script src="app.js"></script>
   <script src="home/home.js"></script>
+  <script src="home/login.js"></script>
   <script src="dashboard/minerpayments.js"></script>
   <script src="dashboard/dashboard.js"></script>
   <script src="blocks/blocks.js"></script>

@@ -173,3 +173,7 @@ md-card {
 .metric md-icon {
   font-size: 32px;
 }
+
+.navbar .login{
+ color: #fff !important;
+}

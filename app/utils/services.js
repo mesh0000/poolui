@@ -10,17 +10,25 @@ angular.module('utils.services', [])
         $http({
             method: 'GET',
             url: apiURL + url,
-            // params: 'limit=10, sort_by=created:desc',
-            // headers: {'Authorization': 'Token token=xxxxYYYYZzzz'}
         }).then(function successCallback(response) {
-          // With the data succesfully returned, call our callback
           callbackFunc(response.data);
         }, function errorCallback(response) {
           if (errCallback && response != undefined) errCallback(response); else console.log("Network Error", response);
-          // called asynchronously if an error occurs
-          // or server returns response with an error status.
         }).$promise;
      }
+
+    this.postData = function(url, params, callbackFunc, errCallback) {
+      console.log(params); // x-access-token
+      $http({
+            method: 'POST',
+            url: apiURL + url,
+            data: params
+        }).then(function successCallback(response) {
+          callbackFunc(response.data);
+        }, function errorCallback(response) {
+          if (errCallback && response != undefined) errCallback(response); else console.log("Network Error", response);
+        }).$promise;
+    }
 })
 
 .service('timerService', function($interval) {

@@ -4,7 +4,7 @@
 		<md-card>
 			<md-toolbar class="md-table-toolbar md-default">
 			  <div class="md-toolbar-tools">
-			    <span>Blocks Found</span>
+				<span>Blocks Found</span>
 			  </div>
 			</md-toolbar>
 			<md-card-content>
@@ -12,7 +12,7 @@
 				  <table md-table md-progress="promise">
 					<thead md-head>
 					  <tr md-row>
-					  	<th md-column><h2 class="md-subhead">Valid</h2></th>
+						<th md-column><h2 class="md-subhead">Valid</h2></th>
 						<th md-column><h2 class="md-subhead">Time Found</h2></th>
 						<th md-column><h2 class="md-subhead">Height</h2></th>
 						<th md-column><h2 class="md-subhead">Difficulty</h2></th>
@@ -25,11 +25,11 @@
 					</thead>
 					<tbody md-body>
 					  <tr md-row ng-repeat="block in blocks.global">
-					  	<td md-cell>
-					 		<md-icon ng-class="{valid: block.valid, invalid: !block.valid}">
-					 			{{::block.icon}}
-					 		</md-icon>
-					 	</td>
+						<td md-cell>
+							<md-icon ng-class="{valid: block.valid, invalid: !block.valid}">
+								{{::block.icon}}
+							</md-icon>
+						</td>
 						<td md-cell>
 							<h3 class="md-body-2" am-time-ago="block.ts"></h3>
 							<md-tooltip>
@@ -44,12 +44,12 @@
 						<td md-cell>
 							<md-progress-linear  md-mode="query" ng-if="!block.maturity"></md-progress-linear>
 							<p ng-if="block.maturity<0">
-								<md-icon ng-if="block.maturity<0">lock_open</md-icon> 
+								<md-icon>lock_open</md-icon> 
 								<md-tooltip>
 									{{-block.maturity}} blocks ago
 								</md-tooltip>
 							</p>
-							<p ng-if="block.maturity>0&&block.maturity<=60">
+							<p ng-if="block.maturity>0">
 								{{block.maturity}} to go
 							</p>
 						</td>

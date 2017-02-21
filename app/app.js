@@ -17,8 +17,8 @@ var app = angular.module('poolui', [
 	// $mdIconProvider.defaultIconSet("https://rawgit.com/angular/material-start/es5-tutorial/app/assets/svg/avatars.svg", 128)
 	
 	$mdThemingProvider.theme('default')
-    .primaryPalette('grey')
-    .accentPalette('light-blue');
+	.primaryPalette('grey')
+	.accentPalette('light-blue');
 
 	$routeProvider
 		.when('/home', {
@@ -67,7 +67,7 @@ var app = angular.module('poolui', [
 
 	}]);
 
-app.controller('AppCtrl', function($scope, $window, $route, dataService, timerService, addressService, $mdSidenav, $mdMedia, $localStorage, ngAudio){
+app.controller('AppCtrl', function($scope, $window, $route, $mdDialog, dataService, timerService, addressService, $mdSidenav, $mdMedia, $localStorage, ngAudio){
 	var appCache = window.applicationCache;
 	$scope.$storage = $localStorage;
 
@@ -90,14 +90,14 @@ app.controller('AppCtrl', function($scope, $window, $route, dataService, timerSe
 		var siren = false;
 		
 		_.each(addrStats, function(addr,index) {
-            totalHashRate += addr.hash;
-            if (addr.alarm && addr.hash < addr.alarmLimit) {
-            	siren=true;
-            }
-        });
+			totalHashRate += addr.hash;
+			if (addr.alarm && addr.hash < addr.alarmLimit) {
+				siren=true;
+			}
+		});
 
 		$scope.globalSiren=siren;
-        $scope.yourTotalHashRate = totalHashRate;
+		$scope.yourTotalHashRate = totalHashRate;
 	}
 
 	var playSiren = function (){
@@ -137,8 +137,8 @@ app.controller('AppCtrl', function($scope, $window, $route, dataService, timerSe
 
 	$scope.menuOpen = $mdMedia('gt-md');
 	$scope.$watch(function() { return $mdMedia('gt-md'); }, function(big) {
-    	$scope.menuOpen = $mdMedia('gt-md');
-  	});
+		$scope.menuOpen = $mdMedia('gt-md');
+	});
 
 	$scope.toggleSidenav = function (){
 		if (!$mdMedia('gt-md')) {
@@ -147,6 +147,23 @@ app.controller('AppCtrl', function($scope, $window, $route, dataService, timerSe
 			// toggle boolean
 			$scope.menuOpen = !$scope.menuOpen;
 		}
+	}
+
+	// ------- Miner Login and auth
+	$scope.minerLogin = function (ev) {
+		$mdDialog.show({
+		  controller: "LoginCtrl",
+		  templateUrl: 'home/login.html',
+		  parent: angular.element(document.body),
+		  targetEvent: ev,
+		  clickOutsideToClose:true,
+		  fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+		})
+		.then(function(answer) {
+		  $scope.status = 'You said the information was "' + answer + '".';
+		}, function() {
+		  $scope.status = 'You cancelled the dialog.';
+		});
 	}
 
 	// ------- App Update
