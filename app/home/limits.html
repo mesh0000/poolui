@@ -2,7 +2,7 @@
   <form ng-cloak class="login">
 	<md-toolbar>
 	  <div class="md-toolbar-tools">
-		<h2>Miner Login</h2>
+		<h2>Change your payment limits</h2>
 		<span flex></span>
 		<md-button class="md-icon-button" ng-click="cancel()">
 		  <md-icon aria-label="Close dialog">clear</md-icon>
@@ -27,12 +27,12 @@
 	</md-dialog-content>
 
 	<md-dialog-actions layout="row">
-	  <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" md-autofocus>
+	  <!-- <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" md-autofocus>
 		Forgot password ?
-	  </md-button>
+	  </md-button> -->
 	  <span flex></span>
-	  <md-button class="md-primary" ng-click="login()">
-		Login
+	  <md-button class="md-primary" ng-click="getConfig()">
+		Update
 	  </md-button>
 	</md-dialog-actions>
   </form>

@@ -11,11 +11,12 @@
   <!-- CSS -->
   <link rel="stylesheet" href="vendor/angular-material/angular-material.css">
   <link rel="stylesheet" href="vendor/n3-charts/build/LineChart.css">
-  <link rel="stylesheet" href="app.css">
   <link rel="stylesheet" href="vendor/angular-material-data-table/dist/md-data-table.css">
-  
+  <link rel="stylesheet" href="app.css">
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
+  <!-- CSS -->
   <link rel="apple-touch-icon" sizes="76x76" href="assets/assets/apple-icon.png">
   <link rel="icon" type="image/png" sizes="96x96" href="assets/assets/favicon.png">
 </head>
@@ -94,9 +95,29 @@
               <!-- </div> -->
               <div flex></div>
               <div >
-                <md-button class="md-fab md-mini md-accent" aria-label="Miner Login" ng-click="minerLogin($event)">
+                <md-button class="md-fab md-mini md-accent" aria-label="Miner Login" ng-click="minerLogin($event)" ng-if="!loggedIn">
                     <md-icon class="login">build</md-icon>
                 </md-button>
+                <md-menu ng-if="loggedIn">
+                  <md-button class="md-fab md-mini md-accent" aria-label="Miner Login" ng-click="$mdMenu.open($event)">
+                      <md-icon class="login">add_to_queue</md-icon>
+                  </md-button>
+                  <md-menu-content width="4">
+                    <md-menu-item>
+                      <md-button ng-click="minerLimits($event)">
+                        <md-icon md-menu-align-target></md-icon>
+                        Edit Payment limits
+                      </md-button>
+                    </md-menu-item>
+                    <md-menu-divider></md-menu-divider>
+                    <md-menu-item>
+                      <md-button ng-click="ctrl.redial($event)">
+                        <md-icon md-menu-align-target></md-icon>
+                        Logout
+                      </md-button>
+                    </md-menu-item>
+                  </md-menu-content>
+                </md-menu>
               </div>
           </div>
         </md-toolbar>
@@ -125,6 +146,7 @@
   <script src="app.js"></script>
   <script src="home/home.js"></script>
   <script src="home/login.js"></script>
+  <script src="home/limits.js"></script>
   <script src="dashboard/minerpayments.js"></script>
   <script src="dashboard/dashboard.js"></script>
   <script src="blocks/blocks.js"></script>

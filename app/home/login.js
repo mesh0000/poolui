@@ -1,8 +1,6 @@
 'use strict';
 
 app.controller('LoginCtrl', function($scope, $route, $mdDialog, dataService, timerService) {
-	$scope.authToken = "";
-
 	$scope.user = {
 		username: "48s97vfViXi27Yd8gC9dgDbyToXzyFw2UM9BTFGsjKtH5mf8EHMnoe8gLyceFwNqnUMLnZEkpeTx8NE7tyxhy7ecL3JEjiB",
 		password: "hackfanatic@gmail.com"
@@ -10,11 +8,11 @@ app.controller('LoginCtrl', function($scope, $route, $mdDialog, dataService, tim
 
 	$scope.login = function () {
 
-		dataService.postData("/authenticate", $scope.user, function(data){
+		dataService.postData("/authenticate", $scope.user, function(data){	
 			if (data.success){
-				$scope.authToken = data.msg;
+				$mdDialog.hide(data.msg);
 			} else {
-
+				$mdDialog.hide(false);
 			}
 		});
 	}

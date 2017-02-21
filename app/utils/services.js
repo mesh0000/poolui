@@ -4,12 +4,14 @@ angular.module('utils.services', [])
 
 .service('dataService', function($http) {
     var apiURL = "https://api.xmrpool.net";
+    var authToken = false;
 
     // delete $http.defaults.headers.common['X-Requested-With'];
     this.getData = function(url, callbackFunc, errCallback) {
         $http({
             method: 'GET',
             url: apiURL + url,
+            headers: this.getRequestHeaders()
         }).then(function successCallback(response) {
           callbackFunc(response.data);
         }, function errorCallback(response) {
@@ -18,16 +20,28 @@ angular.module('utils.services', [])
      }
 
     this.postData = function(url, params, callbackFunc, errCallback) {
-      console.log(params); // x-access-token
       $http({
             method: 'POST',
             url: apiURL + url,
-            data: params
+            data: params,
+            headers: this.getRequestHeaders()
         }).then(function successCallback(response) {
           callbackFunc(response.data);
         }, function errorCallback(response) {
           if (errCallback && response != undefined) errCallback(response); else console.log("Network Error", response);
         }).$promise;
+    }
+
+    this.setAuthToken = function(token) {
+      $http.defaults.headers.common['x-access-token'] = token;
+      authToken = token;
+      console.log($http.defaults.headers.common);
+      //authToken = token;
+    }
+
+    this.getRequestHeaders = function() {
+      console.log({ 'x-access-token': (authToken) ? authToken : "" });
+      return { 'x-access-token': (authToken) ? authToken : "" };
     }
 })
 

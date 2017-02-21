@@ -74,10 +74,10 @@ app.controller('AppCtrl', function($scope, $window, $route, $mdDialog, dataServi
 	$scope.poolList = ["pplns", "pps", "solo"];
 	$scope.poolStats = {}; // All Pool stats
 	$scope.addrStats = {}; // All tracked addresses
-
 	$scope.lastBlock = {};
 	
 	// for miner tracking
+	$scope.loggedIn = false;
 	$scope.yourTotalHashRate = 0;
 
 	// Hashrate Alarm
@@ -103,35 +103,6 @@ app.controller('AppCtrl', function($scope, $window, $route, $mdDialog, dataServi
 	var playSiren = function (){
 		($scope.globalSiren) ? $scope.sirenAudio.play() : $scope.sirenAudio.stop();
 	}
-
-	var loadData = function () {
-		dataService.getData("/pool/stats", function(data){
-			$scope.poolList = data.pool_list;
-			$scope.poolStats.global = data.pool_statistics;
-		});
-
-		dataService.getData("/network/stats", function(data){
-			$scope.network = data;
-		});	
-	}
-
-	var loadOnce = function () {
-		dataService.getData("/config", function(data){
-			$scope.config = data;
-		});
-	}
-
-	// Start the timer and register global requests
-	timerService.startTimer(5000);
-	timerService.register(loadData, 'global');
-
-	// Start address tracking servuce after starting timer, only one callback supported at a time
-	addressService.start(function(addrStats) {
-			$scope.addrStats = addrStats;
-			updateHashRate(addrStats);
-			playSiren();
-		}
-	);
 
 	// ------- UI HELPERS
 
@@ -160,16 +131,29 @@ app.controller('AppCtrl', function($scope, $window, $route, $mdDialog, dataServi
 		  fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
 		})
 		.then(function(answer) {
-		  $scope.status = 'You said the information was "' + answer + '".';
+		  if(answer!==false){
+		  	dataService.setAuthToken(answer);
+		  	$scope.loggedIn = true;
+		  }
 		}, function() {
-		  $scope.status = 'You cancelled the dialog.';
+			console.log("crash");
+		  $scope.loggedIn = false;
+		});
+	}
+
+	$scope.minerLimits = function (ev) {
+		$mdDialog.show({
+		  controller: "LimitsCtrl",
+		  templateUrl: 'home/limits.html',
+		  parent: angular.element(document.body),
+		  targetEvent: ev,
+		  clickOutsideToClose:true,
+		  fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
 		});
 	}
 
 	// ------- App Update
-
 	var update = function() {
-		
 		if (appCache.status == window.applicationCache.UPDATEREADY) {
 			appCache.swapCache();  // The fetch was successful, swap in the new cache.
 			$window.location.reload();
@@ -177,18 +161,48 @@ app.controller('AppCtrl', function($scope, $window, $route, $mdDialog, dataServi
 	}
 
 	appCache.addEventListener("updateready", function(event) {
-		console.log("UpdateReady Event Caught");
 		update();
 	}, false);
 
 	var updateCache = function () {
 		var appCache = window.applicationCache;
-		update();
-		 // appCache.update(); Attempt to update the user's cache.
+		appCache.update();
+	}
+
+	// API Requests
+	var loadData = function () {
+		dataService.getData("/pool/stats", function(data){
+			$scope.poolList = data.pool_list;
+			$scope.poolStats.global = data.pool_statistics;
+		});
+
+		dataService.getData("/network/stats", function(data){
+			$scope.network = data;
+		});	
+
+		updateCache(); // Check for manifest updates
+	}
+
+	var loadOnce = function () {
+		dataService.getData("/config", function(data){
+			$scope.config = data;
+		});
 	}
 
 	// Start doing things
 	loadOnce();
 	loadData();
 	updateCache();
+
+	// Start the timer and register global requests
+	timerService.startTimer(5000);
+	timerService.register(loadData, 'global');
+
+	// Start address tracking servuce after starting timer, only one callback supported at a time
+	addressService.start(function(addrStats) {
+			$scope.addrStats = addrStats;
+			updateHashRate(addrStats);
+			playSiren();
+		}
+	);
 });
