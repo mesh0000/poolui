@@ -5,7 +5,7 @@ app.controller('BlocksCtrl', function($scope, $route, dataService, timerService)
 	$scope.selected = [];
 
 	$scope.options = {
-		page: 1,
+		page: 0,
 		limit: 15
 	}
 

@@ -5,7 +5,7 @@ app.controller('PaymentsCtrl', function($scope, dataService) {
 	$scope.selected = [];
 
 	$scope.options = {
-		page: 1,
+		page: 0,
 		limit: 15
 	}
 
