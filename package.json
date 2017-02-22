@@ -10,7 +10,7 @@
     "gulp-manifest": "^0.1.1"
   },
   "scripts": {
-    "postinstall": "bower install",
+    "postinstall": "bower install && gulp build",
     "update-deps": "npm update",
     "postupdate-deps": "bower update",
     "prestart": "npm install",
