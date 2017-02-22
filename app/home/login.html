@@ -11,6 +11,7 @@
     </md-toolbar>
 
     <md-dialog-content layout-padding>
+      <form name="loginForm">
         <md-input-container class="md-icon-float md-block">
             <!-- Use floating label instead of placeholder -->
             <label>Name</label>
@@ -22,6 +23,7 @@
           <md-icon>lock</md-icon>
           <input ng-model="user.password" type="password" placeholder="Password">
         </md-input-container>
+      </form>
     </md-dialog-content>
 
     <md-dialog-actions layout="row">
