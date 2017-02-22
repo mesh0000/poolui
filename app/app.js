@@ -128,7 +128,7 @@ app.controller('AppCtrl', function($scope, $window, $route, $mdDialog, dataServi
 		  parent: angular.element(document.body),
 		  targetEvent: ev,
 		  clickOutsideToClose:true,
-		  fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+		  fullscreen: !$scope.menuOpen // Only for -xs, -sm breakpoints.
 		})
 		.then(function(answer) {
 		  if(answer!==false){
@@ -141,14 +141,15 @@ app.controller('AppCtrl', function($scope, $window, $route, $mdDialog, dataServi
 		});
 	}
 
-	$scope.minerLimits = function (ev) {
+	$scope.minerConsole = function (ev) {
 		$mdDialog.show({
-		  controller: "LimitsCtrl",
-		  templateUrl: 'home/limits.html',
+		  locals: $scope.config,
+		  controller: "ConsoleCtrl",
+		  templateUrl: 'home/console.html',
 		  parent: angular.element(document.body),
 		  targetEvent: ev,
 		  clickOutsideToClose:true,
-		  fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+		  fullscreen: !$scope.menuOpen // Only for -xs, -sm breakpoints.
 		});
 	}
 
