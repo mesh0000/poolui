@@ -35,12 +35,9 @@ angular.module('utils.services', [])
     this.setAuthToken = function(token) {
       $http.defaults.headers.common['x-access-token'] = token;
       authToken = token;
-      console.log($http.defaults.headers.common);
-      //authToken = token;
     }
 
     this.getRequestHeaders = function() {
-      console.log({ 'x-access-token': (authToken) ? authToken : "" });
       return { 'x-access-token': (authToken) ? authToken : "" };
     }
 })

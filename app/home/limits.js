@@ -2,15 +2,17 @@
 
 app.controller('LimitsCtrl', function($scope, $route, $mdDialog, dataService, timerService) {
 
-	$scope.getConfig = function () {
+	$scope.paymentLimit = 0;
 
+	var getConfig = function () {
 		dataService.getData("/authed", function(data){	
-			console.log(data);
+			$scope.paymentThresh = data.msg;
 		});
 	}
 
-	$scope.getConfig();
+	getConfig();
 
+	// Dialog methods
 	$scope.cancel = function () {
 		$mdDialog.cancel();
 	}

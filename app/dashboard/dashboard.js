@@ -25,11 +25,11 @@ app.controller('DashboardCtrl', function($scope , $route, $mdDialog, $pageVisibi
 
 	$scope.deleteAddress = function (key, ev){
 		var confirm = $mdDialog.confirm()
-		  .title('Are you sure?')
-		  .textContent('Delete '+key+ '?')
-		  .ariaLabel('Delete Key')
+		  .title('Hide live stats?')
+		  .textContent('You can add it back by entering your wallet address again')
+		  .ariaLabel('Stop tracking payment address')
 		  .targetEvent(ev)
-		  .ok("Delete")
+		  .ok("Remove")
 		  .cancel("Cancel");
 		
 		$mdDialog.show(confirm).then(function() {
