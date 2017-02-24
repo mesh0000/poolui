@@ -207,7 +207,6 @@ angular.module('utils.services', [])
 
     // report back
     callback(minerStats);
-      
     });      
   };
 });

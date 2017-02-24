@@ -1,6 +1,6 @@
 <ng-include src="'dashboard/poolstats.html'"></ng-include>
-<div layout-md="column" layout-sm="column" layout-xs="column" layout="row" flex>
-	<div layout="column" flex="100" flex-gt-lg="30">
+<div layout="column" layout-lg="row" flex>
+	<div layout="column" flex-lg="30">
 		<md-card>
 			<md-toolbar class="md-table-toolbar md-default">
 				<div class="md-toolbar-tools">
@@ -37,7 +37,7 @@
 			</md-card-content>
 		</md-card>
 	</div>
-	<div layout="column" flex="100" flex-gt-lg="70">
+	<div layout="column" flex-lg="70">
 		<md-card>
 			<md-toolbar class="md-table-toolbar md-default">
 				<div class="md-toolbar-tools">
@@ -154,30 +154,44 @@
 			</div>
 		</md-toolbar>
 		<md-card-content>
-			<div layout="column" layout-gt-md="row" >
-				<div flex>
-					<h3> Hash Rate : </h3>
-					<h3 class="text-right">{{miner.hash | toHashRate}}</h3>
+			<div flex layout="column" layout-md="row" layout-gt-md="row">
+				<div flex layout="column" layout-gt-xs="row">
+					<div flex>
+						<h4> Hash Rate : <h2>{{miner.hash | toHashRate}}</h2></h4>
+					</div>
+					<div flex>
+						<h4> Total Hashes : <h2>{{miner.totalHashes | number}}</h2></h4>
+					</div>
 				</div>
-				<div flex>
-					<h3> Total Hashes :</h3><br/>
-					<h3 class="text-right">{{miner.totalHashes | number}}</h3>
-				</div>
-				<div flex>
-					<h3> Total Due :</h3><br/>
-					<h3 class="text-right">{{miner.amtDue | toXMR | number:10}} XMR</h3>
-				</div>
-				<div flex>
-					<h3> Total Paid :</h3><br/>
-					<h3 class="text-right">{{miner.amtPaid | toXMR | number:10}} XMR</h3>
+				<div flex layout="column" layout-gt-xs="row">
+					<div flex>
+						<h5> Total Due : <h2>{{miner.amtDue | toXMR | number:10}} XMR</h2></h5>
+					</div>
+					<div flex>
+						<h5> Total Paid : <h2>{{miner.amtPaid | toXMR | number:10}} XMR</h2></h5>
+					</div>
 				</div>
 			</div>
+			<!-- <md-grid-list md-cols="1" md-cols-sm="2" md-cols-md="2" md-cols-gt-md="4" md-row-height="4:1" md-gutter="8px" md-gutter-gt-sm="4px" >
+				<md-grid-tile md-rowspan="1" md-colspan="1">
+					<h3> Hash Rate : <h2>{{miner.hash | toHashRate}}</h2>
+				</md-grid-tile>
+				<md-grid-tile md-rowspan="1" md-colspan="1">
+					<h3> Total Hashes : <h2>{{miner.totalHashes | number}}</h2></h3>
+				</md-grid-tile>
+				<md-grid-tile md-rowspan="1" md-colspan="1">
+					<h3> Total Due : <h2>{{miner.amtDue | toXMR | number:10}} XMR</h2></h3>
+				</md-grid-tile>
+				<md-grid-tile md-rowspan="1" md-colspan="1">
+					<h3> Total Paid : <h2>{{miner.amtPaid | toXMR | number:10}} XMR</h2></h3>
+				</md-grid-tile>
+			</md-grid-list> -->
 		</md-card-content>
-		<md-card-content layout="column" layout-gt-md="row">
-			<div class="chartcontainer" ng-if="minerStats[addr].dataset !== {} && minerStats[addr].options.series.length>0">
+		<md-card-content layout="column">
+			<div class="chartcontainer" ng-if="minerStats[addr].dataset !== {}" flex>
 				<linechart data="minerStats[addr].dataset" options="minerStats[addr].options"></linechart>
 			</div>
-			<span flex="20">
+			<div flex>
 				<md-table-container>
 					<table md-table md-row-select ng-model="minerStats[addr].selected" md-progress="minerStats[addr].promise" data-md-row-select="minerStats[addr].toptions.rowSelection" multiple="{{minerStats[addr].toptions.multiSelect}}">
 						<thead md-head>
@@ -203,7 +217,7 @@
 						</tbody>
 					</table>
 				</md-table-container>
-			</span>
+			</div>
 		</md-card-content>
 		<md-card-actions layout="row" layout-align="end center" flex>
 			<form layout layout-align="center" layout-padding>
