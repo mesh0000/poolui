@@ -77,7 +77,6 @@ app.controller('AppCtrl', function($scope, $window, $route, $mdDialog, dataServi
 	$scope.lastBlock = {};
 	
 	// for miner tracking
-	$scope.loggedIn = false;
 	$scope.yourTotalHashRate = 0;
 
 	// Hashrate Alarm
@@ -136,8 +135,7 @@ app.controller('AppCtrl', function($scope, $window, $route, $mdDialog, dataServi
 		  	$scope.loggedIn = true;
 		  }
 		}, function() {
-			console.log("crash");
-		  $scope.loggedIn = false;
+			// error callback
 		});
 	}
 
@@ -150,7 +148,16 @@ app.controller('AppCtrl', function($scope, $window, $route, $mdDialog, dataServi
 		  targetEvent: ev,
 		  clickOutsideToClose:true,
 		  fullscreen: !$scope.menuOpen // Only for -xs, -sm breakpoints.
+		})
+		.then(function(answer){
+			if(answer=='logout'){
+				dataService.logout();
+			}
 		});
+	}
+
+	$scope.isLoggedIn = function() {
+		return dataService.isLoggedIn();
 	}
 
 	// ------- App Update
@@ -196,7 +203,7 @@ app.controller('AppCtrl', function($scope, $window, $route, $mdDialog, dataServi
 	updateCache();
 
 	// Start the timer and register global requests
-	timerService.startTimer(5000);
+	timerService.startTimer(10000);
 	timerService.register(loadData, 'global');
 
 	// Start address tracking servuce after starting timer, only one callback supported at a time

@@ -95,11 +95,11 @@
               <!-- </div> -->
               <div flex></div>
               <div>
-                <md-button class="md-raised md-accent" aria-label="Miner Login" ng-click="minerLogin($event)" ng-if="!loggedIn">
+                <md-button class="md-raised md-accent" aria-label="Miner Login" ng-click="minerLogin($event)" ng-if="!isLoggedIn()">
                     <md-icon class="login">fingerprint</md-icon>
                     Login
                 </md-button>
-                <md-button class="md-fab md-mini md-warn" aria-label="Miner Login" ng-click="minerConsole($event)" ng-if="loggedIn">
+                <md-button class="md-fab md-mini md-warn" aria-label="Miner Login" ng-click="minerConsole($event)" ng-if="isLoggedIn()">
                   <md-icon class="login">build</md-icon>
                 </md-button>
               </div>

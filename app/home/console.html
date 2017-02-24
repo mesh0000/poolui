@@ -11,21 +11,23 @@
 	</md-toolbar>
 
 	<md-dialog-content>
-  		<md-tabs md-dynamic-height>
+  		<md-tabs class="console">
   			<md-tab label="Payment Threshold">
-  				<p class="" ng-if="paymentThresh==0">You currently have no payment threshold set, defaults are in use.</p>
-				<form name="thresholdForm">
-					<md-input-container>
-						<label>Payment Threshold Limit</label>
-						<input type="number" ng-model="paymentThresh" name="threshold" step="any" required min="{{min_wallet_payout | toXMR}}">
-					</md-input-container>
-					<div ng-messages="thresholdForm.threshold.$error" multiple>
-						<div ng-message="min">
-						This value cannot be lower than {{min_wallet_payout | toXMR}} XMR
+  				<div layout-padding>
+	  				<p class="" ng-if="paymentThresh==0">You currently have no payment threshold set, defaults are in use.</p>
+					<form name="thresholdForm">
+						<md-input-container>
+							<label>Payment Threshold Limit</label>
+							<input type="number" ng-model="paymentThresh" name="threshold" step="any" required min="{{min_wallet_payout | toXMR}}">
+						</md-input-container>
+						<div ng-messages="thresholdForm.threshold.$error" multiple>
+							<div ng-message="min">
+							This value cannot be lower than {{min_wallet_payout | toXMR}} XMR
+							</div>
 						</div>
-					</div>
-					<p>The pool will pay out to your wallet once your total due exceeds the payment threshold</p>
-				</form>
+						<p>The pool will pay out to your wallet once your total due exceeds the payment threshold</p>
+					</form>
+				</div>
   			</md-tab>
   			<md-tab label="Change Password">
   				Almost Here!
@@ -34,9 +36,9 @@
 	</md-dialog-content>
 
 	<md-dialog-actions layout="row">
-<!-- 	  <md-button class="md-block md-primary md-warn" ng-click="logout()">
+	  <md-button class="md-block md-primary md-warn" ng-click="logout()">
 		Logout
-	  </md-button> -->
+	  </md-button>
 	  <span flex></span>
 	  <md-button class="md-primary" ng-click="save()">
 		Update

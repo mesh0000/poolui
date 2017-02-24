@@ -6,11 +6,14 @@ app.controller('LoginCtrl', function($scope, $route, $mdDialog, dataService, tim
 		password: ""
 	}
 
+	$scope.remember = false;
+
 	$scope.login = function () {
 
 		dataService.postData("/authenticate", $scope.user, function(data){	
 			if (data.success){
-				$mdDialog.hide(data.msg);
+				data.remember  = $scope.remember;
+				$mdDialog.hide(data);
 			} else {
 				$mdDialog.hide(false);
 			}

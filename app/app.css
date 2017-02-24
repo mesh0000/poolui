@@ -112,6 +112,10 @@ md-card {
   text-align: right;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .truncate{
   width:30%;
   white-space:nowrap;
@@ -169,4 +173,9 @@ md-card {
 /* LOGIN WINDOW */
 md-dialog .login{
   min-width: 800px !important;
+}
+
+.console {
+  height: 300px;
+  min-width: 500px;
 }

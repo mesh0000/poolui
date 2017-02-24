@@ -2,10 +2,12 @@
 
 angular.module('utils.services', [])
 
-.service('dataService', function($http) {
+.service('dataService', function($http, $localStorage, $sessionStorage) {
+    var sessStorage = $sessionStorage;
+    var storage = $localStorage;
+    var sessionLock = false;
     var apiURL = "https://api.xmrpool.net";
-    var authToken = false;
-
+    
     // delete $http.defaults.headers.common['X-Requested-With'];
     this.getData = function(url, callbackFunc, errCallback) {
         $http({
@@ -33,12 +35,41 @@ angular.module('utils.services', [])
     }
 
     this.setAuthToken = function(token) {
-      $http.defaults.headers.common['x-access-token'] = token;
-      authToken = token;
+      $http.defaults.headers.common['x-access-token'] = token.msg;
+      sessStorage.token = token.msg;
+      storage.authToken = (token.remember) ? token.msg : false; // remember me
     }
 
     this.getRequestHeaders = function() {
-      return { 'x-access-token': (authToken) ? authToken : "" };
+      this.validateSesion();
+      return { 'x-access-token': (sessStorage.token) ? sessStorage.token : "" };
+    }
+
+    this.isLoggedIn = function() {
+      return sessStorage.token || storage.authToken;
+    }
+
+    this.validateSesion = function () {
+      if (storage.authToken !== undefined){
+          sessionLock = true;
+          if (storage.authToken) {
+            sessStorage.token = storage.authToken;
+          }
+        } else if (sessionLock) {
+          console.log("logout detected, logging out");
+          // logout if, logout detected on another browser session
+          this.logout();
+          sessionLock=false;
+        }
+    }
+
+    this.logout = function() {
+      // invalidate existing token
+      $http.get(apiURL+"/authed/tokenRefresh", function (data) { console.log("Refresh", data); });
+      delete storage.authToken;
+      delete sessStorage.authToken;
+      delete sessStorage.token;
+      // invalidate token on server todo
     }
 })
 
@@ -188,7 +219,7 @@ angular.module('utils.services', [])
                 key: "hs",
                 color: (minerStats[addr].options.series[mid]===undefined) ? randomColor() : minerStats[addr].options.series[mid].color,
                 type: ['line', 'area'],
-                interpolation: { mode: "basis-closed"},
+                interpolation: { mode: "basis"},
                 defined: function (value){
                   //console.log(value);
                   return (value !== undefined || value.x !== undefined || value.y !== undefined) ;
@@ -207,6 +238,7 @@ angular.module('utils.services', [])
 
     // report back
     callback(minerStats);
+      
     });      
   };
 });
