@@ -2,10 +2,8 @@
 
 app.controller('DashboardCtrl', function($scope , $route, $mdDialog, $pageVisibility, dataService, timerService, addressService, minerService) {
 	$scope.minerStats = {};
-	$scope.selected = [];
-
-
-	var updateCharts = function (){
+	
+	$scope.updateCharts = function (){
 		minerService.updateStats($scope.addrStats, function(minerStats){
 			$scope.minerStats = minerStats;
 		});
@@ -13,7 +11,7 @@ app.controller('DashboardCtrl', function($scope , $route, $mdDialog, $pageVisibi
 
 	// Update miners everyime addrStats
 	$scope.$parent.$watch('addrStats', function(newValue, oldValue) {
-		updateCharts();
+		$scope.updateCharts();
 	});
 	
 	$scope.addAddress = function (){
@@ -25,12 +23,12 @@ app.controller('DashboardCtrl', function($scope , $route, $mdDialog, $pageVisibi
 
 	$scope.deleteAddress = function (key, ev){
 		var confirm = $mdDialog.confirm()
-		  .title('Hide live stats?')
-		  .textContent('You can add it back by entering your wallet address again')
-		  .ariaLabel('Stop tracking payment address')
-		  .targetEvent(ev)
-		  .ok("Remove")
-		  .cancel("Cancel");
+		.title('Hide live stats?')
+		.textContent('You can add it back by entering your wallet address again')
+		.ariaLabel('Stop tracking payment address')
+		.targetEvent(ev)
+		.ok("Remove")
+		.cancel("Cancel");
 		
 		$mdDialog.show(confirm).then(function() {
 			addressService.deleteAddress(key);
@@ -57,9 +55,9 @@ app.controller('DashboardCtrl', function($scope , $route, $mdDialog, $pageVisibi
 			//fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
 		})
 		.then(function(answer) {
-		  $scope.status = 'You said the information was "' + answer + '".';
+			$scope.status = 'You said the information was "' + answer + '".';
 		}, function() {
-		  $scope.status = 'You cancelled the dialog.';
+			$scope.status = 'You cancelled the dialog.';
 		});
 	}
 
@@ -90,7 +88,7 @@ app.controller('DashboardCtrl', function($scope , $route, $mdDialog, $pageVisibi
 		});
 
 		// Call minerservice update
-		updateCharts();
+		$scope.updateCharts();
 	};
 
 	// No spawn xhr reqs in bg

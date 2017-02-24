@@ -9,11 +9,11 @@
         </md-button>
       </div>
     </md-toolbar>
-
+    <md-subheader>
+    	<p>To : <b class="truncate">{{addr}}</b></p>
+    </md-subheader>
     <md-dialog-content>
-    	<md-content>
-    		Address : <span class="truncate">{{addr}}</span>
-    	</md-content>
+    	
       	<md-table-container>
 			<table md-table md-row-select ng-model="selected" md-progress="promise">
 			<thead md-head>
