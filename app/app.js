@@ -67,7 +67,7 @@ var app = angular.module('poolui', [
 
 	}]);
 
-app.controller('AppCtrl', function($scope, $window, $route, $mdDialog, dataService, timerService, addressService, $mdSidenav, $mdMedia, $localStorage, ngAudio){
+app.controller('AppCtrl', function($scope, $window, $route, $timeout, $mdDialog, dataService, timerService, addressService, $mdSidenav, $mdMedia, $localStorage, ngAudio){
 	var appCache = window.applicationCache;
 	$scope.$storage = $localStorage;
 
@@ -153,6 +153,8 @@ app.controller('AppCtrl', function($scope, $window, $route, $mdDialog, dataServi
 			if(answer=='logout'){
 				dataService.logout();
 			}
+		}, function(reason){
+			// console.log(reason);
 		});
 	}
 
@@ -187,8 +189,6 @@ app.controller('AppCtrl', function($scope, $window, $route, $mdDialog, dataServi
 		dataService.getData("/network/stats", function(data){
 			$scope.network = data;
 		});	
-
-		updateCache(); // Check for manifest updates
 	}
 
 	var loadOnce = function () {
@@ -201,6 +201,7 @@ app.controller('AppCtrl', function($scope, $window, $route, $mdDialog, dataServi
 	loadOnce();
 	loadData();
 	updateCache();
+	$timeout(updateCache, 5*60*1000); // check for app updates every 5 mins
 
 	// Start the timer and register global requests
 	timerService.startTimer(10000);

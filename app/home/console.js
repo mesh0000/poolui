@@ -11,7 +11,6 @@ app.controller('ConsoleCtrl', function($scope, $route, $filter, $mdDialog, min_w
 	}
 
 	var updateThreshold = function () {
-		console.log($scope.paymentThresh);
 		dataService.postData("/authed/changePayoutThreshold", {threshold: $scope.paymentThresh},function(data){
 			$mdDialog.hide('updated'); 
 		});

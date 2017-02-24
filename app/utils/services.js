@@ -56,7 +56,6 @@ angular.module('utils.services', [])
             sessStorage.token = storage.authToken;
           }
         } else if (sessionLock) {
-          console.log("logout detected, logging out");
           // logout if, logout detected on another browser session
           this.logout();
           sessionLock=false;
@@ -65,7 +64,9 @@ angular.module('utils.services', [])
 
     this.logout = function() {
       // invalidate existing token
-      $http.get(apiURL+"/authed/tokenRefresh", function (data) { console.log("Refresh", data); });
+      $http.get(apiURL+"/authed/tokenRefresh", function (data) { console.log("Refresh", data); }, function (err) {
+        console.log("error", err);
+      });
       delete storage.authToken;
       delete sessStorage.authToken;
       delete sessStorage.token;
