@@ -48,8 +48,6 @@ md-card {
   background: #00796B;
 }
 
-
-
 .sidenav {
   background-color: #2b333e;
 }
@@ -79,11 +77,12 @@ md-card {
   color: rgb(66,66,66);
   text-decoration: none;
   margin: 0;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 24px;
   letter-spacing: 0;
-  opacity: 0.87; }
+  opacity: 0.87; 
+}
 
 .sidebar md-icon, .sidebar ng-md-icon {
   vertical-align: middle;
@@ -140,12 +139,6 @@ md-card {
   color: #aeb7c2;
 }
 
-.chartcontainer {
-  width: 100% !important;
-  max-width: 1000px;
-  height: 400px;
-}
-
 .valid {
   color: green !important;
 }
@@ -154,28 +147,23 @@ md-card {
   color: red !important;
 }
 
-.avatar {
-  position: relative;
-  width: 128px;
-  height: 128px;
-  border: 1px solid #ddd;
-  border-radius: 50%;
-  display: inline-block;
-  overflow: hidden;
-  margin: 0px;
-  vertical-align: middle;
-  zoom:0.70;
-  transform: translateZ(0);
-  -webkit-transform: scale(0.70);
-  -moz-transform:scale(0.70);
-}
-
 .metric md-icon {
   font-size: 32px;
 }
 
-.navbar .login{
+.navbar .login {
  color: #fff !important;
+}
+
+/* CHARTS */
+
+.chart-legend {
+  display: none;
+}
+
+.chartcontainer {
+  width: 100% !important;
+  height: 300px;
 }
 
 /* LOGIN WINDOW */

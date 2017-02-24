@@ -154,12 +154,19 @@ angular.module('utils.services', [])
         dataset : {},
         options : {
           series: [],
+          allSeries: [],
           axes: {
             x: {
               key: "ts",
               type: "date"
             }
           }
+        },
+        selected: [],
+        toptions: {
+          rowSelection: true,
+          multiSelect: true,
+          autoSelect: true
         }
       };
       
@@ -173,7 +180,7 @@ angular.module('utils.services', [])
 
             minerStats[addr].dataset[mid] = workerData;
 
-            minerStats[addr].options.series = _.unionBy(minerStats[addr].options.series, [{
+            minerStats[addr].options.allSeries = _.unionBy(minerStats[addr].options.allSeries, [{
                 axis: "y",
                 id: mid,
                 dataset: mid,
@@ -181,20 +188,25 @@ angular.module('utils.services', [])
                 key: "hs",
                 color: (minerStats[addr].options.series[mid]===undefined) ? randomColor() : minerStats[addr].options.series[mid].color,
                 type: ['line', 'area'],
-                interpolation: { mode: "bundle", tension: 0.6 },
+                interpolation: { mode: "basis"},
                 defined: function (value){
                   //console.log(value);
                   return (value !== undefined || value.x !== undefined || value.y !== undefined) ;
                 }
               }], 'id');
           });
+
+          // only display selected miners
+          var selected = minerStats[addr].selected;
+          if(minerStats[addr].selected.length < 1) {
+            selected = _.union(minerStats[addr].selected, ['global']);
+          }
           
-          
-          
+          minerStats[addr].options.series = _.intersectionWith(minerStats[addr].options.allSeries, selected, function(ser, sel) { return ( ser.id == sel ) });
       });
 
+    // report back
     callback(minerStats);
-      
     });      
   };
 });
