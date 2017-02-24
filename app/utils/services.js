@@ -188,7 +188,7 @@ angular.module('utils.services', [])
                 key: "hs",
                 color: (minerStats[addr].options.series[mid]===undefined) ? randomColor() : minerStats[addr].options.series[mid].color,
                 type: ['line', 'area'],
-                interpolation: { mode: "basis"},
+                interpolation: { mode: "basis-closed"},
                 defined: function (value){
                   //console.log(value);
                   return (value !== undefined || value.x !== undefined || value.y !== undefined) ;

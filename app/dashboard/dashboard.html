@@ -172,20 +172,6 @@
 					</div>
 				</div>
 			</div>
-			<!-- <md-grid-list md-cols="1" md-cols-sm="2" md-cols-md="2" md-cols-gt-md="4" md-row-height="4:1" md-gutter="8px" md-gutter-gt-sm="4px" >
-				<md-grid-tile md-rowspan="1" md-colspan="1">
-					<h3> Hash Rate : <h2>{{miner.hash | toHashRate}}</h2>
-				</md-grid-tile>
-				<md-grid-tile md-rowspan="1" md-colspan="1">
-					<h3> Total Hashes : <h2>{{miner.totalHashes | number}}</h2></h3>
-				</md-grid-tile>
-				<md-grid-tile md-rowspan="1" md-colspan="1">
-					<h3> Total Due : <h2>{{miner.amtDue | toXMR | number:10}} XMR</h2></h3>
-				</md-grid-tile>
-				<md-grid-tile md-rowspan="1" md-colspan="1">
-					<h3> Total Paid : <h2>{{miner.amtPaid | toXMR | number:10}} XMR</h2></h3>
-				</md-grid-tile>
-			</md-grid-list> -->
 		</md-card-content>
 		<md-card-content layout="column">
 			<div class="chartcontainer" ng-if="minerStats[addr].dataset !== {}" flex>
