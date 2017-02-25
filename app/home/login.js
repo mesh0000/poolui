@@ -7,6 +7,7 @@ app.controller('LoginCtrl', function($scope, $route, $mdDialog, dataService, tim
 	}
 
 	$scope.remember = false;
+	$scope.status = "";
 
 	$scope.login = function () {
 
@@ -17,6 +18,8 @@ app.controller('LoginCtrl', function($scope, $route, $mdDialog, dataService, tim
 			} else {
 				$mdDialog.hide(false);
 			}
+		}, function(error){
+			$scope.status = "Please check your login details";
 		});
 	}
 

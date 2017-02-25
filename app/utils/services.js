@@ -1,13 +1,32 @@
 'use strict';
 
-angular.module('utils.services', [])
+var compareTo = function() {
+    return {
+        require: "ngModel",
+        scope: {
+            otherModelValue: "=compareTo"
+        },
+        link: function(scope, element, attributes, ngModel) {
 
-.service('dataService', function($http, $localStorage, $sessionStorage) {
+            ngModel.$validators.compareTo = function(modelValue) {
+                return modelValue == scope.otherModelValue;
+            };
+
+            scope.$watch("otherModelValue", function() {
+                ngModel.$validate();
+            });
+        }
+    };
+};
+
+angular.module('utils.services', [])
+.directive("compareTo", compareTo)
+.service('dataService', function($http, $localStorage, $sessionStorage, GLOBALS) {
+  var apiURL = GLOBALS.api_url;
   var sessStorage = $sessionStorage;
   var storage = $localStorage;
   var sessionLock = false;
-  var apiURL = "https://api.xmrpool.net";
-
+  
     // delete $http.defaults.headers.common['X-Requested-With'];
     this.getData = function(url, callbackFunc, errCallback) {
       $http({

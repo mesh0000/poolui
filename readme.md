@@ -13,6 +13,8 @@
 
 ### Run it
 
+Set pool params in app/config.js
+
 Requires NodeJS
 
 ```sh
@@ -27,7 +29,6 @@ $ npm install # runs everything, serve from ./build
 ### Todo
 
 * Fix sort arrow styling
-* Style Miner console
 * Admin pages
 * Network stats page.
 * Ship it deployment

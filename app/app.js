@@ -2,6 +2,7 @@
 
 // Declare app level module which depends on views, and components
 var app = angular.module('poolui', [
+	'poolui.globals',
 	'ngRoute',
 	'ngMaterial',
 	'md.data.table',
@@ -67,7 +68,8 @@ var app = angular.module('poolui', [
 
 	}]);
 
-app.controller('AppCtrl', function($scope, $window, $route, $timeout, $mdDialog, dataService, timerService, addressService, $mdSidenav, $mdMedia, $localStorage, ngAudio){
+app.controller('AppCtrl', function($scope, $window, $route, $interval, $mdDialog, dataService, timerService, addressService, $mdSidenav, $mdMedia, $localStorage, ngAudio, GLOBALS){
+	$scope.GLOBALS = GLOBALS;
 	var appCache = window.applicationCache;
 	$scope.$storage = $localStorage;
 
@@ -134,7 +136,7 @@ app.controller('AppCtrl', function($scope, $window, $route, $timeout, $mdDialog,
 		  	dataService.setAuthToken(answer);
 		  	$scope.loggedIn = true;
 		  }
-		}, function() {
+		}, function(error) {
 			// error callback
 		});
 	}
@@ -201,11 +203,11 @@ app.controller('AppCtrl', function($scope, $window, $route, $timeout, $mdDialog,
 	loadOnce();
 	loadData();
 	updateCache();
-	$timeout(updateCache, 5*60*1000); // check for app updates every 5 mins
-
+	
 	// Start the timer and register global requests
-	timerService.startTimer(10000);
+	timerService.startTimer(GLOBALS.api_refresh_interval);
 	timerService.register(loadData, 'global');
+	$interval(updateCache, GLOBALS.app_update_interval); // check for app updates every 5 mins
 
 	// Start address tracking servuce after starting timer, only one callback supported at a time
 	addressService.start(function(addrStats) {

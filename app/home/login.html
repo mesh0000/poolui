@@ -23,7 +23,7 @@
         <md-input-container class="md-icon-float md-block">
           <label>Password</label>
           <md-icon>lock</md-icon>
-          <input ng-model="user.password" type="password" placeholder="defult: your email inentifier (see FAQ)">
+          <input ng-model="user.password" type="password" placeholder="default: your email inentifier (see FAQ)">
         </md-input-container>
         </div>
       </form>
@@ -34,6 +34,7 @@
         Remember me
       </md-checkbox>
       <span flex></span>
+      <p class="invalid">{{status}}<p>
       <md-button class="md-raised md-primary" ng-click="login()">
         Login
       </md-button>
