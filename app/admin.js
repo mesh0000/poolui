@@ -21,9 +21,9 @@ var app = angular.module('pooladmin', [
 			templateUrl: 'admin/adminlogin.html',
 			controller: 'AdminLoginCtrl'
 		})
-		.when('/cp', {
-			templateUrl: 'admin/cp.html',
-			controller: 'AdminCPCtrl'
+		.when('/dashboard', {
+			templateUrl: 'admin/dashboard.html',
+			controller: 'AdminDashCtrl'
 		})
 
 		$routeProvider.otherwise({redirectTo: '/login'});
@@ -32,4 +32,12 @@ var app = angular.module('pooladmin', [
 
 app.controller('AppCtrl', function($scope, $window, $route, $interval, dataService, $localStorage, GLOBALS){
 	$scope.GLOBALS = GLOBALS;
+
+	var loginCheck = function (){
+		if(dataService.isLoggedIn){
+			$location.href('#dashboard');
+		}
+	}
+
+	var loginCheck();
 });

@@ -179,3 +179,7 @@ md-dialog .login{
   height: 300px;
   min-width: 500px;
 }
+
+.no-padding {
+  padding: 0px;
+}

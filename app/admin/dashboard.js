@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('AdminLoginCtrl', function($scope, $location, $route, dataService) {
+app.controller('AdminDashCtrl', function($scope, $location, $route, dataService) {
 	$scope.admin = {
 		username:"",
 		password:""

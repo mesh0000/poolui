@@ -26,24 +26,47 @@
       <![endif]-->
 
       <div class="container" layout="row" flex>
-        <ng-view flex>
-      </div>
-      <!-- Scripts -->
-      <script src="vendor/jquery/dist/jquery.js"></script>
-      <script src="vendor/lodash/dist/lodash.js"></script>
-      <script src="vendor/angular/angular.js"></script>
-      <script src="vendor/angular-route/angular-route.js"></script>
-      <script src="vendor/angular-animate/angular-animate.js"></script>
-      <script src="vendor/angular-aria/angular-aria.js"></script>
-      <script src="vendor/angular-material/angular-material.js"></script>
-      <script src="vendor/d3/d3.js"></script>
-      <script src="vendor/n3-charts/build/LineChart.js"></script>
-      <script src="vendor/angular-material-data-table/dist/md-data-table.js"></script>
-      <script src="vendor/ngstorage/ngStorage.js"></script>
-      <script src="globals.js"></script>
-      <script src="utils/dataservice.js"></script>
-      <script src="admin.js"></script>
-      <script src="admin/cp.js"></script>
-      <script src="admin/adminlogin.js"></script>
-    </body>
-    </html>
+        <md-card flex>
+          <md-toolbar class="md-table-toolbar md-warn">
+            <div class="md-toolbar-tools" flex>
+              <h1 class="text-center" flex>Pool Admin CP</h1>
+            </div>
+          </md-toolbar>
+          <md-card-content class="no-padding">
+            <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+              <md-nav-item md-nav-href="#dashboard" name="dashboard">
+                Dashboard
+              </md-nav-item>
+              <md-nav-item md-nav-href="#workers" name="workers">
+                Workers
+              </md-nav-item>
+              <md-nav-item md-nav-href="#ports" name="ports">
+                Ports
+              </md-nav-item>
+              <md-nav-item md-nav-href="#config" name="config">
+                Config
+              </md-nav-item>
+            </md-nav-bar>
+            <ng-view flex>
+            </md-card-content>
+          </md-card>
+        </div>
+        <!-- Scripts -->
+        <script src="vendor/jquery/dist/jquery.js"></script>
+        <script src="vendor/lodash/dist/lodash.js"></script>
+        <script src="vendor/angular/angular.js"></script>
+        <script src="vendor/angular-route/angular-route.js"></script>
+        <script src="vendor/angular-animate/angular-animate.js"></script>
+        <script src="vendor/angular-aria/angular-aria.js"></script>
+        <script src="vendor/angular-material/angular-material.js"></script>
+        <script src="vendor/d3/d3.js"></script>
+        <script src="vendor/n3-charts/build/LineChart.js"></script>
+        <script src="vendor/angular-material-data-table/dist/md-data-table.js"></script>
+        <script src="vendor/ngstorage/ngStorage.js"></script>
+        <script src="globals.js"></script>
+        <script src="utils/dataservice.js"></script>
+        <script src="admin.js"></script>
+        <script src="admin/cp.js"></script>
+        <script src="admin/adminlogin.js"></script>
+      </body>
+      </html>
