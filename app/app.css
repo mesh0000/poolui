@@ -170,6 +170,10 @@ md-card {
   height: 300px;
 }
 
+.chartcontainer .ng-isolate-scope {
+  height:300px;
+}
+
 /* LOGIN WINDOW */
 md-dialog .login{
   min-width: 800px !important;
