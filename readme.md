@@ -32,8 +32,6 @@ $ npm install # runs everything, serve from ./build
 * Admin pages
 * Network stats page.
 * Ship it deployment
-* Prettyify payments history dialog
-* Pagination for Payment history.
 * Websockets
 * Miner graph colour picker
 
