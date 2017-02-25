@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('poolui.globals', [])
+angular.module('pool.globals', [])
 
 .factory('GLOBALS', function() {
 	return {

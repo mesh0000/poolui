@@ -4,7 +4,7 @@
 <!--[if IE 8]>         <html lang="en" ng-app="poolui" class="no-js lt-ie9" manifest="app.manifest"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en" ng-app="poolui" class="no-js" manifest="app.manifest"> <!--<![endif]-->
 <head>
-<title>XMRPool.net - Mine XMR/Monero or BTC/Bitcoin</title>
+  <title>XMRPool.net - Mine XMR/Monero or BTC/Bitcoin</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -23,122 +23,123 @@
 <body ng-cloak layout="column" ng-controller="AppCtrl">
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
+      <![endif]-->
 
-    <div class="container" layout="row" flex>
-      <md-sidenav md-is-locked-open="menuOpen" md-component-id="left" md-whiteframe="4" class="sidenav">
-        <md-toolbar class="logo">
-          <h1 class="md-toolbar-tools">XMRPool.net <i class="md-caption">beta</i></h1>
-        </md-toolbar>
-        <md-list>
-          <md-list-item>
+      <div class="container" layout="row" flex>
+        <md-sidenav md-is-locked-open="menuOpen" md-component-id="left" md-whiteframe="4" class="sidenav">
+          <md-toolbar class="logo">
+            <h1 class="md-toolbar-tools">XMRPool.net <i class="md-caption">beta</i></h1>
+          </md-toolbar>
+          <md-list>
+            <md-list-item>
               <md-button href="#/home" ng-class="isActivePage('home')">
                 <md-icon md-font-set="material-icons" class="menu-item">home</md-icon>
                 Home
               </md-button>
-          </md-list-item>
-          <md-list-item>
+            </md-list-item>
+            <md-list-item>
               <md-button href="#/dashboard" ng-class="isActivePage('dashboard')">
                 <md-icon md-font-set="material-icons" class="menu-item">dashboard</md-icon>
                 Dashboard
               </md-button>
-          </md-list-item>
-          <md-list-item>
+            </md-list-item>
+            <md-list-item>
               <md-button href="#/blocks" ng-class="isActivePage('blocks')">
                 <md-icon md-font-set="material-icons" class="menu-item">reorder</md-icon>
                 Blocks
               </md-button>
-          </md-list-item>
-          <md-list-item>
+            </md-list-item>
+            <md-list-item>
               <md-button href="#/payments" ng-class="isActivePage('payments')">
                 <md-icon md-font-set="material-icons" class="menu-item">payments</md-icon>
                 Payment
               </md-button>
-          </md-list-item>
-          <md-list-item>
+            </md-list-item>
+            <md-list-item>
               <md-button href="#/network" ng-class="isActivePage('network')">
                 <md-icon md-font-set="material-icons" class="menu-item">language</md-icon>
                 Network
               </md-button>
-          </md-list-item>
-          <md-list-item>
+            </md-list-item>
+            <md-list-item>
               <md-button href="#/help/chat" ng-class="isActivePage('support')">
                 <md-icon md-font-set="material-icons" class="menu-item">group</md-icon>
                 Support
               </md-button>
-          </md-list-item>
-          <md-list-item>
+            </md-list-item>
+            <md-list-item>
               <md-button href="#/help/getting_started" ng-class="isActivePage('help/getting_started')">
                 <md-icon md-font-set="material-icons" class="menu-item">launch</md-icon>
                 Getting Started
               </md-button>
-          </md-list-item>
-          <md-list-item>
+            </md-list-item>
+            <md-list-item>
               <md-button href="#/help/faq" ng-class="isActivePage('help/faq')">
                 <md-icon md-font-set="material-icons" class="menu-item">help_outline</md-icon>
                 FAQ
               </md-button>
-          </md-list-item>
-        </md-list>
-      </md-sidenav>
+            </md-list-item>
+          </md-list>
+        </md-sidenav>
 
-      <md-content flex id="main">
-        <md-toolbar class="navbar md-whiteframe-2dp">
-          <div class="md-toolbar-tools maintoolbar" layout="row">
-            <md-button class="md-icon-button" type="button" ng-click="toggleSidenav()">
-              <md-icon md-font-set="material-icons">menu</md-icon>
-            </md-button>
+        <md-content flex id="main">
+          <md-toolbar class="navbar md-whiteframe-2dp">
+            <div class="md-toolbar-tools maintoolbar" layout="row">
+              <md-button class="md-icon-button" type="button" ng-click="toggleSidenav()">
+                <md-icon md-font-set="material-icons">menu</md-icon>
+              </md-button>
               <!-- <div layout="row" flex> -->
-                <h3 flex><a href="#/dashboard">Network : <b>{{network.difficulty | difficultyToHashRate | toHashRate}}</b></a></h3>
-                <h3 flex><a href="#/dashboard">Pool : <b>{{poolStats.global.hashRate | toHashRate}}</b></a></h3>
-                <h3 flex><a href="#/dashboard">You : <b>{{yourTotalHashRate | toHashRate}}</b></a></h3>
+              <h3 flex><a href="#/dashboard">Network : <b>{{network.difficulty | difficultyToHashRate | toHashRate}}</b></a></h3>
+              <h3 flex><a href="#/dashboard">Pool : <b>{{poolStats.global.hashRate | toHashRate}}</b></a></h3>
+              <h3 flex><a href="#/dashboard">You : <b>{{yourTotalHashRate | toHashRate}}</b></a></h3>
               <!-- </div> -->
               <div flex></div>
               <div>
                 <md-button class="md-raised md-accent" aria-label="Miner Login" ng-click="minerLogin($event)" ng-if="!isLoggedIn()">
-                    <md-icon class="login">fingerprint</md-icon>
-                    Login
+                  <md-icon class="login">fingerprint</md-icon>
+                  Login
                 </md-button>
                 <md-button class="md-fab md-mini md-warn" aria-label="Miner Login" ng-click="minerConsole($event)" ng-if="isLoggedIn()">
                   <md-icon class="login">build</md-icon>
                 </md-button>
               </div>
-          </div>
-        </md-toolbar>
-        <div id="content" ng-view flex></div>
-      </md-content>
-    </div>
-  <!-- Scripts -->
-  <script src="vendor/jquery/dist/jquery.js"></script>
-  <script src="vendor/moment/moment.js"></script>
-  <script src="vendor/lodash/dist/lodash.js"></script>
-  <script src="vendor/angular/angular.js"></script>
-  <script src="vendor/angular-route/angular-route.js"></script>
-  <script src="vendor/angular_page_visibility/dist/page_visibility.js"></script>
-  <script src="vendor/angular-animate/angular-animate.js"></script>
-  <script src="vendor/randomcolor/randomColor.js"></script>
-  <script src="vendor/d3/d3.js"></script>
-  <script src="vendor/n3-charts/build/LineChart.js"></script>
-  <script src="vendor/angular-aria/angular-aria.js"></script>
-  <script src="vendor/angular-material/angular-material.js"></script>
-  <script src="vendor/angular-material-data-table/dist/md-data-table.js"></script>
-  <script src="vendor/ngstorage/ngStorage.js"></script>
-  <script src="vendor/angular-moment/angular-moment.js"></script>
-  <script src="vendor/angular-audio/app/angular.audio.js"></script>
-  <script src="globals.js"></script>
-  <script src="utils/strings.js"></script>
-  <script src="utils/services.js"></script>
-  <script src="app.js"></script>
-  <script src="home/home.js"></script>
-  <script src="home/login.js"></script>
-  <script src="home/console.js"></script>
-  <script src="dashboard/minerpayments.js"></script>
-  <script src="dashboard/dashboard.js"></script>
-  <script src="blocks/blocks.js"></script>
-  <script src="payments/payments.js"></script>
-  <script src="network/network.js"></script>
-  <script src="help/chat.js"></script>
-  <script src="help/getting_started.js"></script>
-  <script src="help/faq.js"></script>
-</body>
-</html>
+            </div>
+          </md-toolbar>
+          <div id="content" ng-view flex></div>
+        </md-content>
+      </div>
+      <!-- Scripts -->
+      <script src="vendor/jquery/dist/jquery.js"></script>
+      <script src="vendor/moment/moment.js"></script>
+      <script src="vendor/lodash/dist/lodash.js"></script>
+      <script src="vendor/angular/angular.js"></script>
+      <script src="vendor/angular-route/angular-route.js"></script>
+      <script src="vendor/angular_page_visibility/dist/page_visibility.js"></script>
+      <script src="vendor/angular-animate/angular-animate.js"></script>
+      <script src="vendor/randomcolor/randomColor.js"></script>
+      <script src="vendor/d3/d3.js"></script>
+      <script src="vendor/n3-charts/build/LineChart.js"></script>
+      <script src="vendor/angular-aria/angular-aria.js"></script>
+      <script src="vendor/angular-material/angular-material.js"></script>
+      <script src="vendor/angular-material-data-table/dist/md-data-table.js"></script>
+      <script src="vendor/ngstorage/ngStorage.js"></script>
+      <script src="vendor/angular-moment/angular-moment.js"></script>
+      <script src="vendor/angular-audio/app/angular.audio.js"></script>
+      <script src="globals.js"></script>
+      <script src="utils/strings.js"></script>
+      <script src="utils/services.js"></script>
+      <script src="utils/dataservice.js"></script>
+      <script src="app.js"></script>
+      <script src="user/home/home.js"></script>
+      <script src="user/home/login.js"></script>
+      <script src="user/home/console.js"></script>
+      <script src="user/dashboard/minerpayments.js"></script>
+      <script src="user/dashboard/dashboard.js"></script>
+      <script src="user/blocks/blocks.js"></script>
+      <script src="user/payments/payments.js"></script>
+      <script src="user/network/network.js"></script>
+      <script src="user/help/chat.js"></script>
+      <script src="user/help/getting_started.js"></script>
+      <script src="user/help/faq.js"></script>
+    </body>
+    </html>

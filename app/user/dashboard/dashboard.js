@@ -48,7 +48,7 @@ app.controller('DashboardCtrl', function($scope , $route, $mdDialog, $pageVisibi
 				addr: addr
 			},
 			controller: "MinerPaymentsCtrl",
-			templateUrl: 'dashboard/minerpayments.html',
+			templateUrl: 'user/dashboard/minerpayments.html',
 			parent: angular.element(document.body),
 			targetEvent: ev,
 			clickOutsideToClose:true,

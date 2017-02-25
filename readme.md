@@ -29,11 +29,11 @@ $ npm install # runs everything, serve from ./build
 ### Todo
 
 * Fix sort arrow styling
-* Admin pages
 * Network stats page.
 * Ship it deployment
 * Websockets
 * Miner graph colour picker
+* Active sidebar item
 
 ### Support
 * I'm usually on #monero-pools so drop me a line if you need help with something or have a feature request.

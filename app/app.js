@@ -2,7 +2,7 @@
 
 // Declare app level module which depends on views, and components
 var app = angular.module('poolui', [
-	'poolui.globals',
+	'pool.globals',
 	'ngRoute',
 	'ngMaterial',
 	'md.data.table',
@@ -11,6 +11,7 @@ var app = angular.module('poolui', [
 	'ngAudio',
 	'utils.strings',
 	'utils.services',
+	'utils.xhr',
 	'n3-line-chart',
 	'angular-page-visibility'
 ]).config(['$locationProvider', '$routeProvider', '$mdThemingProvider', function($locationProvider, $routeProvider, $mdThemingProvider) {
@@ -23,42 +24,42 @@ var app = angular.module('poolui', [
 
 	$routeProvider
 		.when('/home', {
-			templateUrl: 'home/home.html',
+			templateUrl: 'user/home/home.html',
 			controller: 'HomeCtrl',
 			activetab: 'home'
 		})
 		.when('/dashboard', {
-			templateUrl: 'dashboard/dashboard.html',
+			templateUrl: 'user/dashboard/dashboard.html',
 			controller: 'DashboardCtrl',
 			activetab: 'dashboard'
 		})
 		.when('/blocks', {
-			templateUrl: 'blocks/blocks.html',
+			templateUrl: 'user/blocks/blocks.html',
 			controller: 'BlocksCtrl',
 			activetab: 'blocks'
 		})
 		.when('/payments', {
-			templateUrl: 'payments/payments.html',
+			templateUrl: 'user/payments/payments.html',
 			controller: 'PaymentsCtrl',
 			activetab: 'payments'
 		})
 		.when('/network', {
-			templateUrl: 'network/network.html',
+			templateUrl: 'user/network/network.html',
 			controller: 'NetworkCtrl',
 			activetab: 'network'
 		})
 		.when('/help/chat', {
-			templateUrl: 'help/chat.html',
+			templateUrl: 'user/help/chat.html',
 			controller: 'ChatCtrl',
 			activetab: 'support'
 		})
 		.when('/help/getting_started', {
-			templateUrl: 'help/getting_started.html',
+			templateUrl: 'user/help/getting_started.html',
 			controller: 'GettingStartedCtrl',
 			activetab: 'help'
 		})
 		.when('/help/faq', {
-			templateUrl: 'help/faq.html',
+			templateUrl: 'user/help/faq.html',
 			controller: 'FAQCtrl',
 			activetab: 'help'
 		});
@@ -125,7 +126,7 @@ app.controller('AppCtrl', function($scope, $window, $route, $interval, $mdDialog
 	$scope.minerLogin = function (ev) {
 		$mdDialog.show({
 		  controller: "LoginCtrl",
-		  templateUrl: 'home/login.html',
+		  templateUrl: 'user/home/login.html',
 		  parent: angular.element(document.body),
 		  targetEvent: ev,
 		  clickOutsideToClose:true,
@@ -133,9 +134,7 @@ app.controller('AppCtrl', function($scope, $window, $route, $interval, $mdDialog
 		})
 		.then(function(answer) {
 		  if(answer!==false){
-		  	dataService.setAuthToken(answer);
-		  	$scope.loggedIn = true;
-		  }
+		  	dataService.setAuthToken(answer);		  }
 		}, function(error) {
 			// error callback
 		});
@@ -145,7 +144,7 @@ app.controller('AppCtrl', function($scope, $window, $route, $interval, $mdDialog
 		$mdDialog.show({
 		  locals: $scope.config,
 		  controller: "ConsoleCtrl",
-		  templateUrl: 'home/console.html',
+		  templateUrl: 'user/home/console.html',
 		  parent: angular.element(document.body),
 		  targetEvent: ev,
 		  clickOutsideToClose:true,
