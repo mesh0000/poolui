@@ -15,7 +15,7 @@
 				<md-tab label="Payment Threshold" md-on-select="currentTab = 'Threshold'">
 					<div layout-padding>
 						<p class="" ng-if="paymentThresh==0">You currently have no payment threshold set, defaults are in use.</p>
-						<form name="thresholdForm">
+						<form name="thresholdForm" autocomplete="off">
 							<md-input-container>
 								<label>Payment Threshold Limit</label>
 								<input type="number" ng-model="paymentThresh" name="threshold" step="any" required min="{{min_wallet_payout | toXMR}}">
@@ -29,9 +29,17 @@
 						</form>
 					</div>
 				</md-tab>
+				<md-tab label="Email Settings" md-on-select="currentTab = 'Email'">
+					<div layout-padding>
+						<form name="emailForm" autocomplete="off">
+							<md-checkbox ng-model="email_toggle" ng-true-value="1" ng-false-value="0">Receive miner hashrate alerts</md-checkbox>							
+						</form>
+					</div>
+				</md-tab>
+				
 				<md-tab label="Change Password" md-on-select="currentTab = 'Password'">
 					<div layout-padding>
-						<form name="passwordForm">
+						<form name="passwordForm" autocomplete="off">
 							<md-input-container class="md-block">
 								<label>New Password</label>
 								<input type="password" ng-model="password.pwd" name="pwd" required md-autofocus>
@@ -58,7 +66,7 @@
 			<span flex></span>
 			<p ng-class="statusClass">{{status}}</p>
 			<md-button class="md-primary" ng-click="save()">
-				Update
+				Update {{currentTab}}
 			</md-button>
 		</md-dialog-actions>
 	</form>
