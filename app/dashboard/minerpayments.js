@@ -5,9 +5,24 @@ app.controller('MinerPaymentsCtrl', function($scope, $mdDialog, dataService, min
 	$scope.addr = addr;
 	$scope.selected = [];
 
-	dataService.getData("/miner/"+addr+"/payments", function(data){
-		$scope.payments = data;
-	});
+	$scope.options = {
+		page: 1,
+		limit: 15
+	}
+
+	console.log(miner);
+
+	$scope.loadPayments = function () {
+		var params = angular.copy($scope.options);
+		params.page -= 1;
+		var urlParams = $.param(params)
+
+		dataService.getData("/miner/"+addr+"/payments?"+urlParams, function(data){
+			$scope.payments = data;
+		});
+	}
+
+	$scope.loadPayments();
 
 	$scope.answer = function (answer) {
 		$mdDialog.hide('close')

@@ -94,30 +94,14 @@
                 <h3 flex><a href="#/dashboard">You : <b>{{yourTotalHashRate | toHashRate}}</b></a></h3>
               <!-- </div> -->
               <div flex></div>
-              <div >
-                <md-button class="md-fab md-mini md-accent" aria-label="Miner Login" ng-click="minerLogin($event)" ng-if="!loggedIn">
-                    <md-icon class="login">build</md-icon>
+              <div>
+                <md-button class="md-raised md-accent" aria-label="Miner Login" ng-click="minerLogin($event)" ng-if="!isLoggedIn()">
+                    <md-icon class="login">fingerprint</md-icon>
+                    Login
                 </md-button>
-                <md-menu ng-if="loggedIn">
-                  <md-button class="md-fab md-mini md-warn" aria-label="Miner Login" ng-click="$mdMenu.open($event)">
-                      <md-icon class="login">add_to_queue</md-icon>
-                  </md-button>
-                  <md-menu-content width="4">
-                    <md-menu-item>
-                      <md-button ng-click="minerLimits($event)">
-                        <md-icon md-menu-align-target></md-icon>
-                        Edit Payment limits
-                      </md-button>
-                    </md-menu-item>
-                    <md-menu-divider></md-menu-divider>
-                    <md-menu-item>
-                      <md-button ng-click="ctrl.redial($event)">
-                        <md-icon md-menu-align-target></md-icon>
-                        Logout
-                      </md-button>
-                    </md-menu-item>
-                  </md-menu-content>
-                </md-menu>
+                <md-button class="md-fab md-mini md-warn" aria-label="Miner Login" ng-click="minerConsole($event)" ng-if="isLoggedIn()">
+                  <md-icon class="login">build</md-icon>
+                </md-button>
               </div>
           </div>
         </md-toolbar>
@@ -141,12 +125,13 @@
   <script src="vendor/ngstorage/ngStorage.js"></script>
   <script src="vendor/angular-moment/angular-moment.js"></script>
   <script src="vendor/angular-audio/app/angular.audio.js"></script>
+  <script src="globals.js"></script>
   <script src="utils/strings.js"></script>
   <script src="utils/services.js"></script>
   <script src="app.js"></script>
   <script src="home/home.js"></script>
   <script src="home/login.js"></script>
-  <script src="home/limits.js"></script>
+  <script src="home/console.js"></script>
   <script src="dashboard/minerpayments.js"></script>
   <script src="dashboard/dashboard.js"></script>
   <script src="blocks/blocks.js"></script>

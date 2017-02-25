@@ -3,7 +3,7 @@
 ### AngularJS based UI for Furrypool?
 
 ### Features
-- See your hashrate on all pages.
+- See your hashrate on all page.s
 - Track multiple payment addresses.
 - Hashrate siren when hashrate falls below a certain limit.
 - Per miner charts & Payment History.
@@ -13,30 +13,25 @@
 
 ### Run it
 
+Set pool params in app/config.js
+
 Requires NodeJS
 
 ```sh
-$ npm install
-$ npm start # starts gulp + livereload, serves from ./build
+$ npm start # starts gulp + livereload, serves from ./build on 8080
 ```
 
 ## Deploy
 ```sh
-$ npm install && bower install
-$ npm build build # writes to ./build
-OR
-$ ./build.sh
+$ npm install # runs everything, serve from ./build
 ```
 
 ### Todo
 
 * Fix sort arrow styling
-* Miner admin
 * Admin pages
 * Network stats page.
 * Ship it deployment
-* Prettyify payments history dialog
-* Pagination for Payment history.
 * Websockets
 * Miner graph colour picker
 

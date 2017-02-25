@@ -2,6 +2,7 @@
 
 // Declare app level module which depends on views, and components
 var app = angular.module('poolui', [
+	'poolui.globals',
 	'ngRoute',
 	'ngMaterial',
 	'md.data.table',
@@ -67,7 +68,8 @@ var app = angular.module('poolui', [
 
 	}]);
 
-app.controller('AppCtrl', function($scope, $window, $route, $mdDialog, dataService, timerService, addressService, $mdSidenav, $mdMedia, $localStorage, ngAudio){
+app.controller('AppCtrl', function($scope, $window, $route, $interval, $mdDialog, dataService, timerService, addressService, $mdSidenav, $mdMedia, $localStorage, ngAudio, GLOBALS){
+	$scope.GLOBALS = GLOBALS;
 	var appCache = window.applicationCache;
 	$scope.$storage = $localStorage;
 
@@ -77,7 +79,6 @@ app.controller('AppCtrl', function($scope, $window, $route, $mdDialog, dataServi
 	$scope.lastBlock = {};
 	
 	// for miner tracking
-	$scope.loggedIn = false;
 	$scope.yourTotalHashRate = 0;
 
 	// Hashrate Alarm
@@ -128,28 +129,39 @@ app.controller('AppCtrl', function($scope, $window, $route, $mdDialog, dataServi
 		  parent: angular.element(document.body),
 		  targetEvent: ev,
 		  clickOutsideToClose:true,
-		  fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+		  fullscreen: !$scope.menuOpen // Only for -xs, -sm breakpoints.
 		})
 		.then(function(answer) {
 		  if(answer!==false){
 		  	dataService.setAuthToken(answer);
 		  	$scope.loggedIn = true;
 		  }
-		}, function() {
-			console.log("crash");
-		  $scope.loggedIn = false;
+		}, function(error) {
+			// error callback
 		});
 	}
 
-	$scope.minerLimits = function (ev) {
+	$scope.minerConsole = function (ev) {
 		$mdDialog.show({
-		  controller: "LimitsCtrl",
-		  templateUrl: 'home/limits.html',
+		  locals: $scope.config,
+		  controller: "ConsoleCtrl",
+		  templateUrl: 'home/console.html',
 		  parent: angular.element(document.body),
 		  targetEvent: ev,
 		  clickOutsideToClose:true,
-		  fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+		  fullscreen: !$scope.menuOpen // Only for -xs, -sm breakpoints.
+		})
+		.then(function(answer){
+			if(answer=='logout'){
+				dataService.logout();
+			}
+		}, function(reason){
+			// console.log(reason);
 		});
+	}
+
+	$scope.isLoggedIn = function() {
+		return dataService.isLoggedIn();
 	}
 
 	// ------- App Update
@@ -179,8 +191,6 @@ app.controller('AppCtrl', function($scope, $window, $route, $mdDialog, dataServi
 		dataService.getData("/network/stats", function(data){
 			$scope.network = data;
 		});	
-
-		updateCache(); // Check for manifest updates
 	}
 
 	var loadOnce = function () {
@@ -193,10 +203,11 @@ app.controller('AppCtrl', function($scope, $window, $route, $mdDialog, dataServi
 	loadOnce();
 	loadData();
 	updateCache();
-
+	
 	// Start the timer and register global requests
-	timerService.startTimer(5000);
+	timerService.startTimer(GLOBALS.api_refresh_interval);
 	timerService.register(loadData, 'global');
+	$interval(updateCache, GLOBALS.app_update_interval); // check for app updates every 5 mins
 
 	// Start address tracking servuce after starting timer, only one callback supported at a time
 	addressService.start(function(addrStats) {
