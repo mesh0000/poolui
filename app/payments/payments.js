@@ -6,7 +6,7 @@ app.controller('PaymentsCtrl', function($scope, dataService) {
 
 	$scope.options = {
 		page: 1,
-		limit: 10
+		limit: 15
 	}
 
 	$scope.loadPayments = function () {
