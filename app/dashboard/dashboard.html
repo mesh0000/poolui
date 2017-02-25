@@ -157,18 +157,18 @@
 			<div flex layout="column" layout-md="row" layout-gt-md="row" class="text-center">
 				<div flex layout="column" layout-gt-xs="row">
 					<div flex>
-						<h4> Hash Rate : <h2>{{miner.hash | toHashRate}}</h2></h4>
+						<h4> Hash Rate<h2>{{miner.hash | toHashRate}}</h2></h4>
 					</div>
 					<div flex>
-						<h4> Total Hashes : <h2>{{miner.totalHashes | number}}</h2></h4>
+						<h4> Total Hashes<h2>{{miner.totalHashes | number}}</h2></h4>
 					</div>
 				</div>
 				<div flex layout="column" layout-gt-xs="row">
 					<div flex>
-						<h5> Total Due : <h2>{{miner.amtDue | toXMR | number:10}} XMR</h2></h5>
+						<h5> Total Due<h2>{{miner.amtDue | toXMR | number:10}} XMR</h2></h5>
 					</div>
 					<div flex>
-						<h5> Total Paid : <h2>{{miner.amtPaid | toXMR | number:10}} XMR</h2></h5>
+						<h5> Total Paid<h2>{{miner.amtPaid | toXMR | number:10}} XMR</h2></h5>
 					</div>
 				</div>
 			</div>
@@ -177,6 +177,8 @@
 			<div class="chartcontainer" ng-if="minerStats[addr].dataset !== {}" flex>
 				<linechart data="minerStats[addr].dataset" options="minerStats[addr].options"></linechart>
 			</div>
+		</md-card-content>
+		<md-card-content>
 			<div flex>
 				<md-table-container>
 					<table md-table md-row-select ng-model="minerStats[addr].selected" md-progress="minerStats[addr].promise" data-md-row-select="minerStats[addr].toptions.rowSelection" multiple="{{minerStats[addr].toptions.multiSelect}}">
@@ -205,20 +207,34 @@
 				</md-table-container>
 			</div>
 		</md-card-content>
-		<md-card-actions layout="row" layout-align="end center" flex>
-			<form layout layout-align="center" layout-padding>
-				<div layout="row" flex>
-					<md-checkbox ng-model="miner.alarm" ng-change="setAlarm(addr, miner.alarm)"></md-checkbox>
-					<md-input-container flex class="md-icon-float md-block md-title">
-						<label>Hashrate Alarm</label>
-						<!-- below is the material icons -->
-						<input type="text" ng-model="miner.alarmLimit">
-						<md-icon class="material-icons">alarm</md-icon>
-					</md-input-container>
-				</div>  
-			</form>
-			<span flex></span>
-			<md-button class="md-raised md-primary" ng-click="viewPayments($event, miner, addr)">View Payments</md-button>
-		</md-card-actions>
-	</md-card>
+		<md-card-content>
+			<div flex layout="column" layout-md="row" layout-gt-md="row" class="text-right">
+				<div flex layout="column" layout-gt-xs="row">
+					<div flex>
+						
+					</div>
+					<div flex>
+						<h3> Valid Shares<h2>{{miner.validShares | number}} <md-icon class="valid">check</md-icon></h2></h3>
+						<h3> Invalid Shares<h2>{{miner.invalidShares | number}} <md-icon class="invalid">clear</md-icon></h2></h3>
+					</div>
+				</div>
+			</div>
+		</md-card-content>
+	</md-card-content>
+	<md-card-actions layout="row" layout-align="end center" flex>
+		<form layout layout-align="center" layout-padding>
+			<div layout="row" flex>
+				<md-checkbox ng-model="miner.alarm" ng-change="setAlarm(addr, miner.alarm)"></md-checkbox>
+				<md-input-container flex class="md-icon-float md-block md-title">
+					<label>Hashrate Alarm</label>
+					<!-- below is the material icons -->
+					<input type="text" ng-model="miner.alarmLimit">
+					<md-icon class="material-icons">alarm</md-icon>
+				</md-input-container>
+			</div>  
+		</form>
+		<span flex></span>
+		<md-button class="md-raised md-primary" ng-click="viewPayments($event, miner, addr)">View Payments</md-button>
+	</md-card-actions>
+</md-card>
 </div>
