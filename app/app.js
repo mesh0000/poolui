@@ -133,10 +133,9 @@ app.controller('AppCtrl', function($scope, $window, $route, $interval, $mdDialog
 		  fullscreen: !$scope.menuOpen // Only for -xs, -sm breakpoints.
 		})
 		.then(function(answer) {
-		  if(answer!==false){
-		  	dataService.setAuthToken(answer);		  }
+		  // success callback
 		}, function(error) {
-			// error callback
+		  // error callback
 		});
 	}
 

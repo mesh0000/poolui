@@ -3,7 +3,6 @@
 html, body {
   font-family: 'Source Sans Pro', sans-serif;
   font-size:14px;
-  height:100%;
   margin: 0px;
   padding: 0px;
 }
@@ -22,11 +21,6 @@ a:active  {
 }
 
 /*** Material Styles ***/
-md-card {
-  overflow: hidden;
-}
-
-
 #main {
   background: #f3f5f7;
 }
@@ -168,6 +162,10 @@ md-card {
 .chartcontainer {
   width: 100% !important;
   height: 300px;
+}
+
+.chartcontainer .ng-isolate-scope {
+  height:300px;
 }
 
 /* LOGIN WINDOW */

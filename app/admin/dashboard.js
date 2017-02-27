@@ -1,25 +1,17 @@
 'use strict';
 
 app.controller('AdminDashCtrl', function($scope, $location, $route, dataService) {
-	$scope.admin = {
-		username:"",
-		password:""
-	}
+	$scope.selected = [];
 
-	$scope.login = function () {
-		dataService.postData("/authenticate", $scope.admin, function(data){	
-			if (data.success){
-				data.remember  = $scope.remember;
-				$location.path('/dashboard');
-			} else {
-				// $mdDialog.hide(false);
-			}
-		}, function(error){
-			$scope.status = "Please check your login details";
-		});
-	}
+	dataService.getData("/admin/stats", function(data) {
+		$scope.pool_stats = data;
+	});
 
-	var isLoggedIn = function () {
-		if(dataService.isLoggedIn == false) ;
-	}
+	dataService.getData("/admin/wallet", function(data) {
+		$scope.pool_wallet = data;
+	});
+
+	$scope.promise = dataService.getData("/admin/wallet/history", function(data) {
+		$scope.pool_wallet_history = data;
+	});
 });

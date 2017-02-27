@@ -32,9 +32,9 @@ angular.module('utils.xhr', [])
     }
 
     this.setAuthToken = function(token) {
-      $http.defaults.headers.common['x-access-token'] = token.msg;
       sessStorage.token = token.msg;
       storage.authToken = (token.remember) ? token.msg : false; // remember me
+      this.validateSession();
     }
 
     this.getRequestHeaders = function() {
@@ -50,6 +50,7 @@ angular.module('utils.xhr', [])
       if (storage.authToken !== undefined){
         sessionLock = true;
         if (storage.authToken) {
+          $http.defaults.headers.common['x-access-token'] = storage.authToken;
           sessStorage.token = storage.authToken;
         }
       } else if (sessionLock) {

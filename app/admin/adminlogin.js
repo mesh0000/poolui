@@ -10,7 +10,8 @@ app.controller('AdminLoginCtrl', function($scope, $location, $route, dataService
 		dataService.postData("/authenticate", $scope.admin, function(data){	
 			if (data.success){
 				data.remember  = $scope.remember;
-				$location.path('/dashboard');
+				dataService.setAuthToken(data);
+				$location.path('#/dashboard');
 			} else {
 				// $mdDialog.hide(false);
 			}
@@ -22,4 +23,8 @@ app.controller('AdminLoginCtrl', function($scope, $location, $route, dataService
 	var isLoggedIn = function () {
 		if(dataService.isLoggedIn == false) ;
 	}
+
+	if(dataService.isLoggedIn()) {
+		$location.path('/dashboard');
+	};
 });

@@ -29,10 +29,14 @@
         <md-card flex>
           <md-toolbar class="md-table-toolbar md-warn">
             <div class="md-toolbar-tools" flex>
-              <h1 class="text-center" flex>Pool Admin CP</h1>
+              <h1 flex>Pool Admin CP</h1>
+              <div flex></div>
+              <div ng-if="isLoggedIn()">
+                <md-button class="md-accent" ng-click="logout()">Logout</md-button>
+              </div>
             </div>
           </md-toolbar>
-          <md-card-content class="no-padding">
+          <md-card-content class="no-padding" ng-if="isLoggedIn()">
             <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
               <md-nav-item md-nav-href="#dashboard" name="dashboard">
                 Dashboard
@@ -47,26 +51,35 @@
                 Config
               </md-nav-item>
             </md-nav-bar>
-            <ng-view flex>
-            </md-card-content>
-          </md-card>
-        </div>
-        <!-- Scripts -->
-        <script src="vendor/jquery/dist/jquery.js"></script>
-        <script src="vendor/lodash/dist/lodash.js"></script>
-        <script src="vendor/angular/angular.js"></script>
-        <script src="vendor/angular-route/angular-route.js"></script>
-        <script src="vendor/angular-animate/angular-animate.js"></script>
-        <script src="vendor/angular-aria/angular-aria.js"></script>
-        <script src="vendor/angular-material/angular-material.js"></script>
-        <script src="vendor/d3/d3.js"></script>
-        <script src="vendor/n3-charts/build/LineChart.js"></script>
-        <script src="vendor/angular-material-data-table/dist/md-data-table.js"></script>
-        <script src="vendor/ngstorage/ngStorage.js"></script>
-        <script src="globals.js"></script>
-        <script src="utils/dataservice.js"></script>
-        <script src="admin.js"></script>
-        <script src="admin/cp.js"></script>
-        <script src="admin/adminlogin.js"></script>
-      </body>
-      </html>
+          </md-card-content>
+          <md-card-content>
+            <ng-view flex></ng-view>
+          </md-card-content>
+        </md-card>
+      </div>
+      <!-- Scripts -->
+      <script src="vendor/jquery/dist/jquery.js"></script>
+      <script src="vendor/lodash/dist/lodash.js"></script>
+      <script src="vendor/moment/moment.js"></script>
+      <script src="vendor/angular/angular.js"></script>
+      <script src="vendor/angular-route/angular-route.js"></script>
+      <script src="vendor/angular-animate/angular-animate.js"></script>
+      <script src="vendor/angular-aria/angular-aria.js"></script>
+      <script src="vendor/angular-material/angular-material.js"></script>
+      <script src="vendor/angular-moment/angular-moment.js"></script>
+      <script src="vendor/d3/d3.js"></script>
+      <script src="vendor/n3-charts/build/LineChart.js"></script>
+      <script src="vendor/angular-material-data-table/dist/md-data-table.js"></script>
+      <script src="vendor/ngstorage/ngStorage.js"></script>
+      <script src="globals.js"></script>
+      <script src="utils/dataservice.js"></script>
+      <script src="utils/strings.js"></script>
+      <script src="admin.js"></script>
+      <script src="admin/cp.js"></script>
+      <script src="admin/adminlogin.js"></script>
+      <script src="admin/dashboard.js"></script>
+      <script src="admin/workers.js"></script>
+      <script src="admin/ports.js"></script>
+      <script src="admin/config.js"></script>
+    </body>
+    </html>
