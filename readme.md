@@ -13,7 +13,7 @@
 
 ### Run it
 
-Set pool params in app/config.js
+Set pool params in app/globals.js
 
 Requires NodeJS
 
@@ -33,7 +33,7 @@ $ npm install # runs everything, serve from ./build
 * Ship it deployment
 * Websockets
 * Miner graph colour picker
-* Active sidebar item
+
 
 ### Support
 * I'm usually on #monero-pools so drop me a line if you need help with something or have a feature request.

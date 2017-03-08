@@ -84,16 +84,13 @@
 
         <md-content flex id="main">
           <md-toolbar class="navbar md-whiteframe-2dp">
-            <div class="md-toolbar-tools maintoolbar" layout="row">
+            <div class="md-toolbar-tools maintoolbar text-center" ng-class="{smallfont: !menuOpen}" layout="row">
               <md-button class="md-icon-button" type="button" ng-click="toggleSidenav()">
                 <md-icon md-font-set="material-icons">menu</md-icon>
               </md-button>
-              <!-- <div layout="row" flex> -->
               <h3 flex><a href="#/dashboard">Network : <b>{{network.difficulty | difficultyToHashRate | toHashRate}}</b></a></h3>
               <h3 flex><a href="#/dashboard">Pool : <b>{{poolStats.global.hashRate | toHashRate}}</b></a></h3>
               <h3 flex><a href="#/dashboard">You : <b>{{yourTotalHashRate | toHashRate}}</b></a></h3>
-              <!-- </div> -->
-              <div flex></div>
               <div>
                 <md-button class="md-raised md-accent" aria-label="Miner Login" ng-click="minerLogin($event)" ng-if="!isLoggedIn()">
                   <md-icon class="login">fingerprint</md-icon>

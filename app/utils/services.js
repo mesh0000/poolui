@@ -125,8 +125,7 @@ angular.module('utils.services', [])
         selected: [],
         toptions: {
           rowSelection: true,
-          multiSelect: true,
-          autoSelect: true
+          multiSelect: true
         }
       };
       
