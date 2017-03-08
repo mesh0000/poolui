@@ -48,6 +48,11 @@ var app = angular.module('poolui', [
 			controller: 'NetworkCtrl',
 			activetab: 'network'
 		})
+		.when('/ports', {
+			templateUrl: 'user/ports/ports.html',
+			controller: 'PortsCtrl',
+			activetab: 'ports'
+		})
 		.when('/help/chat', {
 			templateUrl: 'user/help/chat.html',
 			controller: 'ChatCtrl',
