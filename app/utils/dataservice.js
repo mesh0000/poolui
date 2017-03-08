@@ -38,7 +38,7 @@ angular.module('utils.xhr', [])
     }
 
     this.getRequestHeaders = function() {
-      this.validateSesion();
+      this.validateSession();
       return { 'x-access-token': (sessStorage.token) ? sessStorage.token : "" };
     }
 
@@ -46,7 +46,7 @@ angular.module('utils.xhr', [])
       return sessStorage.token || storage.authToken;
     }
 
-    this.validateSesion = function () {
+    this.validateSession = function () {
       if (storage.authToken !== undefined){
         sessionLock = true;
         if (storage.authToken) {
