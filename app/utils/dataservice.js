@@ -31,6 +31,19 @@ angular.module('utils.xhr', [])
       }).$promise;
     }
 
+    this.putData = function(url, params, callbackFunc, errCallback) {
+      $http({
+        method: 'PUT',
+        url: apiURL + url,
+        data: params,
+        headers: this.getRequestHeaders()
+      }).then(function successCallback(response) {
+        callbackFunc(response.data);
+      }, function errorCallback(response) {
+        if (errCallback && response != undefined) errCallback(response); else console.log("Network Error", response);
+      }).$promise;
+    }
+
     this.setAuthToken = function(token) {
       sessStorage.token = token.msg;
       storage.authToken = (token.remember) ? token.msg : false; // remember me
@@ -38,7 +51,7 @@ angular.module('utils.xhr', [])
     }
 
     this.getRequestHeaders = function() {
-      this.validateSesion();
+      this.validateSession();
       return { 'x-access-token': (sessStorage.token) ? sessStorage.token : "" };
     }
 
@@ -46,14 +59,16 @@ angular.module('utils.xhr', [])
       return sessStorage.token || storage.authToken;
     }
 
-    this.validateSesion = function () {
+    this.validateSession = function () {
       if (storage.authToken !== undefined){
         sessionLock = true;
         if (storage.authToken) {
+          console.log("Dope");
           $http.defaults.headers.common['x-access-token'] = storage.authToken;
           sessStorage.token = storage.authToken;
         }
       } else if (sessionLock) {
+          console.log("SessionLock");
           // logout if, logout detected on another browser session
           this.logout();
           sessionLock=false;

@@ -1,0 +1,42 @@
+<ng-include src="'user/dashboard/poolstats.html'"></ng-include>
+<md-card>
+	<md-toolbar class="md-table-toolbar md-default">
+		<div class="md-toolbar-tools">
+			<span class="md-title">Ports List</span>
+		</div>
+	</md-toolbar>
+	<md-card-content>
+		<md-tabs md-dynamic-height>
+			<md-tab label="{{pooltype}}" index="$index" ng-repeat="(pooltype, ports) in portsList">
+				<md-table-container>
+					<table md-table md-row-select ng-model="selected" md-progress="promise">
+						<thead md-head md-order="portsOrder">
+							<tr md-row>
+								<th md-column md-numeric><h2 class="md-subhead">Server</h2></th>
+								<th md-column md-numeric md-order-by="port"><h2 class="md-subhead">Port</h2></th>
+								<th md-column md-numeric md-order-by="pool_type" ng-if="pooltype=='global'"><h2 class="md-subhead">Port Type</h2></th>
+								<th md-column md-numeric md-order-by="difficulty"><h2 class="md-subhead">Difficulty</h2></th>
+								<th md-column md-numeric md-order-by="miners"><h2 class="md-subhead">Miners</h2></th>
+								<th md-column md-numeric><h2 class="md-subhead">Current Block ID</h2></th>
+								<th md-column md-numeric><h2 class="md-subhead">Block Time</h2></th>
+								<th md-column md-numeric><h2 class="md-subhead">Description</h2></th>
+							</tr>
+						</thead>
+						<tbody md-body>
+							<tr md-row ng-repeat="portinfo in ports | orderBy: portsOrder">
+								<td md-cell><p class="md-body-2">{{portinfo.host.hostname}}</p></td>
+								<td md-cell><p class="md-body-2">{{portinfo.port}}</p></td>
+								<td md-cell ng-if="pooltype=='global'"><p class="md-body-2">{{portinfo.pool_type}}</p></td>
+								<td md-cell><p class="md-body-2">{{portinfo.difficulty}}</p></td>
+								<td md-cell><p class="md-body-2">{{portinfo.miners}}</p></td>
+								<td md-cell><p class="md-body-2">{{portinfo.host.blockID}}</p></td>
+								<td md-cell><p class="md-body-2">{{portinfo.host.blockIDTime * 1000 | date: 'hh:mm:ss - dd/MM/yy'}}</p></td>
+								<td md-cell><p class="md-body-2">{{portinfo.description}}</p></td>
+							</tr>
+						</tbody>
+					</table>
+				</md-table-container>
+			</md-tab>
+		</md-tabs>
+	</md-card-content>
+</md-card>
