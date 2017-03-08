@@ -31,6 +31,19 @@ angular.module('utils.xhr', [])
       }).$promise;
     }
 
+    this.putData = function(url, params, callbackFunc, errCallback) {
+      $http({
+        method: 'PUT',
+        url: apiURL + url,
+        data: params,
+        headers: this.getRequestHeaders()
+      }).then(function successCallback(response) {
+        callbackFunc(response.data);
+      }, function errorCallback(response) {
+        if (errCallback && response != undefined) errCallback(response); else console.log("Network Error", response);
+      }).$promise;
+    }
+
     this.setAuthToken = function(token) {
       sessStorage.token = token.msg;
       storage.authToken = (token.remember) ? token.msg : false; // remember me
