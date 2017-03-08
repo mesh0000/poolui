@@ -63,12 +63,10 @@ angular.module('utils.xhr', [])
       if (storage.authToken !== undefined){
         sessionLock = true;
         if (storage.authToken) {
-          console.log("Dope");
           $http.defaults.headers.common['x-access-token'] = storage.authToken;
           sessStorage.token = storage.authToken;
         }
       } else if (sessionLock) {
-          console.log("SessionLock");
           // logout if, logout detected on another browser session
           this.logout();
           sessionLock=false;
