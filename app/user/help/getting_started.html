@@ -2,92 +2,102 @@
 	<div layout="column" flex>
 		<md-card>
 			<md-toolbar class="md-table-toolbar md-default">
-			  <div class="md-toolbar-tools">
-			    <span>Getting Started with XMRPool.net</span>
-			  </div>
+				<div class="md-toolbar-tools">
+					<span>Getting Started with XMRPool.net</span>
+				</div>
 			</md-toolbar>
 			<md-card-content>
 				<p class="panel-subtitle">If you are new to mining, this is the place for you.</p>
-				<p class="panel-subtitle">Confusing at first but its as easy as 1, 2, 3</p>
+				<p class="panel-subtitle">take a deep breath, its only confusing at first but a joy once you figure it out.</p>
 			</md-card-content>
 		</md-card>
 		<md-card>
 			<md-toolbar class="md-table-toolbar md-default">
-			  <div class="md-toolbar-tools">
-			    <span>1. Create a Wallet</span>
-			  </div>
+				<div class="md-toolbar-tools">
+					<span>1. Create a Wallet</span>
+				</div>
 			</md-toolbar>
 			<md-card-content>
-				<p class="panel-subtitle">Both online wallets and hardware wallets have their pros and cons</p>
-				<p class="panel-subtitle">Software Wallet / MyMonero</p>
+				<p class="panel-subtitle">Both online wallets and hardware wallets have their pros and cons.</p>
+				<p class="panel-subtitle">MyMonero : MyMonero is an online wallet maintained by the core monero team, so while safe is still suceptable to hacks.</p>
+				<p class="panel-subtitle">Monero GUI Wallet : The safest way to safely store and secure your XMR, although it would be your responsibility to kee your XMR Safe.</p>
 			</md-card-content>
 		</md-card>
 		<md-card>
 			<md-toolbar class="md-table-toolbar md-default">
-			  <div class="md-toolbar-tools">
-			    <span>2. Download mining software</span>
-			  </div>
+				<div class="md-toolbar-tools">
+					<span>2. Download mining software</span>
+				</div>
 			</md-toolbar>
 			<md-card-content>
-				<p class="panel-subtitle">Curious what the port types are?  Most miners are best served by PPLNS, which
+				<p class="panel-subtitle">AMD Miner</p>
+				<p class="panel-subtitle">Nvidia Miner</p>
+				<p class="panel-subtitle">CPU Miner (AESNI CPU's)</p>
+				<p class="panel-subtitle">CPU Miner (Older CPU's})</p>
+			</md-card-content>
+		</md-card>
+		<md-card>
+			<md-toolbar class="md-table-toolbar md-default">
+				<div class="md-toolbar-tools">
+					<span>3. Pick a server and port</span>
+				</div>
+			</md-toolbar>
+			<md-card-content>
+				<p class="panel-subtitle">There are 2 important things to take a note of here the <b>URL</b> and the <b>port</b> that you are going to connect to.</p>
+				<p>In the ports list you'll notice theres Global, PPLNS, Solo (<a href="#/help/faq">What?</a>)</p>
+				<p>Global is simply a collection of both PPLNS & Solo ports, powerd by GEO DNS and usually the safest choice as it automagically find the closest server to you. This is also convenient as it could be used to redirect traffic to another node in case of an outage (AWS East Outage. Case & Point)</p>
+				<p>And if you prefer to shave off a few of those ms and connect directly, you have the option to select your preferred endpoint too.</p>
+				<div flex layout="row">
+					<div flex></div>
+					<md-button>View Ports list</md-button>
+					<div flex></div>
+				</div>
+				<!-- <p class="panel-subtitle">Curious what the port types are?  Most miners are best served by PPLNS, which
 					helps to combat pool hopping and ensures a good payout for miners.  PPS is the most stable option of
 					the lot, ensuring that you get paid out for every share, but with a higher fee for the risk the pool
-					takes.  Solo ports are for those who like to gamble and want to try and find their own block!</p>
-			</md-card-content>
-		</md-card>
-		<md-card>
-			<md-toolbar class="md-table-toolbar md-default">
-			  <div class="md-toolbar-tools">
-			    <span>3. Pick a server and port</span>
-			  </div>
-			</md-toolbar>
-			<md-card-content>
-				<p class="panel-subtitle">Curious what the port types are?  Most miners are best served by PPLNS, which
-					helps to combat pool hopping and ensures a good payout for miners.  PPS is the most stable option of
-					the lot, ensuring that you get paid out for every share, but with a higher fee for the risk the pool
-					takes.  Solo ports are for those who like to gamble and want to try and find their own block!</p>
-			</md-card-content>
-		</md-card>
-		<md-card>
-			<md-toolbar class="md-table-toolbar md-default">
-			  <div class="md-toolbar-tools">
-				<span class="md-title">Pool Stats</span>
-			  </div>
-			</md-toolbar>
-			<md-card-content>
-				<md-tabs md-dynamic-height>
-					<md-tab label="{{pooltype}}" index="$index" ng-repeat="(pooltype, ports) in portsList">
-						<md-table-container>
-						  <table md-table md-row-select ng-model="selected" md-progress="promise">
-							<thead md-head md-order="portsOrder">
-							  <tr md-row>
-								<th md-column md-numeric><h2 class="md-subhead">Server</h2></th>
-								<th md-column md-numeric md-order-by="port"><h2 class="md-subhead">Port</h2></th>
-								<th md-column md-numeric md-order-by="pool_type"><h2 class="md-subhead">Port Type</h2></th>
-								<th md-column md-numeric md-order-by="difficulty"><h2 class="md-subhead">Difficulty</h2></th>
-								<th md-column md-numeric md-order-by="miners"><h2 class="md-subhead">Miners</h2></th>
-								<th md-column md-numeric><h2 class="md-subhead">Current Block ID</h2></th>
-								<th md-column md-numeric><h2 class="md-subhead">Block Time</h2></th>
-								<th md-column md-numeric><h2 class="md-subhead">Description</h2></th>
-							  </tr>
-							</thead>
-							<tbody md-body>
-							  <tr md-row ng-repeat="portinfo in ports | orderBy: portsOrder">
-								<td md-cell><p class="md-body-2">{{portinfo.host.hostname}}</p></td>
-								<td md-cell><p class="md-body-2">{{portinfo.port}}</p></td>
-								<td md-cell><p class="md-body-2">{{portinfo.pool_type}}</p></td>
-								<td md-cell><p class="md-body-2">{{portinfo.difficulty}}</p></td>
-								<td md-cell><p class="md-body-2">{{portinfo.miners}}</p></td>
-								<td md-cell><p class="md-body-2">{{portinfo.host.blockID}}</p></td>
-								<td md-cell><p class="md-body-2">{{portinfo.host.blockIDTime * 1000 | date: 'hh:mm:ss - dd/MM/yy'}}</p></td>
-								<td md-cell><p class="md-body-2">{{portinfo.description}}</p></td>
-							  </tr>
-							</tbody>
-						  </table>
-						</md-table-container>
-					</md-tab>
-				</md-tabs>
-			</md-card-content>
-		</md-card>
+					takes.  Solo ports are for those who like to gamble and want to try and find their own block!</p> -->
+				</md-card-content>
+			</md-card>
+			<md-card>
+				<md-toolbar class="md-table-toolbar md-default">
+					<div class="md-toolbar-tools">
+						<span class="md-title">Pool Stats</span>
+					</div>
+				</md-toolbar>
+				<md-card-content>
+					<md-tabs md-dynamic-height>
+						<md-tab label="{{pooltype}}" index="$index" ng-repeat="(pooltype, ports) in portsList">
+							<md-table-container>
+								<table md-table md-row-select ng-model="selected" md-progress="promise">
+									<thead md-head md-order="portsOrder">
+										<tr md-row>
+											<th md-column md-numeric><h2 class="md-subhead">Server</h2></th>
+											<th md-column md-numeric md-order-by="port"><h2 class="md-subhead">Port</h2></th>
+											<th md-column md-numeric md-order-by="pool_type"><h2 class="md-subhead">Port Type</h2></th>
+											<th md-column md-numeric md-order-by="difficulty"><h2 class="md-subhead">Difficulty</h2></th>
+											<th md-column md-numeric md-order-by="miners"><h2 class="md-subhead">Miners</h2></th>
+											<th md-column md-numeric><h2 class="md-subhead">Current Block ID</h2></th>
+											<th md-column md-numeric><h2 class="md-subhead">Block Time</h2></th>
+											<th md-column md-numeric><h2 class="md-subhead">Description</h2></th>
+										</tr>
+									</thead>
+									<tbody md-body>
+										<tr md-row ng-repeat="portinfo in ports | orderBy: portsOrder">
+											<td md-cell><p class="md-body-2">{{portinfo.host.hostname}}</p></td>
+											<td md-cell><p class="md-body-2">{{portinfo.port}}</p></td>
+											<td md-cell><p class="md-body-2">{{portinfo.pool_type}}</p></td>
+											<td md-cell><p class="md-body-2">{{portinfo.difficulty}}</p></td>
+											<td md-cell><p class="md-body-2">{{portinfo.miners}}</p></td>
+											<td md-cell><p class="md-body-2">{{portinfo.host.blockID}}</p></td>
+											<td md-cell><p class="md-body-2">{{portinfo.host.blockIDTime * 1000 | date: 'hh:mm:ss - dd/MM/yy'}}</p></td>
+											<td md-cell><p class="md-body-2">{{portinfo.description}}</p></td>
+										</tr>
+									</tbody>
+								</table>
+							</md-table-container>
+						</md-tab>
+					</md-tabs>
+				</md-card-content>
+			</md-card>
+		</div>
 	</div>
-</div>
