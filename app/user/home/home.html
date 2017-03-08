@@ -1,69 +1,78 @@
 <ng-include src="'user/dashboard/poolstats.html'"></ng-include>
-<div layout-sm="column" layout="row" flex>
-	<div layout="column" flex>
-		<md-card>
+<div layout="column" layout-gt-md="row" flex>
+	<md-card flex>
+		<md-card-title>
+			<md-card-title-text>
+				<span class="md-headline">Welcome to XMRpool.net!</span>
+				<span class="md-subhead">A high performance pool that has nodes in several key locations around the globe and exremely low fees.</span>
+				<span class="md-subhead">So, you'll find the best ping and uptime no matter where your based, help strengthen the XMR network and make some XMR on the way!</span>
+			</md-card-title-text>
+		</md-card-title>
+		<md-card-content>
+			<h3>Start mining now <span class="md-subhead">(see <a href="#/help/getting_started">getting started</a>)</span></h3>
+			<p>Please stay tuned for more features and changes!  If you have a feature request, please poke Snipa on irc.freenode.net in <a href="#/help/chat">#monero-pools</a></p>
+			<h4>Pool Features!</h4>
+			<ul>
+				<li>PaymentID payments for Exchanges</li>
+				<li>PPLNS and Solo mining systems</li>
+				<li>Patched for the 127 transaction bug</li>
+				<li>Geographically diverse server locations with GeoDNS</li>
+				<li>Well-documented <a href="https://cryptonote-pool-api.restlet.io/">API</a> with active development efforts</li>
+				<li>Payments direct to BTC via Shapeshift.io and XMR.to depending on who's got the best rates</li>
+				<li>Supports the Monero network by offering high speed block transit from London to Singapore via the USA</li>
+				<li>Set your own payment thresholds for normal wallets + exchanges!</li>
+				<li>Per-Worker hashrate charts</li>
+				<li>Payments every 2 hours</li>
+				<li>E-mail/SMS notification of miners down</li>
+			</ul>
+			<h4>New Features!</h4>
+			<ul>
+				<li>12/31/2017 - New Username/Password Formats (Check the FAQ for details!)</li>
+				<li>12/29/2017 - Integrated Address Support (Tux Exchange users rejoice!)</li>
+			</ul>
+			<h4>Upcoming Features</h4>
+			<ul>
+				<li>Websocket based stats for rapid updates</li>
+				<li>New stratum protocol for XMR as developed by Wolf0</li>
+			</ul>
+		</md-card-content>
+	</md-card>
+	<div flex flex-gt-md="30">
+		<md-card flex>
 			<md-card-title>
-				<md-card-title-text>
-					<span class="md-headline">Welcome to XMRpool.net!</span>
-					<span class="md-subhead">A modern, hard-fork compatible monero mining pool, featuring PPS, PPLNS, and solo ports.</span>
-				</md-card-title-text>
+				<span class="md-headline">Pool Config</span>
 			</md-card-title>
-			<md-card-title-media>
-				<div class="md-media-lg card-media"></div>
-			</md-card-title-media>
-			<md-card-content>
-				<h3>Note!</h3>
-				<p>This project is still in development. Please stay tuned for more features and changes!  If you have a feature request, please poke Snipa on irc.freenode.net in #monero-pools</p>
-				<h4>Pool Features!</h4>
-					<ul>
-						<li>PaymentID payments for Exchanges</li>
-						<li>PPLNS, PPS, Solo mining systems</li>
-						<li>Patched for the 127 transaction bug</li>
-						<li>Geographically diverse server locations with GeoDNS</li>
-						<li>Well-documented <a href="https://cryptonote-pool-api.restlet.io/">API</a> with active development efforts</li>
-						<li>Payments direct to BTC via Shapeshift.io and XMR.to depending on who's got the best rates</li>
-						<li>Supports the Monero network by offering high speed block transit from London to Singapore via the USA</li>
-						<li>Payments every 2 hours</li>
-					</ul>
-					<h4>New Features!</h4>
-					<ul>
-						<li>12/31/2017 - New Username/Password Formats (Check the FAQ for details!)</li>
-						<li>12/29/2017 - Integrated Address Support (Tux Exchange users rejoice!)</li>
-					</ul>
-					<h4>Upcoming Features</h4>
-					<ul>
-						<li>E-mail/SMS notification of miners down</li>
-						<li>Per-Worker hashrate charts</li>
-						<li>Websocket based stats for rapid updates</li>
-						<li>New stratum protocol for XMR as developed by Wolf0</li>
-						<li>Set your own payment thresholds for normal wallets + exchanges!</li>
-					</ul>
-				</md-card-content>
-		</md-card>
-	</div>
-	<div layout="column" flex-gt-md="30" >
-		<md-card>
-			<md-card-title>
-				<md-card-title-text>
-					<span class="md-headline">Pool Config</span>
-				</md-card-title-text>
-			</md-card-title>
-			<md-card-title-media>
-				<div class="md-media-lg card-media"></div>
-			</md-card-title-media>
 			<md-card-content>
 				<md-list>
 					<md-list-item>
 						<p>PPS Fee</p>
-						<p class="text-right">{{config.pps_fee}}%</p>
+						<span class="text-right">
+							{{config.pps_fee}}%
+							<md-tooltip>
+								Core Devs Donation: {{config.dev_donation/100*config.pps_fee | number:3  }}% | 
+								Pool Devs Donation:{{config.pool_dev_donation/100*config.pps_fee | number:3 }}%
+							</md-tooltip>
+						</span>
 					</md-list-item>
 					<md-list-item>
 						<p>PPLNS Fee</p>
-						<p class="text-right">{{config.pplns_fee}}%</p>
+						<span class="text-right">
+							{{config.pplns_fee}}%
+							<md-tooltip>
+								Core Devs Donation: {{config.dev_donation/100*config.pplns_fee | number:3 }}% | 
+								Pool Devs Donation:{{config.pool_dev_donation/100*config.pplns_fee | number:3 }}%
+							</md-tooltip>
+						</span>
 					</md-list-item>
 					<md-list-item>
 						<p>Solo Fee</p>
-						<p class="text-right">{{config.solo_fee}}%</p>
+						<p class="text-right">
+							{{config.solo_fee}}%
+							<md-tooltip>
+								Core Devs Donation: {{config.dev_donation/100*config.solo_fee | number:3}}% | 
+								Pool Devs Donation:{{config.pool_dev_donation/100*config.solo_fee | number:3}}%
+							</md-tooltip>
+						</p>
 					</md-list-item>
 					<md-list-item>
 						<p>BTC Fee</p>
@@ -82,14 +91,6 @@
 						<p class="text-right">{{config.min_exchange_payout | toXMR}} XMR</p>
 					</md-list-item>
 					<md-list-item>
-						<p>Core Devs Donation</p>
-						<p class="text-right">{{config.dev_donation}}%</p>
-					</md-list-item>
-					<md-list-item>
-						<p>Pool Devs Donation</p>
-						<p class="text-right">{{config.pool_dev_donation}}%</p>
-					</md-list-item>
-					<md-list-item>
 						<p>Block Maturity Depth</p>
 						<p class="text-right">{{config.maturity_depth}}</p>
 					</md-list-item>
@@ -97,7 +98,7 @@
 						<p>Minimum Denomination</p>
 						<p class="text-right">{{config.min_denom | toXMR}}</p>
 					</md-list-item>
-				</md-card-content>
-		</md-card>
+				</md-list>
+			</md-card-content>
+		</md-card></div>
 	</div>
-</div>

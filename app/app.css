@@ -5,6 +5,7 @@ html, body {
   font-size:14px;
   margin: 0px;
   padding: 0px;
+  min-width: 420px;
 }
 
 a {
@@ -40,6 +41,18 @@ a:active  {
 
 .md-menu-toolbar {
   background: #00796B;
+}
+
+md-tooltip .md-content {
+    height: auto !important;
+}
+
+.navbar .smallfont h3{
+  font-size: 0.7em;
+}
+
+.navbar .smallfont h3 b{
+  display: inline-block;
 }
 
 .sidenav {

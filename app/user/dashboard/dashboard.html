@@ -191,7 +191,7 @@
 							</tr>
 						</thead>
 						<tbody md-body>
-							<tr md-row ng-repeat="(index, id) in addrStats[addr].ids" md-select="id" data-md-on-select="updateCharts" md-on-deselect="updateCharts" x-md-auto-select="minerStats[addr].toptions.autoSelect">
+							<tr md-row ng-repeat="(index, id) in addrStats[addr].ids" md-select="id" data-md-on-select="updateCharts" md-on-deselect="updateCharts">
 								<td md-cell><p class="md-body-2">{{id}}</p></td>
 								<td md-cell><p class="md-body-2">{{minerStats[addr].dataset[id][0].hs | toHashRate}}</p></td>
 								<td md-cell><p class="md-body-2">{{addrStats[addr].workerStats[id].totalHash | number}}</p></td>
