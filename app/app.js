@@ -15,9 +15,8 @@ var app = angular.module('poolui', [
 	'n3-line-chart',
 	'angular-page-visibility'
 ]).config(['$locationProvider', '$routeProvider', '$mdThemingProvider', function($locationProvider, $routeProvider, $mdThemingProvider) {
-	$locationProvider.hashPrefix('');
-	// $mdIconProvider.defaultIconSet("https://rawgit.com/angular/material-start/es5-tutorial/app/assets/svg/avatars.svg", 128)
-	
+	$locationProvider.hashPrefix('')
+;	
 	$mdThemingProvider.theme('default')
 	.primaryPalette('grey')
 	.accentPalette('light-blue');

@@ -1,0 +1,52 @@
+<md-dialog add-item-dialog >
+  <md-dialog-content class="md-dialog-content">
+    
+    <h2 class="md-title">Edit Port</h2>
+    
+    <p ng-if="item.form.$submitted && item.form.$invalid" class="md-warn" layout="row" layout-align="start center">
+      <i class="material-icons">error_outline</i>
+      <span>&nbsp; All fields are required.</span>
+    </p>
+    <form name="item.form" ng-submit="ctrl.edit()">
+      <div layout="column" class="input-column">
+        <md-input-container flex>
+          <label>Port</label>
+          <input name="portNum" ng-model="port.port" required>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Description</label>
+          <input name="desc" ng-model="port.desc" required>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Difficulty</label>
+          <input name="diff" ng-model="port.diff" required>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Type</label>
+          <md-select ng-model="port.portType">
+            <md-option value="pplns"><em>PPLNS</em></md-option>
+            <md-option value="pps"><em>PPS</em></md-option>
+            <md-option value="solo"><em>SOLO</em></md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container flex>
+          <md-checkbox name="value" ng-model="port.hidden" ng-true-value="1" ng-false-value="0">
+            Hidden
+          </md-checkbox>
+        </md-input-container>
+        <md-input-container flex>
+          <md-checkbox name="value" ng-model="port.ssl" ng-true-value="1" ng-false-value="0">
+            SSL
+          </md-checkbox>
+        </md-input-container>
+      </div>
+    </form>
+    
+  </md-dialog-content>
+  
+  <md-dialog-actions>
+    <md-button class="md-accent" ng-click="ctrl.edit()" ng-disabled="item.form.$invalid">Save</md-button>
+    <md-button class="md-warn" ng-click="ctrl.cancel()">Cancel</md-button>
+  </md-dialog-actions>
+  
+</md-dialog>
