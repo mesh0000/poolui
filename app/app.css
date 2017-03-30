@@ -194,3 +194,28 @@ md-dialog .login{
 .no-padding {
   padding: 0px;
 }
+
+.power {
+  position: absolute;
+  bottom: 0px;
+  margin-bottom: 10px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+}
+
+.power a {
+  color: #f2ff2f;
+}
+
+.power a:hover {
+  color: #f2f;
+}
+
+.power a.alt {
+  color: #f2f;
+}
+
+.power a.alt:hover {
+  color: #f2ff2f;
+}
