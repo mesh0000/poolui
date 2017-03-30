@@ -8,3 +8,4 @@ tmp
 .idea
 app/vendor/
 build/
+app/globals.js

@@ -14,7 +14,7 @@
 ### Run it
 
 Home page html can be set in welcome.html
-Set pool params in app/globals.js
+Set pool params in app/globals.js.default and copy to app/globals.js
 
 Requires NodeJS
 
