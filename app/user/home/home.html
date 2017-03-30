@@ -1,41 +1,6 @@
 <ng-include src="'user/dashboard/poolstats.html'"></ng-include>
 <div layout="column" layout-gt-md="row" flex>
-	<md-card flex>
-		<md-card-title>
-			<md-card-title-text>
-				<span class="md-headline">Welcome to XMRpool.net!</span>
-				<span class="md-subhead">A high performance pool that has nodes in several key locations around the globe and exremely low fees.</span>
-				<span class="md-subhead">We promise to bring you the best ping, uptime and returns no matter where your based. Join now & help strengthen the XMR network while creating some XMR on the way!</span>
-			</md-card-title-text>
-		</md-card-title>
-		<md-card-content>
-			<h3>Start mining now <span class="md-subhead">(visit <a href="#/help/getting_started">getting started</a>)</span> or track your rigs at the <a href="#/dashboard">Dashboard</a></h3>
-			<p>Please stay tuned for more features and changes!  If you have a feature request, please poke Snipa on irc.freenode.net in <a href="#/help/chat">#monero-pools</a></p>
-			<h4>Pool Features!</h4>
-			<ul>
-				<li>PaymentID payments for Exchanges</li>
-				<li>PPLNS and Solo mining systems</li>
-				<li>Patched for the 127 transaction bug</li>
-				<li>Geographically diverse server locations with GeoDNS</li>
-				<li>Well-documented <a href="https://cryptonote-pool-api.restlet.io/">API</a> with active development efforts</li>
-				<li>Payments direct to BTC via Shapeshift.io and XMR.to depending on who's got the best rates</li>
-				<li>Supports the Monero network by offering high speed block transit from London to Singapore via the USA</li>
-				<li>Set your own payment thresholds for normal wallets + exchanges!</li>
-				<li>Per-Worker hashrate charts</li>
-				<li>Payments every 2 hours</li>
-				<li>E-mail/SMS notification of miners down</li>
-			</ul>
-			<h4>New Features!</h4>
-			<ul>
-				<li>12/31/2017 - New Username/Password Formats (Check the FAQ for details!)</li>
-				<li>12/29/2017 - Integrated Address Support (Tux Exchange users rejoice!)</li>
-			</ul>
-			<h4>Upcoming Features</h4>
-			<ul>
-				<li>Websocket based stats for rapid updates</li>
-				<li>New stratum protocol for XMR as developed by Wolf0</li>
-			</ul>
-		</md-card-content>
+	<md-card flex ng-include="'welcome.html'">
 	</md-card>
 	<div flex flex-gt-md="30">
 		<md-card flex>

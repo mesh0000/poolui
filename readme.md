@@ -1,9 +1,9 @@
-# XMRPool.net frontend
+# Monero Pool frontend
 
-### AngularJS based UI for Furrypool?
+### AngularJS based UI for [nodejs-pool](https://github.com/Snipa22/nodejs-pool)
 
 ### Features
-- See your hashrate on all page.s
+- See your hashrate on all pages
 - Track multiple payment addresses.
 - Hashrate siren when hashrate falls below a certain limit.
 - Per miner charts & Payment History.
@@ -13,6 +13,7 @@
 
 ### Run it
 
+Home page html can be set in welcome.html
 Set pool params in app/globals.js
 
 Requires NodeJS
