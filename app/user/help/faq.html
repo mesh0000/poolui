@@ -6,7 +6,7 @@
 		<md-card-content>
 			<div ng-repeat="(topic,subject) in faq">
 				<p class="md-title">{{topic}}</p>
-				<div ng-repeat="question in subject">
+				<div ng-repeat="(index, question) in subject" id="{{topic}}_{{index}}">
 					<p class="md-subhead"><b>{{question.title}}</b></p>
 					<p class="md-subhead" ng-bind-html="question.answer"></p>
 					<div ng-if="question.media">
@@ -21,12 +21,13 @@
 			</div>
 		</md-card-content>
 	</md-card>
-	<md-card flex-gt-md="20" flex md-auto-height>
-		<md-card-title>
-			<span class="md-headline">Contents</span>
-		</md-card-title>
-		<md-card-content>
-
+	<md-card flex-gt-md="20" flex>
+		<md-card-content class="floating">
+			<div class="md-headline">Contents</div>
+			<div ng-repeat="(topic,subject) in faq">
+				<p class="md-title">{{topic}}</p>
+				<p class="md-subhead" ng-repeat="(index, q) in subject"><a class="theironfist" ng-click="goto(topic, index)">{{q.title}}</p>
+			</div>
 		</md-card-content>
 	</md-card>
 </div>

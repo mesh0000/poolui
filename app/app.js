@@ -14,14 +14,14 @@ var app = angular.module('poolui', [
 	'utils.xhr',
 	'n3-line-chart',
 	'angular-page-visibility'
-]).config(['$locationProvider', '$routeProvider', '$mdThemingProvider', function($locationProvider, $routeProvider, $mdThemingProvider) {
-	$locationProvider.hashPrefix('')
-;	
-	$mdThemingProvider.theme('default')
-	.primaryPalette('grey')
-	.accentPalette('light-blue');
+	]).config(['$locationProvider', '$routeProvider', '$mdThemingProvider', function($locationProvider, $routeProvider, $mdThemingProvider) {
+		$locationProvider.hashPrefix('')
+		;	
+		$mdThemingProvider.theme('default')
+		.primaryPalette('grey')
+		.accentPalette('light-blue');
 
-	$routeProvider
+		$routeProvider
 		.when('/home', {
 			templateUrl: 'user/home/home.html',
 			controller: 'HomeCtrl',
@@ -69,16 +69,15 @@ var app = angular.module('poolui', [
 		});
 
 
-		$routeProvider.otherwise({redirectTo: '/home'});
 
 	}]);
 
-app.controller('AppCtrl', function($scope, $window, $route, $interval, $mdDialog, dataService, timerService, addressService, $mdSidenav, $mdMedia, $localStorage, ngAudio, GLOBALS){
-	$scope.GLOBALS = GLOBALS;
-	var appCache = window.applicationCache;
-	$scope.$storage = $localStorage;
+	app.controller('AppCtrl', function($scope, $rootScope, $location, $route, $routeParams, $anchorScroll, $window, $interval, $mdDialog, dataService, timerService, addressService, $mdSidenav, $mdMedia, $localStorage, ngAudio, GLOBALS){
+		$scope.GLOBALS = GLOBALS;
+		var appCache = window.applicationCache;
+		$scope.$storage = $localStorage;
 
-	$scope.poolList = ["pplns", "pps", "solo"];
+		$scope.poolList = ["pplns", "pps", "solo"];
 	$scope.poolStats = {}; // All Pool stats
 	$scope.addrStats = {}; // All tracked addresses
 	$scope.lastBlock = {};
@@ -129,11 +128,11 @@ app.controller('AppCtrl', function($scope, $window, $route, $interval, $mdDialog
 	// ------- Miner Login and auth
 	$scope.minerLogin = function (ev) {
 		$mdDialog.show({
-		  controller: "LoginCtrl",
-		  templateUrl: 'user/home/login.html',
-		  parent: angular.element(document.body),
-		  targetEvent: ev,
-		  clickOutsideToClose:true,
+			controller: "LoginCtrl",
+			templateUrl: 'user/home/login.html',
+			parent: angular.element(document.body),
+			targetEvent: ev,
+			clickOutsideToClose:true,
 		  fullscreen: !$scope.menuOpen // Only for -xs, -sm breakpoints.
 		})
 		.then(function(answer) {
@@ -145,12 +144,12 @@ app.controller('AppCtrl', function($scope, $window, $route, $interval, $mdDialog
 
 	$scope.minerConsole = function (ev) {
 		$mdDialog.show({
-		  locals: $scope.config,
-		  controller: "ConsoleCtrl",
-		  templateUrl: 'user/home/console.html',
-		  parent: angular.element(document.body),
-		  targetEvent: ev,
-		  clickOutsideToClose:true,
+			locals: $scope.config,
+			controller: "ConsoleCtrl",
+			templateUrl: 'user/home/console.html',
+			parent: angular.element(document.body),
+			targetEvent: ev,
+			clickOutsideToClose:true,
 		  fullscreen: !$scope.menuOpen // Only for -xs, -sm breakpoints.
 		})
 		.then(function(answer){
@@ -200,6 +199,12 @@ app.controller('AppCtrl', function($scope, $window, $route, $interval, $mdDialog
 		});
 	}
 
+	// For FAQ
+	$rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {
+		$location.hash($routeParams.scrollTo);
+		$anchorScroll();  
+	});
+
 	// Start doing things
 	loadOnce();
 	loadData();
@@ -212,9 +217,9 @@ app.controller('AppCtrl', function($scope, $window, $route, $interval, $mdDialog
 
 	// Start address tracking servuce after starting timer, only one callback supported at a time
 	addressService.start(function(addrStats) {
-			$scope.addrStats = addrStats;
-			updateHashRate(addrStats);
-			playSiren();
-		}
+		$scope.addrStats = addrStats;
+		updateHashRate(addrStats);
+		playSiren();
+	}
 	);
 });

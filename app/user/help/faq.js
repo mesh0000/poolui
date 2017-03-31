@@ -1,8 +1,20 @@
 'use strict';
 
-app.controller('FAQCtrl', function($scope, $sce, dataService) {
+app.controller('FAQCtrl', function($scope, $location, $anchorScroll, $sce, dataService) {
 	// BooHoo:p
-    $scope.selected = [];
+    $scope.goto = function(topic, index) {
+      var newHash = topic + '_' + index;
+      if ($location.hash() !== newHash) {
+        // set the $location.hash to `newHash` and
+        // $anchorScroll will automatically scroll to it
+        $location.hash(newHash);
+      } else {
+        // call $anchorScroll() explicitly,
+        // since $location.hash hasn't changed
+        $anchorScroll();
+      }
+    };
+
     $scope.faq = {
         "General" : [
         {
@@ -31,7 +43,11 @@ app.controller('FAQCtrl', function($scope, $sce, dataService) {
             answer: $sce.trustAsHtml("If you are mining on a small scale, it becomes extremely hard and unpredictable to earn a stable profit on your mining income. Pool mining gives you the opportunity to join a group of miners and share earnings for a consistent payout.")
         },
         {
-            title: "What is Solo mining ?",
+            title: "What is PPLNS ?",
+            answer: $sce.trustAsHtml("")
+        },
+        {
+            title: "What is SOLO mining ?",
             answer: $sce.trustAsHtml("Solo mining is the opposite of pool mining. You essentially submit your shares directly to the blockchain, which is the most profitable method if you run your own farm.")
         },
         {
@@ -61,25 +77,21 @@ app.controller('FAQCtrl', function($scope, $sce, dataService) {
             answer: $sce.trustAsHtml("Your IP gets banned if you submit invalid shares to the pool server. This usually happens if your card is overclocked or unstable.<br/><br/> The ban is temporary and usually cleared in xx mins. You could also contact your pool admin and request an unban.")
         },
         {
-            title: "How Fixed / Variable Difficulty works.",
+            title: "How Fixed / Variable Difficulty works",
             answer: $sce.trustAsHtml("When you select a pool port, the starting difficulty only represents your initial setting. As soon as your miner starts submitting shares the server will try to adjust your difficulty to reflect your hash rate.<br/><br/>This assures you not creating too many or too few requests to your server optimizing bandwidth consumption and server loads.<br/><br/>Optionally you could set a fixed difficulty via your miner command line options, though if you set a difficulty too high, you could exceed the 60 seconds job limit and loose earnings.")
         },
         {
-            title: "Can i mine other alt coins ?",
+            title: "Can i mine other coins ?",
             answer: $sce.trustAsHtml("Not yet, but we may add more soon. Follow <a href='https://github.com/Snipa22/nodejs-pool/issues/27' target='_new'>https://github.com/Snipa22/nodejs-pool/issues/27</a>.")
         }
         ],
         "Mining":[
         {
-            title: "Mining Hardware ?",
+            title: "Hardware ?",
             answer: $sce.trustAsHtml("Monero is an AISC resistant cryptocurrency, that means it should be cost prohibitive to mine monero with an FGPA/AISC allowing desktop grade hardware to keep its share in the network hashrate and earnings.<br/><br/><a href='http://monerobechmarks.byethost5.com/' target='_new'>http://monerobechmarks.byethost5.com/</a> is a list of community collected hashrate results ordered by hardware, but be careful as some entries may not be accurate.")
         },
         {
-            title: "",
-            answer: $sce.trustAsHtml("")
-        },
-        {
-            title: "Mining Software ?",
+            title: "Software ?",
             answer: $sce.trustAsHtml("Read -- <a href='#/help/getting_started'>Getting Started</a>.")
         }
         ]

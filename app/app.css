@@ -219,3 +219,11 @@ md-dialog .login{
 .power a.alt:hover {
   color: #f2ff2f;
 }
+
+.floating {
+  position: fixed;
+}
+
+.theironfist {
+  cursor: pointer;
+}
