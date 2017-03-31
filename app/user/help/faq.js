@@ -36,7 +36,7 @@ app.controller('FAQCtrl', function($scope, $sce, dataService) {
         },
         {
             title: "Is mining profitable ?",
-            answer: $sce.trustAsHtml("Mining can be profitable depending on the conditions involved. Your primary cost is your electricity and the cost of your hardware.<br/>It is not practical to calculate the exact amount you would earn as it depends on the total hash rate of the network,difficulty and your luck.<br/><br/>An accurate estimate of earnings of the pool can be calculated by observing average daily number of blocks found ... ?<br/><br/>* An earnings estimator may be implemented in the future.")
+            answer: $sce.trustAsHtml("Mining can be profitable depending on the conditions involved. Your primary cost is your electricity and the cost of your hardware.<br/>It is not practical to calculate the exact amount you would earn as it depends on the total hash rate of the network, difficulty and your luck.<br/><br/>An accurate estimate of earnings of the pool can be calculated by observing average daily number of blocks found ... ?<br/><br/>* An earnings estimator may be implemented in the future.")
         },
         ],
         "Pool Help": [
@@ -50,11 +50,11 @@ app.controller('FAQCtrl', function($scope, $sce, dataService) {
         },
         {
             title: "Getting paid in BTC",
-            answer: $sce.trustAsHtml("We support payouts in BTC directly. This is done by using the shapeshift API to convert your XMR and send them to a BTC wallet.<br/>")
+            answer: $sce.trustAsHtml("nodejs-pool supports direct payments to btc. This is done by using the shapeshift API to convert your XMR and send them to a BTC wallet.<br/><br/>To configure BTC payments please have a look at <a href='#/help/getting_started'>Getting Started</a> command line samples.")
         },
         {
             title: "Payments to exchanges/markets ?",
-            answer: $sce.trustAsHtml("Markets usually use a payment id to")
+            answer: $sce.trustAsHtml("Direct payment to exchange / pool wallets are supported. The only primary difference when using this method is that the minimum payout threshold is higher and usually a defaults to 3XMR.")
         },
         {
             title: "IP Banning ?",
@@ -80,7 +80,7 @@ app.controller('FAQCtrl', function($scope, $sce, dataService) {
         },
         {
             title: "Mining Software ?",
-            answer: $sce.trustAsHtml("Read -- <a href='#/help/getting_started'>Getting Started</a>")
+            answer: $sce.trustAsHtml("Read -- <a href='#/help/getting_started'>Getting Started</a>.")
         }
         ]
     }

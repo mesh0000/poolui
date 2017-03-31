@@ -7,12 +7,12 @@
 			<div ng-repeat="(topic,subject) in faq">
 				<p class="md-title">{{topic}}</p>
 				<div ng-repeat="question in subject">
-					<p class="md-subhead">{{question.title}}</p>
-					<p class="md-body" ng-bind-html="question.answer"></p>
+					<p class="md-subhead"><b>{{question.title}}</b></p>
+					<p class="md-subhead" ng-bind-html="question.answer"></p>
 					<div ng-if="question.media">
 						<p class="md-subhead">{{question.media.title}}</p>
 						<div class="text-center">
-							<iframe width="80%" height="400px" ng-src="{{question.media.url}}" frameborder="0" allowfullscreen></iframe>
+							<iframe width="75%" height="350px" ng-src="{{question.media.url}}" frameborder="0" allowfullscreen></iframe>
 							<br/>
 						</div>
 					</div>
