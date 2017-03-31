@@ -4,55 +4,24 @@
 			<span class="md-headline">Pool FAQ</span>
 		</md-card-title>
 		<md-card-content>
-			<p>General</p>
-			<p>What is Monero ?</p>
-			<p>Monero is an alternative crypto currency (i.e) a descendant of the bitcoin ideology. But fundamentally very different from Bitcoin. Monero promised untraceability, privacy and security. It accomplishes this by obfuscating and encrypting transactions beyond recognition only allowing you to view or selectively prove your transactions.</p>
-			<p>Simple : https://www.youtube.com/watch?v=TZi9xx6aiuY<br /> Advanced : https://www.youtube.com/watch?v=6DQb0cMvU7I</p>
-			<p>What is Mining ?</p>
-			<p>The blockchain achieves decentralisation by a process called mining. When new transactions are created miners carry out the calculations necessary to validate real transactions. This process is random in a way and when transactions are created the first miner to validate the transaction is awarded a block reward. This is turn also allows creation and flow of funds which in turns feed the economy of monero.</p>
-			<p>How do I start mining ?</p>
-			<p>You can start mining today if you have a computer that sits idle. Monero can be mined via both processors and graphics cards. Read Getting Started for more details</p>
-			<p><br /> What is Pool mining ?</p>
-			<p>If you are mining on a small scale, it becomes extremely hard and unpredictable to earn a stable profit on your mining income. Pool mining gives you the opportunity to join a group of miners and share earnings for a consistent payout.</p>
-			<p>What is Solo mining ?</p>
-			<p>Solo mining is the opposite of pool mining. You essentially submit your shares directly to the blockchain, which is the most profitable method if you have run your own farm.</p>
-			<p>Is mining profitable ?</p>
-			<p>Mining can be profitable depending on the conditions involved. Your primary cost is your electricity and the cost of your hardware.</p>
-			<p>It is not practical to calculate the exact amount you would earn as it depends on the total hashing power of the network,difficulty and luck.</p>
-			<p>An accurate estimate of earnings of the pool can be calculated by observing average daily number of blocks found &hellip; ?</p>
-			<p>* An earnings estimator may be implemented in the future.</p>
-			<p>Pool Support</p>
-			<p>How payouts work ?</p>
-			<p>--Need clarification</p>
-			<p>Payout thresholds ?</p>
-			<p>Payout threshold is the minimum amount before the pool pays out your due amount. Since transactions in Monero have a significant miner fees, it&rsquo;s cost effective to set a higher payout threshold for your pool.</p>
-			<p>You could also adjust your payout threshold to regular your payout schedule etc daily/weekly etc depending on your hashing capacity.</p>
-			<p>Getting paid in BTC</p>
-			<p>We support payouts in BTC directly. This is done by using the shapeshift API to convert your XMR and send them to a BTC wallet.</p>
-			<p>*Shapeshift fees apply.</p>
-			<p>Payments to exchanges/markets ?</p>
-			<p>Markets usually use a payment id to</p>
-			<p>IP Banning ?</p>
-			<p>Your IP gets banned if you submit invalid shares to the pool server. This usually happens if your card is overclocked or unstable.</p>
-			<p>The ban is temporary and usually cleared in xx mins. You could also contact your pool admin and request an unban.</p>
-			<p>How Fixed / Variable Difficulty works.</p>
-			<p>When you select a pool port, the starting difficulty only represents your initial difficulty. As soon as your miner starts submitting shares the server will try to adjust your difficulty.</p>
-			<p>This assures you are creating too many or too few requests to your server optimizing bandwidth consumption and server loads.</p>
-			<p>Optionally you could set a fixed difficulty via your miner command line options, though if you set a difficulty too high, you could exceed the 60 seconds job limit and loose earnings.</p>
-			<p>Can i mine other alt coins ?</p>
-			<p>We may implement the ability to mine more coins in the future.</p>
-			<p><br /> Mining</p>
-			<p><br /> Getting Started ? &gt; Link</p>
-			<p>Mining Hardware ?</p>
-			<p>Monero is an AISC resistant cryptocurrency, that means it should cost prohibitive to mine monero with an FGPA/AISC allowing desktop grade hardware to keep its share in the network hashrate and earnings.</p>
-			<p>Here is a good list of community results on certain hardware, some of them may not be accurate. So make sure you&rsquo;ve done your research before you invest.</p>
-			<p>http://monerobechmarks.byethost5.com/</p>
-			<p><br /> Mining Software ?</p>
-			<p>See - Getting Started</p> 
-
+			<div ng-repeat="(topic,subject) in faq">
+				<p class="md-title">{{topic}}</p>
+				<div ng-repeat="question in subject">
+					<p class="md-subhead">{{question.title}}</p>
+					<p class="md-body" ng-bind-html="question.answer"></p>
+					<div ng-if="question.media">
+						<p class="md-subhead">{{question.media.title}}</p>
+						<div class="text-center">
+							<iframe width="80%" height="400px" ng-src="{{question.media.url}}" frameborder="0" allowfullscreen></iframe>
+							<br/>
+						</div>
+					</div>
+					<md-divider></md-divider>
+				</div>
+			</div>
 		</md-card-content>
 	</md-card>
-	<md-card flex-gt-md="20" flex>
+	<md-card flex-gt-md="20" flex md-auto-height>
 		<md-card-title>
 			<span class="md-headline">Contents</span>
 		</md-card-title>
