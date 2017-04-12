@@ -35,7 +35,6 @@ $ npm install # runs everything, serve from ./build
 * Websockets
 * Miner graph colour picker
 
-
 ### Support
 * I'm usually on #monero-pools so drop me a line if you need help with something or have a feature request.
 
