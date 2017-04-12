@@ -196,11 +196,7 @@ md-dialog .login{
 }
 
 .power {
-  position: absolute;
-  bottom: 0px;
-  margin-bottom: 10px;
   width: 100%;
-  text-align: center;
   color: #fff;
 }
 
@@ -233,7 +229,6 @@ md-dialog .login{
   height: 100px; 
   position: relative;
   cursor: pointer;
-  margin-bottom: 55px !important;
 }
 
 .sponsor-text{
@@ -284,14 +279,8 @@ md-dialog .login{
 .scaling{
   -webkit-transform-origin: 100% 50%;
   -webkit-animation: slideAnimation 1s both ease-in-out;
-  /*-webkit-animation-name: scalex;
-  -webkit-animation-duration:3s;
-  -webkit-animation-iteration-count:1;
-  -webkit-animation-timing-function:ease-in;*/
-    /*-moz-animation-name: scale;
-    -moz-animation-duration:3s;
-    -moz-animation-iteration-count:infinite;
-    -moz-animation-timing-function:ease-in;*/
+  -moz-transform-origin: 100% 50%;
+  -moz-animation: slideAnimation 1s both ease-in-out;
   }
 
   @-webkit-keyframes slideAnimation {
@@ -302,7 +291,8 @@ md-dialog .login{
       -webkit-transform: translateX(85px) translateY(-20px) scale(0.5);
     }
   }
-  @-webkit-keyframes closeAnimation {
+
+  @-moz-keyframes slideAnimation {
     0% {
       webkit-transform: translateX(0px) translateX(0px) scale(1.0);
     }

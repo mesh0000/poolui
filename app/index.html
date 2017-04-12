@@ -88,16 +88,18 @@
           </md-list>
           <div flex layout="row" layout-align="center end">
             <a href="http://www.cloudsigma.com" target="_new" class="sponsor-area text-center" flex layout="row" layout-align="center center">
-              <span class="sponsor-text" ng-class="{closed: !sponsor_open, appear: sponsor_open}">Sponsored by</span>
+              <span class="sponsor-text" ng-class="{closed: !sponsor_open, appear: sponsor_open}">cloud hosting by</span>
               <img id="floating-sponsor" src="assets/sponsor-logo.png" class="sponsor-logo floating" ng-class="{floating: !sponsor_open, scaling: sponsor_open}" ng-mouseover="sponsor_open = true" />
               <img id="floating-sponsor" src="assets/cloudsigma.png" class="sponsor-brand closed" ng-class="{closed: !sponsor_open, appear: sponsor_open}" />
-              <span class="sponsor-tagline" ng-class="{closed: !sponsor_open, appear: sponsor_open}">SLA with 24/7 support</span>
+              <span class="sponsor-tagline" ng-class="{closed: !sponsor_open, appear: sponsor_open}">Free 24/7 support with SLA</span>
             </a>
           </div>
-          <div class="power md-subhead" flex>
+          <div class="power text-center md-subhead"  layout="row" layout-align="center end"> 
+            <div flex>
             Powered by <a href="https://github.com/Snipa22/nodejs-pool" target="_new">nodejs-pool</a> & <a class="alt" href="https://github.com/mesh0000/poolui" target="_new">poolui</a>
             <br/>
             MIT Licence 
+            </div>
           </div>
         </md-sidenav>
 
