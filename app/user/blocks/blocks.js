@@ -2,6 +2,23 @@
 
 app.controller('BlocksCtrl', function($scope, $route, dataService, timerService) {
 	$scope.blocks = {};
+	$scope.chart = {
+		dataset : {},
+		options : {
+			margin: {top: 5},
+			series: [
+			{
+				axis: "y",
+				dataset: "global",
+				key: "height",
+				label: "A line series",
+				type: ["line"],
+				id: "blocksperday"
+			}
+			],
+			axes: {x: {key: "ts", type: "date"}}
+		}
+	};
 	$scope.selected = [];
 
 	$scope.options = {
@@ -16,8 +33,14 @@ app.controller('BlocksCtrl', function($scope, $route, dataService, timerService)
 		$scope.promise = dataService.getData("/pool/blocks?"+urlParams, function(data){
 			$scope.blocks.global = data;
 			updateMaturity();
+			updateChart();
 		});
 	};
+
+	var updateChart = function () {
+		console.log($scope.blocks);
+		$scope.chart.dataset = $scope.blocks;
+	}
 
 	var updateMaturity = function () {
 		var luck;

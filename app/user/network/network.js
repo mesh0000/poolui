@@ -2,19 +2,18 @@
 
 app.controller('NetworkCtrl', function($scope, $route, dataService, timerService) {
 	
-	// var loadData = function () {
-	// 	console.log("Getting HomeCtrl Data");
 
-	// 	dataService.getData("https://api.xmrpool.net/config", function(data){
-	// 		$scope.config = data;
-	// 	});
+	var loadData = function () {
+		console.log("Getting Network Data");
 
-	// 	dataService.getData("https://api.xmrpool.net/miner/48s97vfViXi27Yd8gC9dgDbyToXzyFw2UM9BTFGsjKtH5mf8EHMnoe8gLyceFwNqnUMLnZEkpeTx8NE7tyxhy7ecL3JEjiB/stats", function(data){
-	// 		$scope.miner = data;
-	// 	});
-	// };
+		dataService.getData("/network/chart/usdHash/60", function(data){
+			$scope.config = data;
+			console.log(data);
+		});
+
+	};
 	
-	// loadData();
+	loadData();
 	// timerService.register(loadData, $route.current.controller);
 
 	// $scope.$on("$routeChangeStart", function () {

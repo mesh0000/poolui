@@ -222,4 +222,9 @@ var app = angular.module('poolui', [
 		playSiren();
 	}
 	);
+
+
+	// Sponsor
+	$scope.sponsor_open = false
+
 });

@@ -122,8 +122,8 @@ angular.module('utils.services', [])
             }
           }
         },
-        selected: [],
-        toptions: {
+        table_selected: [],
+        table_options: {
           rowSelection: true,
           multiSelect: true
         }
@@ -157,8 +157,8 @@ angular.module('utils.services', [])
 
           // only display selected miners
           var selected = minerStats[addr].selected;
-          if(minerStats[addr].selected.length < 1) {
-            selected = _.union(minerStats[addr].selected, ['global']);
+          if(minerStats[addr].table_selected.length < 1) {
+            selected = _.union(minerStats[addr].table_selected, ['global']);
           }
           
           minerStats[addr].options.series = _.intersectionWith(minerStats[addr].options.allSeries, selected, function(ser, sel) { return ( ser.id == sel ) });
