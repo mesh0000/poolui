@@ -10,10 +10,10 @@ app.controller('LoginCtrl', function($scope, $route, $mdDialog, dataService, tim
 	$scope.status = "";
 
 	$scope.login = function () {
-
 		dataService.postData("/authenticate", $scope.user, function(data){	
 			if (data.success){
 				data.remember  = $scope.remember;
+				dataService.setAuthToken(data);
 				$mdDialog.hide(data);
 			} else {
 				$mdDialog.hide(false);

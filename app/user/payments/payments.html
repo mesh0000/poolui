@@ -1,4 +1,4 @@
-<ng-include src="'dashboard/poolstats.html'"></ng-include>
+<ng-include src="'user/dashboard/poolstats.html'"></ng-include>
 <div layout-sm="column" layout="row" flex>
 	<div layout="column" flex>
 		<md-card>
@@ -8,7 +8,7 @@
 			  </div>
 			</md-toolbar>
 			<md-card-content>
-				<md-table-pagination md-limit="options.limit" md-limit-options="[15, 30, 50]" md-page="options.page" md-total="{{poolStats.global.totalPayments}}" md-on-paginate="loadPayments" md-page-select></md-table-pagination>
+				<md-table-pagination md-limit="options.limit" md-limit-options="[15, 30, 50]" md-page="options.page" md-total="{{miner.txnCount}}" md-on-paginate="loadPayments" md-page-select></md-table-pagination>
 				<md-table-container>
 				  <table md-table md-row-select ng-model="selected" md-progress="promise">
 					<thead md-head>
@@ -38,7 +38,7 @@
 					</tbody>
 				  </table>
 				</md-table-container>
-				<md-table-pagination md-limit="options.limit" md-limit-options="[15, 30, 50]" md-page="options.page" md-total="miner." md-on-paginate="loadPayments" md-page-select></md-table-pagination>
+				<md-table-pagination md-limit="options.limit" md-limit-options="[15, 30, 50]" md-page="options.page" md-total="{{miner.txnCount}}" md-on-paginate="loadPayments" md-page-select></md-table-pagination>
 			</md-card-content>
 		</md-card>
 	</div>

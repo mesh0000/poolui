@@ -48,11 +48,11 @@ app.controller('DashboardCtrl', function($scope , $route, $mdDialog, $pageVisibi
 				addr: addr
 			},
 			controller: "MinerPaymentsCtrl",
-			templateUrl: 'dashboard/minerpayments.html',
+			templateUrl: 'user/dashboard/minerpayments.html',
 			parent: angular.element(document.body),
 			targetEvent: ev,
 			clickOutsideToClose:true,
-			//fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+			fullscreen: !$scope.menuOpen
 		})
 		.then(function(answer) {
 			$scope.status = 'You said the information was "' + answer + '".';

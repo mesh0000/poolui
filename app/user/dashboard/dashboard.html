@@ -1,4 +1,4 @@
-<ng-include src="'dashboard/poolstats.html'"></ng-include>
+<ng-include src="'user/dashboard/poolstats.html'"></ng-include>
 <div layout="column" layout-lg="row" layout-gt-lg="row" flex>
 	<div layout="column" flex-lg="30" flex-gt-lg="30">
 		<md-card>
@@ -181,7 +181,7 @@
 		<md-card-content>
 			<div flex>
 				<md-table-container>
-					<table md-table md-row-select ng-model="minerStats[addr].selected" md-progress="minerStats[addr].promise" data-md-row-select="minerStats[addr].toptions.rowSelection" multiple="{{minerStats[addr].toptions.multiSelect}}">
+					<table md-table md-row-select ng-model="minerStats[addr].table_selected" md-progress="minerStats[addr].promise" data-md-row-select="minerStats[addr].table_options.rowSelection" multiple="{{minerStats[addr].table_options.multiSelect}}">
 						<thead md-head>
 							<tr md-row>
 								<th md-column md-numeric><h2 class="md-subhead">Worker</h2></th>
@@ -191,7 +191,7 @@
 							</tr>
 						</thead>
 						<tbody md-body>
-							<tr md-row ng-repeat="(index, id) in addrStats[addr].ids" md-select="id" data-md-on-select="updateCharts" md-on-deselect="updateCharts" x-md-auto-select="minerStats[addr].toptions.autoSelect">
+							<tr md-row ng-repeat="(index, id) in addrStats[addr].ids" md-select="id" data-md-on-select="updateCharts" md-on-deselect="updateCharts">
 								<td md-cell><p class="md-body-2">{{id}}</p></td>
 								<td md-cell><p class="md-body-2">{{minerStats[addr].dataset[id][0].hs | toHashRate}}</p></td>
 								<td md-cell><p class="md-body-2">{{addrStats[addr].workerStats[id].totalHash | number}}</p></td>

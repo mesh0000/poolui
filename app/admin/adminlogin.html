@@ -1,0 +1,39 @@
+  <md-content class="login" layout-align="center center">
+  	<md-toolbar>
+  		<div class="md-toolbar-tools">
+  			<h2 flex>Pool Admin Login</h2>
+  			<span flex></span>
+  		</div>
+  	</md-toolbar>
+
+  	<md-dialog-content layout-padding >
+      <span flex="30"></span>
+      <form name="loginForm">
+       <div></div>
+       <md-input-container class="md-icon-float md-block">
+         <!-- Use floating label instead of placeholder -->
+         <label>Payment Address</label>
+         <md-icon>person</md-icon>
+         <input ng-model="admin.username" type="text" md-autofocus>
+       </md-input-container>
+
+       <md-input-container class="md-icon-float md-block">
+         <label>Password</label>
+         <md-icon>lock</md-icon>
+         <input ng-model="admin.password" type="password" placeholder="default: your email inentifier (see FAQ)">
+       </md-input-container>
+     </form>
+     <span flex="30"></span>
+   </md-dialog-content>
+
+   <md-dialog-actions layout="row">
+    <md-checkbox class="md-primary" ng-model="remember">
+     Remember me
+   </md-checkbox>
+   <span flex></span>
+   <p class="invalid">{{status}}</p>
+   <md-button class="md-raised md-primary" ng-click="login()">
+     Login
+   </md-button>
+ </md-dialog-actions>
+</md-content>

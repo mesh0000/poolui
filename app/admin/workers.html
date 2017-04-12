@@ -1,0 +1,39 @@
+<md-content flex>
+	<!-- <md-table-pagination md-limit="options.limit" md-limit-options="[10, 20, 30]" md-page="options.page" md-total="{{poolStats.global.totalPayments}}" md-on-paginate="loadPayments" md-page-select></md-table-pagination> -->
+	<md-table-container>
+		<table md-table md-row-select ng-model="selected" md-progress="promise">
+			<thead md-head md-order="workersOrder">
+				<tr md-row>
+					<th md-column md-numeric md-order-by="hashRate"><h2 class="md-subhead">Hashrate</h2></th>
+					<th md-column><h2 class="md-subhead">Address</h2></th>
+					<th md-column md-numeric md-order-by="paid"><h2 class="md-subhead">Paid</h2></th>
+					<th md-column md-numeric md-order-by="due"><h2 class="md-subhead">Due</h2></th>
+					<th md-column md-numeric md-order-by="totalHashes"><h2 class="md-subhead">Total #s</h2></th>
+					<th md-column md-numeric md-order-by="goodShares"><h2 class="md-subhead">Good #s</h2></th>
+					<th md-column md-numeric md-order-by="badShares"><h2 class="md-subhead">Bad #s</h2></th>
+					<th md-column md-numeric md-order-by="workers.length"><h2 class="md-subhead">Workers</h2></th>
+					<th md-column><h2 class="md-subhead">Last Hash</h2></th>
+				</tr>
+			</thead>
+			<tbody md-body>
+				<tr md-row ng-repeat="worker in pool_workers | orderBy: workersOrder">
+					<td md-cell>{{worker.hashRate | toHashRate}}</td>
+					<td md-cell>{{worker.address}}</td>
+					<td md-cell>{{worker.paid | toXMR}} XMR</td>
+					<td md-cell>{{worker.due | toXMR }} XMR</td>
+					<td md-cell>{{worker.totalHashes | number }}</td>
+					<td md-cell>{{worker.goodShares | number }}</td>
+					<td md-cell>{{worker.badShares | number }}</td>
+					<td md-cell>{{worker.workers.length}}</td>
+					<td md-cell>
+						<h3 class="md-body-2" am-time-ago="worker.lastHash"></h3>
+						<md-tooltip>
+							{{worker.lastHash | date:'hh:mm:ss dd/MM/yy'}}
+						</md-tooltip>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</md-table-container>
+	<!-- <md-table-pagination md-limit="options.limit" md-limit-options="[10, 20, 30]" md-page="options.page" md-total="{{poolStats.global.totalPayments}}" md-on-paginate="loadPayments" md-page-select></md-table-pagination> -->
+</md-content>

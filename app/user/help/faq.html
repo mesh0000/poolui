@@ -1,0 +1,33 @@
+<div layout="column" layout-gt-md="row" flex>
+	<md-card flex-gt-md="80" flex>
+		<md-card-title>
+			<span class="md-headline">Pool FAQ</span>
+		</md-card-title>
+		<md-card-content>
+			<div ng-repeat="(topic,subject) in faq">
+				<p class="md-title">{{topic}}</p>
+				<div ng-repeat="(index, question) in subject" id="{{topic}}_{{index}}">
+					<p class="md-subhead"><b>{{question.title}}</b></p>
+					<p class="md-subhead" ng-bind-html="question.answer"></p>
+					<div ng-if="question.media">
+						<p class="md-subhead">{{question.media.title}}</p>
+						<div class="text-center">
+							<iframe width="75%" height="350px" ng-src="{{question.media.url}}" frameborder="0" allowfullscreen></iframe>
+							<br/>
+						</div>
+					</div>
+					<md-divider></md-divider>
+				</div>
+			</div>
+		</md-card-content>
+	</md-card>
+	<md-card flex-gt-md="20" flex>
+		<md-card-content class="fixed">
+			<div class="md-headline">Contents</div>
+			<div ng-repeat="(topic,subject) in faq">
+				<p class="md-title">{{topic}}</p>
+				<p class="md-subhead" ng-repeat="(index, q) in subject"><a class="theironfist" ng-click="goto(topic, index)">{{q.title}}</p>
+			</div>
+		</md-card-content>
+	</md-card>
+</div>

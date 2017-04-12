@@ -1,0 +1,98 @@
+<div layout="row" flex>
+	<div layout="column" flex>
+		<md-card>
+			<md-toolbar class="md-table-toolbar md-default">
+				<div class="md-toolbar-tools">
+					<span>Getting Started with {{GLOBALS.pool_name}}</span>
+				</div>
+			</md-toolbar>
+			<md-card-content>
+				<p class="panel-subtitle">If you are new to mining, this is the place for you.</p>
+				<p class="panel-subtitle">take a deep breath, its only confusing at first but pure joy once up and running.</p>
+			</md-card-content>
+		</md-card>
+		<md-card>
+			<md-toolbar class="md-table-toolbar md-default">
+				<div class="md-toolbar-tools">
+					<span>1. Create a Wallet</span>
+				</div>
+			</md-toolbar>
+			<md-card-content>
+				<p class="panel-subtitle">Both online wallets and hardware wallets have their pros and cons.</p>
+				<p class="panel-subtitle"><a href="https://www.mymonero.com" target="_blank">MyMonero</a> : MyMonero is an online wallet maintained by the core monero team, so while safe is still suceptable to hacks.</p>
+				<p class="panel-subtitle"><a href="https://getmonero.org/2016/12/22/monero-core-gui-beta-released.html" target="_blank">Monero GUI Wallet</a> : The safest way to safely store and secure your XMR, although it would be your responsibility to kee your XMR Safe.</p>
+			</md-card-content>
+		</md-card>
+		<md-card>
+			<md-toolbar class="md-table-toolbar md-default">
+				<div class="md-toolbar-tools">
+					<span>2. Download mining software</span>
+				</div>
+			</md-toolbar>
+			<md-card-content>
+				<p class="panel-subtitle">AMD Miner</p>
+				<p class="panel-subtitle">Nvidia Miner</p>
+				<p class="panel-subtitle">CPU Miner (AESNI CPU's)</p>
+				<p class="panel-subtitle">CPU Miner (Older CPU's})</p>
+			</md-card-content>
+		</md-card>
+		<md-card>
+			<md-toolbar class="md-table-toolbar md-default">
+				<div class="md-toolbar-tools">
+					<span>3. Pick a server and port</span>
+				</div>
+			</md-toolbar>
+			<md-card-content>
+				<p class="panel-subtitle">There are 2 important things here the <b>URL</b> and the <b>port</b> that you are going to connect to.</p>
+				<p>You need to pick your URL and Port from the Ports List. Here you'll notice theres Global, PPLNS, Solo (<a href="#/help/faq">?</a>)</p>
+				<p>Global is simply a collection of both PPLNS & Solo ports powerd by GEODNS. <br/>GEODNS automagically finds the closest server to you and could also be used to shares you in case of a regional outage.</p>
+				<p>If you prefer to shave off a few of those ms and connect directly, you have the option to select your preferred endpoint too.</p>
+				<p>The Port is used in conjunciton with the url and is used to specify the starting difficulty. You should select this depending on the total #ing power of your rig (see port descriptions).</p>
+				<p>If you are an advanced user or would like to set a fixed difficulty. examples below.</p>
+				<div flex layout="row">
+					<div flex></div>
+					<md-button ng-click="viewPorts($event)">View Ports list</md-button>
+					<div flex></div>
+				</div>
+				<!-- <p class="panel-subtitle">Curious what the port types are?  Most miners are best served by PPLNS, which
+				helps to combat pool hopping and ensures a good payout for miners.  PPS is the most stable option of
+				the lot, ensuring that you get paid out for every share, but with a higher fee for the risk the pool
+				takes.  Solo ports are for those who like to gamble and want to try and find their own block!</p> -->	
+			</md-card-content>
+		</md-card>
+		<md-card>
+			<md-toolbar class="md-table-toolbar md-default">
+				<div class="md-toolbar-tools">
+					<span>The moment</span>
+				</div>
+			</md-toolbar>
+			<md-card-content>
+				<p class="panel-subtitle">OK So by now you should have a wallet, mining software, url and port. Its time to put them together.</p>
+			</md-card-content>
+			<md-card-content>
+				<p>Here are some examples of the parameters that you need to pass on to your miner software, the format matters so be careful.</p>
+				<p>Depending on your miner you need to add the required parameters via command line or config.txt</p>
+				<p>Required fields are payment <b>address</b> and <b>MinerIdentifier</b></p>
+				<blockquote>
+					<i>Username format</i> : address.paymentID+FixedDifficulty<br/>
+					<i>Password Format</i> : MinerIdentifier:Email<br/>
+				</blockquote>
+				<md-list flex>
+					<md-subheader class="md-no-sticky">Username / Password Samples</md-subheader>
+					<md-divider></md-divider>
+					<md-list-item class="md-3-line" ng-repeat="sample in samples">
+					  <div class="md-list-item-text" layout="column">
+						<h4>## {{ sample.desc }}</h4>
+						<blockquote>
+							<p><b>{{ sample.type }}</b> : {{ sample.sample }}</p>
+							<small class="md-body-1">(e.g. miner.exe -u <i class="truncate">{{(sample.type=="Username") ? sample.sample : 'paymentAddress'}}</i> -p {{(sample.type=="Password") ? sample.sample : 'worker'}})</small><br/>
+						</blockquote>
+					  </div>
+					  <md-divider></md-divider>
+					</md-list-item>
+				 </md-list>
+			</md-card-content>
+		</md-card>
+		<h3 class="text-center">Happy Mining !</h3>
+	</div>
+</div>

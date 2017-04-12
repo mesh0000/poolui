@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="pooladmin" class="no-js lt-ie9 lt-ie8 lt-ie7" manifest="app.manifest"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="pooladmin" class="no-js lt-ie9 lt-ie8" manifest="app.manifest"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="pooladmin" class="no-js lt-ie9" manifest="app.manifest"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="pooladmin" class="no-js" manifest="app.manifest"> <!--<![endif]-->
+<head>
+  <title>XMRPool.net - Mine XMR/Monero or BTC/Bitcoin</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <!-- CSS -->
+  <link rel="stylesheet" href="vendor/angular-material/angular-material.css">
+  <link rel="stylesheet" href="vendor/n3-charts/build/LineChart.css">
+  <link rel="stylesheet" href="vendor/angular-material-data-table/dist/md-data-table.css">
+  <link rel="stylesheet" href="app.css">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
+  <!-- CSS -->
+  <link rel="apple-touch-icon" sizes="76x76" href="assets/assets/apple-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/assets/favicon.png">
+</head>
+<body ng-cloak layout="column" ng-controller="AppCtrl">
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+      <div class="container" layout="row" flex>
+        <md-card flex>
+          <md-toolbar class="md-table-toolbar md-warn">
+            <div class="md-toolbar-tools" flex>
+              <h1 flex>Pool Admin CP</h1>
+              <div flex></div>
+              <div ng-if="isLoggedIn()">
+                <md-button class="md-accent" ng-click="logout()">Logout</md-button>
+              </div>
+            </div>
+          </md-toolbar>
+          <md-card-content class="no-padding" ng-if="isLoggedIn()">
+            <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+              <md-nav-item md-nav-href="#dashboard" name="dashboard">
+                Dashboard
+              </md-nav-item>
+              <md-nav-item md-nav-href="#workers" name="workers">
+                Workers
+              </md-nav-item>
+              <md-nav-item md-nav-href="#ports" name="ports">
+                Ports
+              </md-nav-item>
+              <md-nav-item md-nav-href="#config" name="config">
+                Config
+              </md-nav-item>
+            </md-nav-bar>
+          </md-card-content>
+          <md-card-content>
+            <ng-view flex></ng-view>
+          </md-card-content>
+        </md-card>
+      </div>
+      <!-- Scripts -->
+      <script src="vendor/jquery/dist/jquery.js"></script>
+      <script src="vendor/lodash/dist/lodash.js"></script>
+      <script src="vendor/moment/moment.js"></script>
+      <script src="vendor/angular/angular.js"></script>
+      <script src="vendor/angular-route/angular-route.js"></script>
+      <script src="vendor/angular-animate/angular-animate.js"></script>
+      <script src="vendor/angular-aria/angular-aria.js"></script>
+      <script src="vendor/angular-material/angular-material.js"></script>
+      <script src="vendor/angular-moment/angular-moment.js"></script>
+      <script src="vendor/d3/d3.js"></script>
+      <script src="vendor/n3-charts/build/LineChart.js"></script>
+      <script src="vendor/angular-material-data-table/dist/md-data-table.js"></script>
+      <script src="vendor/ngstorage/ngStorage.js"></script>
+      <script src="globals.js"></script>
+      <script src="utils/dataservice.js"></script>
+      <script src="utils/strings.js"></script>
+      <script src="admin.js"></script>
+      <script src="admin/adminlogin.js"></script>
+      <script src="admin/dashboard.js"></script>
+      <script src="admin/workers.js"></script>
+      <script src="admin/ports.js"></script>
+      <script src="admin/config.js"></script>
+      <script src="admin/editconfig.js"></script>
+      <script src="admin/editport.js"></script>
+      <script src="admin/addport.js"></script>
+    </body>
+    </html>

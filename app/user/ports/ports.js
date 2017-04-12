@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('GettingStartedCtrl', function($scope, dataService) {
+app.controller('PortsCtrl', function($scope, $route, dataService, timerService) {
 	$scope.portsList = {};
 	$scope.selected = [];
 

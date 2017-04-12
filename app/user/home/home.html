@@ -1,0 +1,69 @@
+<ng-include src="'user/dashboard/poolstats.html'"></ng-include>
+<div layout="column" layout-gt-md="row" flex>
+	<md-card flex ng-include="'welcome.html'">
+	</md-card>
+	<div flex flex-gt-md="30">
+		<md-card flex>
+			<md-card-title>
+				<span class="md-headline">Pool Config</span>
+			</md-card-title>
+			<md-card-content>
+				<md-list>
+					<!-- <md-list-item>
+						<p>PPS Fee</p>
+						<span class="text-right">
+							{{config.pps_fee}}%
+							<md-tooltip>
+								Core Devs Donation: {{config.dev_donation/100*config.pps_fee | number:3  }}% | 
+								Pool Devs Donation:{{config.pool_dev_donation/100*config.pps_fee | number:3 }}%
+							</md-tooltip>
+						</span>
+					</md-list-item> -->
+					<md-list-item>
+						<p>PPLNS Fee</p>
+						<span class="text-right">
+							{{config.pplns_fee}}%
+							<md-tooltip>
+								Core Devs Donation: {{config.dev_donation/100*config.pplns_fee | number:3 }}% | 
+								Pool Devs Donation:{{config.pool_dev_donation/100*config.pplns_fee | number:3 }}%
+							</md-tooltip>
+						</span>
+					</md-list-item>
+					<md-list-item>
+						<p>Solo Fee</p>
+						<p class="text-right">
+							{{config.solo_fee}}%
+							<md-tooltip>
+								Core Devs Donation: {{config.dev_donation/100*config.solo_fee | number:3}}% | 
+								Pool Devs Donation:{{config.pool_dev_donation/100*config.solo_fee | number:3}}%
+							</md-tooltip>
+						</p>
+					</md-list-item>
+					<md-list-item>
+						<p>BTC Fee</p>
+						<p class="text-right">{{config.btc_fee}}%</p>
+					</md-list-item>
+					<md-list-item>
+						<p>Minimum payout (Wallet)</p>
+						<p class="text-right">{{config.min_wallet_payout | toXMR}} XMR</p>
+					</md-list-item>
+					<md-list-item>
+						<p>Minimum payout (BTC)</p>
+						<p class="text-right">{{config.min_btc_payout | toXMR}} XMR</p>
+					</md-list-item>
+					<md-list-item>
+						<p>Minimum payout (Exchange)</p>
+						<p class="text-right">{{config.min_exchange_payout | toXMR}} XMR</p>
+					</md-list-item>
+					<md-list-item>
+						<p>Block Maturity Depth</p>
+						<p class="text-right">{{config.maturity_depth}}</p>
+					</md-list-item>
+					<md-list-item>
+						<p>Minimum Denomination</p>
+						<p class="text-right">{{config.min_denom | toXMR}}</p>
+					</md-list-item>
+				</md-list>
+			</md-card-content>
+		</md-card></div>
+	</div>

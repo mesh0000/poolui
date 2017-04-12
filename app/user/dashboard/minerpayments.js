@@ -10,8 +10,6 @@ app.controller('MinerPaymentsCtrl', function($scope, $mdDialog, dataService, min
 		limit: 15
 	}
 
-	console.log(miner);
-
 	$scope.loadPayments = function () {
 		var params = angular.copy($scope.options);
 		params.page -= 1;
