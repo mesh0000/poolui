@@ -15,8 +15,7 @@ var app = angular.module('poolui', [
 	'n3-line-chart',
 	'angular-page-visibility'
 	]).config(['$locationProvider', '$routeProvider', '$mdThemingProvider', function($locationProvider, $routeProvider, $mdThemingProvider) {
-		$locationProvider.hashPrefix('')
-		;	
+		$locationProvider.hashPrefix('');	
 		$mdThemingProvider.theme('default')
 		.primaryPalette('grey')
 		.accentPalette('light-blue');
@@ -68,7 +67,7 @@ var app = angular.module('poolui', [
 			activetab: 'help'
 		});
 
-
+		$routeProvider.otherwise({redirectTo: '/home'});
 
 	}]);
 
