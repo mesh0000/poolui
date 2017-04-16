@@ -1,5 +1,32 @@
 <md-card-content>
-	<div class="md-headline">Welcome to {{GLOBALS.pool_name}}</div>
-	<h3>Update welcome content in app/welcome.html</h3>
-	<p>Please stay tuned for more features and changes!  If you have a feature request, please poke Snipa on irc.freenode.net in <a href="#/help/chat">#monero-pools</a></p>
+	<div style="padding-left: 25px">
+		<div class="md-headline nowrap"><strong>Welcome to <span style="font-size: 85%; vertical-align: 18%"> supp<i style="font-size: 67%" class="fa fa-smile-o"></i>rt</span><span style="font-size: 100%">XMR</span><span style="font-size: 80%">.com </span></strong>
+		</div>
+		<div class="md-subhead nowrap">Your new <i style="font-size: 140%" class="fa fa-home"></i> for awesome Monero Mining!<br><br>
+		</div>
+	</div>
+	<div class="welcome">
+		<h3>&#9656;&nbsp;Hardfork went smoothly!</h3>
+			<p>On Monday 17.04 I will start reevaluating the TX fee settings. I think we will go with low prio TXs, so I can set the fee deduction as low as possible.</p>
+		<h3>&#9656;&nbsp;Double Payout issue</h3>
+			<p>There's been an issue with double payouts to miners in the past few days. I'm working on resolving the issue. In the meantime, I had to deduct the double payout amounts from the affected miner balances. Please understand that I only reduced the balance when you accidentially got a double payout (Check your wallet. Payout stats on pool page don't show them in all cases). So effectively, you got paid in advance. Please have the decency and keep mining until your balance reached 0. <i class="fa fa-smile-o"></i></p><p>Here you can check if you are affected: <a href="http://i.imgur.com/QVtPdKK.png" target="_blank">http://i.imgur.com/QVtPdKK.png</a></p><p>Sorry for the Inconvenience</p>
+		
+	</div>
+		<br>
+		<h4>Pool Features</h4>
+			<ul>
+				<li>PaymentID payments for Exchanges</li>
+				<li>PPLNS and Solo mining systems</li>
+				<li>Patched for the 127 transaction bug</li>
+				<li>Well-documented <a href="https://cryptonote-pool-api.restlet.io/">API</a> with active development efforts</li>
+				<li>Set your own payment thresholds for normal wallets + exchanges!</li>
+				<li>Per-Worker hashrate charts</li>
+				<li>Payments every 2 hours</li>
+				<li>E-mail notification of miners down</li>
+			</ul>
+		<h4>Upcoming Features</h4>
+			<ul>
+				<li>Websocket based stats for rapid updates</li>
+				<li>New stratum protocol for XMR as developed by Wolf0</li>
+			</ul>
 </md-card-content>

@@ -29,7 +29,7 @@ app.controller('BlocksCtrl', function($scope, $route, dataService, timerService)
 
 				// calculate luck
 				luck = block.shares/block.diff*100;
-				$scope.blocks.global[index].luck = (luck <= 100) ? (100-luck) : (-luck+100) ;
+				$scope.blocks.global[index].luck = (luck <= 100) ? (luck) : (luck) ;
 				$scope.blocks.global[index].icon = (block.valid) ? 'done' : 'clear';
 			});
 		}
