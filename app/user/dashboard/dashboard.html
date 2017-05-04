@@ -71,7 +71,7 @@
 										<p class="text-right">
 											<span am-time-ago="poolStats[pooltype].pool_statistics.lastBlockFoundTime * 1000">Never</span>
 											<md-tooltip>
-												{{poolStats[pooltype].pool_statistics.lastBlockFoundTime*1000 | date:'hh:mm:ss dd/MM/yy'}}
+												{{poolStats[pooltype].pool_statistics.lastBlockFoundTime*1000 | date:'HH:mm:ss dd/MM/yy'}}
 											</md-tooltip>
 										</p>
 									</md-list-item>
@@ -142,7 +142,7 @@
 				<span class="md-caption">
 					( Last Hash : <span am-time-ago="miner.lastHash * 1000">Never</span> )
 					<md-tooltip>
-						{{miner.lastHash*1000 | date:'hh:mm:ss dd/MM/yy'}}
+						{{miner.lastHash*1000 | date:'HH:mm:ss dd/MM/yy'}}
 					</md-tooltip>
 				</span>
 				<span flex></span>
@@ -165,10 +165,10 @@
 				</div>
 				<div flex layout="column" layout-gt-xs="row">
 					<div flex>
-						<h5> Total Due<h2>{{miner.amtDue | toXMR | number:10}} XMR</h2></h5>
+						<h4> Total Due<h2>{{miner.amtDue | toXMR | number:10}} XMR</h2></h4>
 					</div>
 					<div flex>
-						<h5> Total Paid<h2>{{miner.amtPaid | toXMR | number:10}} XMR</h2></h5>
+						<h4> Total Paid<h2>{{miner.amtPaid | toXMR | number:10}} XMR</h2></h4>
 					</div>
 				</div>
 			</div>
@@ -198,7 +198,7 @@
 								<td md-cell>
 									<span class="md-body-2" am-time-ago="minerStats[addr].dataset[id][0].ts"></span>
 									<md-tooltip>
-										{{minerStats[addr].dataset[id][0].ts | date: 'hh:mm:ss dd/MM/yy'}}
+										{{minerStats[addr].dataset[id][0].ts | date: 'HH:mm:ss dd/MM/yy'}}
 									</md-tooltip>
 								</td>
 							</tr>
