@@ -26,7 +26,7 @@
 						<td md-cell>
 							<p class="md-body-2" am-time-ago="payment.ts"></p>
 							<md-tooltip>
-								{{payment.ts | date:'hh:mm:ss dd/MM/yy'}}
+								{{payment.ts | date:'HH:mm:ss dd/MM/yy'}}
 							</md-tooltip>
 						</td>
 						<td md-cell><p class="md-body-2 truncate" ng-bind-html="payment.hash | hashToLink: 'tx'"></p></td>
