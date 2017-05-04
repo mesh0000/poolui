@@ -9,3 +9,4 @@ tmp
 app/vendor/
 build/
 app/globals.js
+app/user/help/what_should_be_in_faq

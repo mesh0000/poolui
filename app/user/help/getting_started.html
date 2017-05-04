@@ -3,73 +3,66 @@
 		<md-card>
 			<md-toolbar class="md-table-toolbar md-default">
 				<div class="md-toolbar-tools">
-					<span>Getting Started with {{GLOBALS.pool_name}}</span>
+					<span class="md-title">Getting Started with {{GLOBALS.pool_name}}</span>
 				</div>
 			</md-toolbar>
 			<md-card-content>
-				<p class="panel-subtitle">If you are new to mining, this is the place for you.</p>
-				<p class="panel-subtitle">take a deep breath, its only confusing at first but pure joy once up and running.</p>
+				<p class="panel-subtitle">Welcome to supportXMR.com! If you are new to mining, this is the place for you.</p>
+				<p>The owner of this pool is <strong>M5M400</strong>. If your miner gets banned, your payout is late, your connetion is lost - he is the one you want to ask for help. For urgent matters you can mail him at <a href="mailto: support@supportxmr.com">support@supportXMR.com</a></p>
+				<p>The pool has also quite stable and knowlegable <strong>community</strong> - you can join the <a href="http://supportxmr.chatango.com/" target="_new" style="text-decoration: underline; font-weight: bold;">chat</a> and seek the answers there :)</p>
 			</md-card-content>
 		</md-card>
 		<md-card>
 			<md-toolbar class="md-table-toolbar md-default">
 				<div class="md-toolbar-tools">
-					<span>1. Create a Wallet</span>
+					<span class="md-title">If you don't have a wallet create one</span>
 				</div>
 			</md-toolbar>
 			<md-card-content>
-				<p class="panel-subtitle">Both online wallets and hardware wallets have their pros and cons.</p>
-				<p class="panel-subtitle"><a href="https://www.mymonero.com" target="_blank">MyMonero</a> : MyMonero is an online wallet maintained by the core monero team, so while safe is still suceptable to hacks.</p>
-				<p class="panel-subtitle"><a href="https://getmonero.org/2016/12/22/monero-core-gui-beta-released.html" target="_blank">Monero GUI Wallet</a> : The safest way to safely store and secure your XMR, although it would be your responsibility to kee your XMR Safe.</p>
+				<p class="panel-subtitle">You can choose between online wallets and hardware wallets - both have their pros and cons.</p>
+				<p><a href="https://www.mymonero.com" target="_blank">MyMonero</a>: MyMonero is an online wallet maintained by a member of the core monero team, so while safe is still suceptable to hacks.</p>
+				<p><a href="https://getmonero.org/2017/03/29/monero-gui-beta-2-released.html" target="_blank">Monero GUI Wallet (beta2)</a>: The safest way to store and secure your XMR, although it would be your responsibility to keep your XMR safe.</p>
+				<p><a href="https://moneroaddress.org/" target="_blank">Offline wallet generator</a>: Let's you generate a wallet with no internet connetion for better security. To later check the ballance Monero GUI is best choice.</p>
 			</md-card-content>
 		</md-card>
 		<md-card>
 			<md-toolbar class="md-table-toolbar md-default">
-				<div class="md-toolbar-tools">
-					<span>2. Download mining software</span>
-				</div>
+			  <div class="md-toolbar-tools">
+			    <span class="md-title">Pick a miner for cpu, gpu or both</span>
+			  </div>
 			</md-toolbar>
 			<md-card-content>
-				<p class="panel-subtitle">AMD Miner</p>
-				<p class="panel-subtitle">Nvidia Miner</p>
-				<p class="panel-subtitle">CPU Miner (AESNI CPU's)</p>
-				<p class="panel-subtitle">CPU Miner (Older CPU's})</p>
+				<p class="panel-subtitle">You can choose from variety of miners.</p>
+				<p>All are nice pieces of software and you should try what suits you best. Most common are <a href="https://github.com/fireice-uk/xmr-stak-cpu/releases" target="_new" style="text-decoration: underline">xmr-stak-cpu</a>/<a href="https://github.com/fireice-uk/xmr-stak-amd/releases" target="_new" style="text-decoration: underline;">amd</a>, <a href="https://github.com/wolf9466/wolf-xmr-miner/releases" target="_new" style="text-decoration: underline;">wolf's miner</a>, <a href="https://bitcointalk.org/index.php?topic=638915.0" target="_new" style="text-decoration: underline;">claymore's miner</a>, <a href="https://github.com/KlausT/ccminer-cryptonight/releases" target="_new" style="text-decoration: underline;">ccminer-cryptonight</a>.</p>
+				<p><h3>More info soon.</h3></p>
 			</md-card-content>
 		</md-card>
-		<md-card>
+				<md-card>
 			<md-toolbar class="md-table-toolbar md-default">
-				<div class="md-toolbar-tools">
-					<span>3. Pick a server and port</span>
-				</div>
+			  <div class="md-toolbar-tools">
+			    <span class="md-title">Pick a mining server and port</span>
+			  </div>
 			</md-toolbar>
 			<md-card-content>
-				<p class="panel-subtitle">There are 2 important things here the <b>URL</b> and the <b>port</b> that you are going to connect to.</p>
-				<p>You need to pick your URL and Port from the Ports List. Here you'll notice theres Global, PPLNS, Solo (<a href="#/help/faq">?</a>)</p>
-				<p>Global is simply a collection of both PPLNS & Solo ports powerd by GEODNS. <br/>GEODNS automagically finds the closest server to you and could also be used to shares you in case of a regional outage.</p>
-				<p>If you prefer to shave off a few of those ms and connect directly, you have the option to select your preferred endpoint too.</p>
-				<p>The Port is used in conjunciton with the url and is used to specify the starting difficulty. You should select this depending on the total #ing power of your rig (see port descriptions).</p>
-				<p>If you are an advanced user or would like to set a fixed difficulty. examples below.</p>
+				<p class="panel-subtitle">Currently there is only one port type and it's PPLNS. It	helps to combat pool hopping and ensures a good payout for miners.</p>
+				<p>For pool's url use <code> pool.supportxmr.com </code></p><p>The Port is used in conjunciton with the url and is used to specify the starting difficulty. You should select this depending on the total #ing power of your rig (see port descriptions). Examples below.</p>
 				<div flex layout="row">
 					<div flex></div>
 					<md-button ng-click="viewPorts($event)">View Ports list</md-button>
 					<div flex></div>
 				</div>
-				<!-- <p class="panel-subtitle">Curious what the port types are?  Most miners are best served by PPLNS, which
-				helps to combat pool hopping and ensures a good payout for miners.  PPS is the most stable option of
-				the lot, ensuring that you get paid out for every share, but with a higher fee for the risk the pool
-				takes.  Solo ports are for those who like to gamble and want to try and find their own block!</p> -->	
 			</md-card-content>
 		</md-card>
 		<md-card>
 			<md-toolbar class="md-table-toolbar md-default">
 				<div class="md-toolbar-tools">
-					<span>The moment</span>
+					<span class="md-title">The moment</span>
 				</div>
 			</md-toolbar>
 			<md-card-content>
-				<p class="panel-subtitle">OK So by now you should have a wallet, mining software, url and port. Its time to put them together.</p>
-			</md-card-content>
-			<md-card-content>
+				<p class="panel-subtitle">By now you should have a wallet, mining software, pool url and port. It's time to put them together.</p>
+			
+			
 				<p>Here are some examples of the parameters that you need to pass on to your miner software, the format matters so be careful.</p>
 				<p>Depending on your miner you need to add the required parameters via command line or config.txt</p>
 				<p>Required fields are payment <b>address</b> and <b>MinerIdentifier</b></p>
@@ -91,8 +84,9 @@
 					  <md-divider></md-divider>
 					</md-list-item>
 				 </md-list>
+			<h3 class="text-center">Happy Mining !</h3>
 			</md-card-content>
 		</md-card>
-		<h3 class="text-center">Happy Mining !</h3>
+		
 	</div>
 </div>
