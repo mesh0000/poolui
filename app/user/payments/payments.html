@@ -4,7 +4,7 @@
 		<md-card>
 			<md-toolbar class="md-table-toolbar md-default">
 			  <div class="md-toolbar-tools">
-			    <span>Payments Made</span>
+			    <span class="md-title">Payments Made</span>
 			  </div>
 			</md-toolbar>
 			<md-card-content>
@@ -24,16 +24,16 @@
 					<tbody md-body>
 					  <tr md-row ng-repeat="payment in payments.global">
 						<td md-cell>
-							<h3 class="md-body-2" am-time-ago="payment.ts"></h3>
+							<p class="md-body-2" am-time-ago="payment.ts"></p>
 							<md-tooltip>
-								{{payment.ts | date:'hh:mm:ss dd/MM/yy'}}
+								{{payment.ts | date:'HH:mm:ss dd/MM/yy'}}
 							</md-tooltip>
 						</td>
-						<td md-cell ng-bind-html="payment.hash | hashToLink: 'tx'"></td>
-						<td md-cell><p class="md-body-2">{{payment.value | toXMR}} XMR</p></td>
-						<td md-cell><p class="md-body-2">{{payment.fee | toXMR }} XMR</p></td>
-						<td md-cell><p class="md-body-2">{{payment.mixins}}</p></td>
-						<td md-cell><p class="md-body-2">{{payment.payees}}</p></td>
+						<td md-cell><p class="md-body-2 truncate" ng-bind-html="payment.hash | hashToLink: 'tx'"></p></td>
+						<td md-cell><p class="md-body-2 nowrap">{{payment.value | toXMR}} XMR</p></td>
+						<td md-cell><p class="md-body-2 nowrap">{{payment.fee | toXMR }} XMR</p></td>
+						<td md-cell><p class="md-body-2 nowrap">{{payment.mixins}}</p></td>
+						<td md-cell><p class="md-body-2 nowrap">{{payment.payees}}</p></td>
 					  </tr>
 					</tbody>
 				  </table>

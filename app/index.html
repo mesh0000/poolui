@@ -4,10 +4,13 @@
 <!--[if IE 8]>         <html lang="en" ng-app="poolui" class="no-js lt-ie9" manifest="app.manifest"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en" ng-app="poolui" class="no-js" manifest="app.manifest"> <!--<![endif]-->
 <head>
-  <title>XMRPool.net - Mine XMR/Monero or BTC/Bitcoin</title>
+  <title>supportXMR.com - your pool for awesome Monero Mining!</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="description" content="Welcome to supportXMR.com! Your new home for awesome Monero Mining! Come and mine Monero with a pool that's not just miners... but friends! (+ we have worker stats, custom payout thresholds and mining to exchange)">
+  <meta name="keywords" content="monero, xmr, mining, pool, pplns, block, payments, payouts, reward, hash, hashrate, xmr-stak">
+  <meta name="google-site-verification" content="8fsduyK9_KF2zKQiMQL7i8Fp_JkyR8MTFqcBtT52QtI">
   <!-- CSS -->
   <link rel="stylesheet" href="vendor/angular-material/angular-material.css">
   <link rel="stylesheet" href="vendor/n3-charts/build/LineChart.css">
@@ -16,9 +19,11 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
-  <!-- CSS -->
-  <link rel="apple-touch-icon" sizes="76x76" href="assets/assets/apple-icon.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="assets/assets/favicon.png">
+  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+  <!-- Favicon -->
+ <link href="assets/supportXMR.png" type="image/png" rel="icon">
+  <!-- CHAT -->
+  <script id="cid0020000137795747302" data-cfasync="false" async="" src="//st.chatango.com/js/gz/emb.js" style="width: 400px;height: 300px;">{"handle":"supportxmr","arch":"js","styles":{"a":"2C3742","b":100,"c":"FFFFFF","d":"FFFFFF","k":"2C3742","l":"2C3742","m":"2C3742","n":"FFFFFF","p":"10","q":"2C3742","r":100,"pos":"bl","cv":1,"cvfnt":"'Helvetica Neue', Helvetica, Arial, sans-serif, sans-serif","cvfntw":"bold","cvbg":"2C3742","cvfg":"e0e0e0","cvw":220,"cvh":30,"ticker":1,"fwtickm":1,"usricon":0}}</script>
 </head>
 <body ng-cloak layout="column" ng-controller="AppCtrl">
   <!--[if lt IE 7]>
@@ -28,7 +33,9 @@
       <div class="container" layout="row" flex>
         <md-sidenav md-is-locked-open="menuOpen" md-component-id="left" md-whiteframe="4" class="sidenav">
           <md-toolbar class="logo">
-            <h1 class="md-toolbar-tools">XMRPool.net <i class="md-caption">beta</i></h1>
+			<span class="md-toolbar-tools" style="text-align: center; position: ">
+				<strong><span>support</span><span style="font-size: 140%; color: rgb(255, 153, 0); vertical-align: -23%;">XMR</span><span style="vertical-align: -31%;">.com </span></strong>
+			</span>
           </md-toolbar>
           <md-list>
             <md-list-item>
@@ -56,12 +63,6 @@
               </md-button>
             </md-list-item>
             <md-list-item>
-              <md-button href="#/ports" ng-class="isActivePage('ports')">
-                <md-icon md-font-set="material-icons" class="menu-item">flight_land</md-icon>
-                Ports
-              </md-button>
-            </md-list-item>
-            <md-list-item>
               <md-button href="#/network" ng-class="isActivePage('network')">
                 <md-icon md-font-set="material-icons" class="menu-item">language</md-icon>
                 Network
@@ -86,25 +87,17 @@
               </md-button>
             </md-list-item>
           </md-list>
-          <div flex></div>
-          <div class="power text-center md-subhead"  layout="row" layout-align="center end"> 
-            <div flex>
-            Powered by <a href="https://github.com/Snipa22/nodejs-pool" target="_new">nodejs-pool</a> & <a class="alt" href="https://github.com/mesh0000/poolui" target="_new">poolui</a>
-            <br/>
-            MIT Licence 
-            </div>
-          </div>
         </md-sidenav>
 
         <md-content flex id="main">
           <md-toolbar class="navbar md-whiteframe-2dp">
-            <div class="md-toolbar-tools maintoolbar text-center" ng-class="{smallfont: !menuOpen}" layout="row">
+            <div class="md-toolbar-tools maintoolbar" ng-class="{smallfont: !menuOpen}" layout="row">
               <md-button class="md-icon-button" type="button" ng-click="toggleSidenav()">
                 <md-icon md-font-set="material-icons">menu</md-icon>
               </md-button>
-              <h3 flex><a href="#/dashboard">Network : <b>{{network.difficulty | difficultyToHashRate | toHashRate}}</b></a></h3>
-              <h3 flex><a href="#/dashboard">Pool : <b>{{poolStats.global.hashRate | toHashRate}}</b></a></h3>
-              <h3 flex><a href="#/dashboard">You : <b>{{yourTotalHashRate | toHashRate}}</b></a></h3>
+              <span flex><a href="#/dashboard">Network : <b>{{network.difficulty | difficultyToHashRate | toHashRate}}</b></a></span>
+              <span flex><a href="#/dashboard">Pool : <b>{{poolStats.global.hashRate | toHashRate}}</b></a></span>
+              <span flex><a href="#/dashboard">You : <b>{{yourTotalHashRate | toHashRate}}</b></a></span>
               <div>
                 <md-button class="md-raised md-accent" aria-label="Miner Login" ng-click="minerLogin($event)" ng-if="!isLoggedIn()">
                   <md-icon class="login">fingerprint</md-icon>
@@ -117,6 +110,9 @@
             </div>
           </md-toolbar>
           <div id="content" ng-view flex></div>
+		<div class="text-center">
+		<p style="font: 90% arial, sans-serif;">powered by <strong><a href="https://github.com/Snipa22/nodejs-pool"><i class="fa fa-github"></i> nodejs-pool</a></strong> &amp; <strong><a href="https://github.com/mesh0000/poolui"><i class="fa fa-github"></i> poolui</a></strong></br> <span style="font-size: 90%">(mod by <b>miziel</b>)</span>
+		</p></div>
         </md-content>
       </div>
       <!-- Scripts -->
