@@ -79,6 +79,8 @@ var app = angular.module('poolui', [
 
 		$scope.poolList = ["pplns", "pps", "solo"];
 		$scope.poolStats = {}; // All Pool stats
+        $scope.poolHashrateChart = {}; // hashrate history
+        $scope.poolMinersChart = {}; // miners history
 		$scope.addrStats = {}; // All tracked addresses
 		$scope.lastBlock = {};
 		

@@ -1,4 +1,27 @@
 <ng-include src="'user/dashboard/poolstats.html'"></ng-include>
+<div layout="column" layout-gt-sm="row" flex>
+	<md-card flex>
+		<md-card-title>
+			<span class="md-headline">Historical Pool Hashrate</span>
+		</md-card-title>
+		<md-card-content layout="column">
+			<div class="chartcontainer-pool" flex>
+				<linechart data="poolHashrateChart.datasets" options="poolHashrateChart.options"></linechart>
+			</div>
+		</md-card-content>
+	</md-card>
+
+	<md-card flex>
+		<md-card-title>
+			<span class="md-headline">Historical Pool Miners</span>
+		</md-card-title>
+		<md-card-content layout="column">
+			<div class="chartcontainer-pool" flex>
+				<linechart data="poolMinersChart.datasets" options="poolMinersChart.options"></linechart>
+			</div>
+		</md-card-content>
+	</md-card>
+</div>
 <div layout="column" layout-gt-md="row" flex>
 	<md-card flex ng-include="'welcome.html'">
 	</md-card>
