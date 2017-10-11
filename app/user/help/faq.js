@@ -65,6 +65,10 @@ app.controller('FAQCtrl', function($scope, $location, $anchorScroll, $sce, dataS
             title: "Payout thresholds?",
             answer: $sce.trustAsHtml("Payout threshold is the minimum amount that needs to be earned before the pool pays out to your wallet. Since transactions in Monero have a significant miner fees, it's cost effective to set a higher payout threshold for your pool. The minimum value for this is usually 0.3 XMR.<br/><br/>To change your payment threshold, click the wrench after you login via \"Login\" button on the top right.<br/><br/>You could also adjust your payout threshold to regulate your payout schedule etc daily/weekly etc depending on your hash rate.")
         },
+          {
+            title: "Why hasn't my \"Total Due\" amount increased?",
+            answer: $sce.trustAsHtml("Sometimes, the monero blockchain will take a couple days for a new block to be found. Although you are contributing shares, the pool cannot guarantee your earnings until they are static.")
+          },
         {
             title: "Getting paid in BTC",
             answer: $sce.trustAsHtml("nodejs-pool supports direct payments to btc. This is done by using the shapeshift API to convert your XMR and send them to a BTC wallet.<br/><br/>To configure BTC payments please have a look at <a href='#/help/getting_started'>Getting Started</a> command line samples.")
