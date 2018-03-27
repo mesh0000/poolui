@@ -10,6 +10,9 @@ angular.module('utils.strings', [])
 
 .filter('toHashRate', function() {
   return function(hashes) {
+    if (hashes > 1000000000) {
+      return parseFloat((hashes / 1000000000).toFixed(2)) + " GH/s"
+    }    
     if (hashes > 1000000) {
       return Math.floor(hashes / 1000000) + "." + (hashes % 1000000).toString().substring(0, 1) + " MH/s"
     }
