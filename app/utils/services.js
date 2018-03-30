@@ -156,7 +156,7 @@ angular.module('utils.services', [])
           });
 
           // only display selected miners
-          var selected = minerStats[addr].selected;
+          var selected = minerStats[addr].table_selected;
           if(minerStats[addr].table_selected.length < 1) {
             selected = _.union(minerStats[addr].table_selected, ['global']);
           }

@@ -181,6 +181,15 @@ md-tooltip .md-content {
   height:300px;
 }
 
+.chartcontainer-pool {
+  width: 100% !important;
+  height: 150px;
+}
+
+.chartcontainer-pool .ng-isolate-scope {
+  height:150px;
+}
+
 /* LOGIN WINDOW */
 md-dialog .login{
   min-width: 800px !important;
